@@ -53,4 +53,18 @@ nodeA = NodePath("..")
 nodeB = NodePath("../../box2")
 
 [node name="box2" parent="." unique_id=1991066375 instance=ExtResource("2_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 2.5402124, -1.3636415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 2.5402124, -3.8197353)
+
+[node name="box3" parent="." unique_id=1759587500 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7604365, 2.857133, 0)
+
+[node name="newHinge" parent="box3" unique_id=477252310 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03180933, -1.9136293)
+nodeA = NodePath("..")
+nodeB = NodePath("../../box4")
+
+[node name="box4" parent="." unique_id=2093436559 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7604365, 2.961073, -3.8197353)
+
+[node name="box5" parent="." unique_id=792154265 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7604365, 1.4070115, -3.8197353)

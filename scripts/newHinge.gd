@@ -6,6 +6,9 @@ extends Node3D
 var offsetA : Transform3D
 var offsetB : Transform3D
 
+##degrees per second
+var motor = 5
+
 func _ready() -> void:
 	
 	#Node A in the hinge's local space
@@ -17,11 +20,17 @@ func _ready() -> void:
 
 var TPS:
 	get:
-		return Engine.physics_ticks_per_second * 0.98
+		return Engine.physics_ticks_per_second * 0.5
 	set(value):
 		print("Please set TPS in physics/common")
 
 func _physics_process(delta: float) -> void:
+	
+	showMiddle()
+	
+	return
+	#offsetA = offsetA.rotated(Vector3.FORWARD,deg_to_rad(motor) * delta)
+	#offsetB = offsetB.rotated(Vector3.FORWARD,deg_to_rad(-motor) * delta)
 	
 	var dict = {nodeA : offsetA,nodeB : offsetB}
 	var tolerance = 0.04
@@ -53,14 +62,42 @@ func _physics_process(delta: float) -> void:
 		var targetLinVel = (translationOffset) * TPS
 		var targetRotVel = -basisQuat.get_angle() * (globalTargetOffset.basis * basisQuat.get_axis()) * TPS
 		
-		var linVelDif = node.linear_velocity - targetLinVel
-		var rotVelDif = node.angular_velocity - targetLinVel
+		var linVelDif = targetLinVel - node.linear_velocity
+		var rotVelDif = targetLinVel - node.angular_velocity
 		
-		node.linear_velocity -= linVelDif
-		node.angular_velocity -= rotVelDif 
+		node.linear_velocity += linVelDif * 0.5
+		otherNode.linear_velocity -= linVelDif * 0.5
+		
+		
+		
+		node.angular_velocity = targetRotVel 
 		
 		
 		
 		otherNode = node
 	
+	
+
+func showMiddle():
+	
+	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
+	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	
+	
+	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
+	
+	if Input.is_action_pressed("q"):
+		return
+	
+	nodeA.linear_velocity = -(objectAPoint.origin - middle.origin) * TPS
+	nodeB.linear_velocity = -(objectBPoint.origin - middle.origin) * TPS
+	
+	nodeA.rotation = middle.basis.get_euler()
+	nodeB.rotation = middle.basis.get_euler()
+	
+	Mathy.draw_transform(get_tree(),objectAPoint,0.5)
+	Mathy.draw_transform(get_tree(),objectBPoint,1.0)
+	Mathy.draw_transform(get_tree(),middle,2.0)
+	
+	pass
 	
