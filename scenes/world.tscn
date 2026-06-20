@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://kuykq3yrvdpy"]
+
+[ext_resource type="Texture2D" uid="uid://bnggbqrr5rmdu" path="res://icon.svg" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://b81o2wecfhqcs" path="res://scripts/world.gd" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="2_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="5_036b0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tlwt5"]
+sky_material = SubResource("ProceduralSkyMaterial_fj7yv")
+
+[sub_resource type="Environment" id="Environment_aqk2v"]
+background_mode = 2
+sky = SubResource("Sky_tlwt5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv5m4"]
+albedo_texture = ExtResource("1_fj7yv")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[node name="world" type="Node3D" unique_id=184105334]
+script = ExtResource("1_tlwt5")
+boxScene = ExtResource("2_aqk2v")
+
+[node name="env" type="Node3D" parent="." unique_id=88541799]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env" unique_id=2054481231]
+environment = SubResource("Environment_aqk2v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env" unique_id=1643832108]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="env" unique_id=416108373]
+use_collision = true
+size = Vector3(1000, 1, 1000)
+material = SubResource("StandardMaterial3D_gv5m4")
+
+[node name="spectator" parent="." unique_id=1764623012 instance=ExtResource("2_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 4.3554573, 9.261028)
+projectileScene = ExtResource("2_aqk2v")
+
+[node name="box" parent="." unique_id=1039348423 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5033863, 0)
+
+[node name="newHinge" parent="box" unique_id=1618069539 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6426711, -0.6052365)
+nodeA = NodePath("..")
+nodeB = NodePath("../../box2")
+
+[node name="box2" parent="." unique_id=1991066375 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 2.5402124, -1.3636415)

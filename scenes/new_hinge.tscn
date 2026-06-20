@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://wrjrmgfm7enc"]
+
+[ext_resource type="Script" uid="uid://bpf7ljp1rg6sm" path="res://scripts/newHinge.gd" id="1_c2b7d"]
+
+[sub_resource type="Gradient" id="Gradient_oqiwr"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0.015686275, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vkrsx"]
+gradient = SubResource("Gradient_oqiwr")
+
+[node name="newHinge" type="Node3D" unique_id=1618069539]
+script = ExtResource("1_c2b7d")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1025748830]
+texture = SubResource("GradientTexture2D_vkrsx")
