@@ -79,3 +79,15 @@ transform = Transform3D(0.4673178, 0, 0.8840895, -0.7052433, 0.6030468, 0.372782
 
 [node name="box5" parent="." unique_id=792154265 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7604365, 1.4070115, -3.8197353)
+
+[node name="newHinge" parent="." unique_id=1881358202 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.177208, 7.331084, -1.9136293)
+nodeA = NodePath("../box8")
+nodeB = NodePath("../box9")
+
+[node name="box8" parent="." unique_id=1282385629 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.177208, 7.2992744, 0)
+freeze = true
+
+[node name="box9" parent="." unique_id=1648154595 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 16.177208, 2.0496721, -3.8197353)

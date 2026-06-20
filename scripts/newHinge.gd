@@ -49,54 +49,6 @@ func _physics_process(delta: float) -> void:
 	 
 	showMiddle()
 	
-	return
-	#offsetA = offsetA.rotated(Vector3.FORWARD,deg_to_rad(motor) * delta)
-	#offsetB = offsetB.rotated(Vector3.FORWARD,deg_to_rad(-motor) * delta)
-	
-	var dict = {nodeA : offsetA,nodeB : offsetB}
-	var tolerance = 0.04
-	var angTolerance = deg_to_rad(3)
-	
-	if Input.is_action_just_pressed("mouseLeft"):
-		nodeA.global_transform = Spectator.INSTANCE.get_child(0).global_transform
-	
-	
-	var otherNode : RigidBody3D = nodeB
-	for node in dict:
-		node = node as RigidBody3D
-		
-		var globalTargetOffset = (
-			global_transform #global pos of local trans
-			*
-			dict[node]
-			)
-		
-		var currentOffset : Transform3D =  ( #just for basis
-			globalTargetOffset.affine_inverse() 
-			* 
-			node.global_transform)
-		
-		
-		var translationOffset = globalTargetOffset.origin - node.global_transform.origin
-		var basisQuat = currentOffset.basis.get_rotation_quaternion()
-		
-		var targetLinVel = (translationOffset) * TPS
-		var targetRotVel = -basisQuat.get_angle() * (globalTargetOffset.basis * basisQuat.get_axis()) * TPS
-		
-		var linVelDif = targetLinVel - node.linear_velocity
-		var rotVelDif = targetLinVel - node.angular_velocity
-		
-		node.linear_velocity += linVelDif * 0.5
-		otherNode.linear_velocity -= linVelDif * 0.5
-		
-		
-		
-		node.angular_velocity = targetRotVel 
-		
-		
-		
-		otherNode = node
-	
 	
 
 func alignToAxis():
@@ -107,8 +59,8 @@ func alignToAxis():
 	var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()
 	var objectAxisBPoint = nodeB.global_transform * axisOffsetB.affine_inverse()
 	
-	Mathy.draw_debug_sphere(get_tree(),objectAxisAPoint.origin,0.5)
-	Mathy.draw_debug_sphere(get_tree(),objectAxisBPoint.origin,0.5)
+	#Mathy.draw_debug_sphere(get_tree(),objectAxisAPoint.origin,0.5)
+	#Mathy.draw_debug_sphere(get_tree(),objectAxisBPoint.origin,0.5)
 	
 	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
 	
@@ -139,8 +91,17 @@ func showMiddle():
 	if Input.is_action_pressed("q"):
 		return
 	
-	nodeA.linear_velocity = -(objectAPoint.origin - middle.origin) * TPS
-	nodeB.linear_velocity = -(objectBPoint.origin - middle.origin) * TPS
+	var aTarget = -(objectAPoint.origin - middle.origin) * TPS
+	var bTarget = -(objectBPoint.origin - middle.origin) * TPS
+	
+	var aDif = aTarget - nodeA.linear_velocity
+	var bDif = bTarget - nodeB.linear_velocity
+	
+	nodeA.linear_velocity += (aDif - bDif)/2.0
+	nodeB.linear_velocity += (bDif - aDif)/2.0
+	
+	nodeA.linear_velocity = aTarget
+	nodeB.linear_velocity = bTarget
 	
 	#nodeA.rotation = middle.basis.get_euler()
 	#nodeB.rotation = middle.basis.get_euler()
