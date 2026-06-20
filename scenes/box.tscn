@@ -18,6 +18,7 @@ height = 0.5
 
 [node name="box" type="RigidBody3D" unique_id=1039348423]
 physics_material_override = SubResource("PhysicsMaterial_036b0")
+custom_integrator = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1274811902]
 mesh = SubResource("BoxMesh_7wv7s")
