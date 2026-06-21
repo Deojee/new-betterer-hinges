@@ -82,6 +82,14 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
+	if Input.is_action_just_pressed("ui_right"):
+		targetAngleDegrees += 15
+	if Input.is_action_just_pressed("ui_left"):
+		targetAngleDegrees -= 15
+	if Input.is_action_just_pressed("ui_up"):
+		targetAngleDegrees *= -1
+	if Input.is_action_just_pressed("ui_down"):
+		targetAngleDegrees += -180
 	
 	for i in 30:
 		update()
@@ -101,13 +109,52 @@ func update():
 	
 	showMiddle()
 	
+	adjustTargetSpeed()
 	handleMotor()
 	
 	lastFrameTransform = global_transform
 
 
 ##degrees per second
-var motorSpeed = 100
+var motorSpeedDegrees : float:
+	get:
+		return rad_to_deg(motorSpeed)
+	set(value):
+		motorSpeed = deg_to_rad(value)
+var motorSpeed = PI
+
+var aimForTarget : bool = true
+
+@export var targetAngleDegrees : float:
+	get:
+		return rad_to_deg(targetAngle)
+	set(value):
+		targetAngle = deg_to_rad(value)
+var targetAngle = PI/2.0
+
+
+var maxMotorSpeedDegrees : float:
+	get:
+		return rad_to_deg(maxMotorSpeed)
+	set(value):
+		maxMotorSpeed = deg_to_rad(value)
+var maxMotorSpeed = PI
+
+func adjustTargetSpeed():
+	
+	if !aimForTarget:
+		return
+	
+	var currentAngle = getAngle()
+	var PI2 = PI * 2
+	
+	var difference = angle_difference(targetAngle,currentAngle)
+	motorSpeed = abs(difference) * difference * TPS
+	
+	motorSpeed = clamp(motorSpeed,-maxMotorSpeed,maxMotorSpeed)
+	
+	
+	pass
 
 func handleMotor():
 	
@@ -127,8 +174,8 @@ func handleMotor():
 	
 	var dif = deg_to_rad(motorSpeed) - rotSpeed
 	
-	nodeA.angular_velocity += axis * dif * getAPortion()
-	nodeB.angular_velocity -= axis * dif * getBPortion()
+	nodeA.angular_velocity += axis * dif * getAPortion() * TPS
+	nodeB.angular_velocity -= axis * dif * getBPortion() * TPS
 	pass
 
 func alignToAxis():
@@ -225,25 +272,6 @@ func showMiddle():
 	
 	nodeA.linear_velocity -= (bDif) * getAPortion()
 	nodeB.linear_velocity += (bDif) * getBPortion()
-	
-	
-	
-	#nodeA.linear_velocity = aTarget
-	#nodeB.linear_velocity = bTarget
-	#prints("before:",nodeB.linear_velocity)
-	
-	
-	#prints(bTarget.length(),nodeB.linear_velocity.dot(bTargetDir))
-	#prints("after:",nodeB.linear_velocity)
-	
-	#Mathy.draw_debug_sphere(get_tree(),nodeB.global_position + nodeB.linear_velocity/TPS,0.5,Color.LIME)
-	
-	#nodeA.rotation = middle.basis.get_euler()
-	#nodeB.rotation = middle.basis.get_euler()
-	
-	#Mathy.draw_transform(get_tree(),objectAPoint,0.5)
-	#Mathy.draw_transform(get_tree(),objectBPoint,1.0)
-	#Mathy.draw_transform(get_tree(),middle,2.0)
 	
 	
 	
