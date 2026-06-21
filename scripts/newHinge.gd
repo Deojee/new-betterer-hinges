@@ -29,7 +29,7 @@ func _ready() -> void:
 	if !can_process():
 		return
 	
-	#visible = false
+	visible = false
 	
 	lastFrameTransform = global_transform
 	
@@ -96,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	for i in 30:
 		update()
 	
+	return
 	$angleLabel.text = str(
 		snappedf(
 			rad_to_deg(getAngle()),
@@ -103,7 +104,7 @@ func _physics_process(delta: float) -> void:
 		),
 		" d"
 		)
-	pass
+	
 	
 
 func update():

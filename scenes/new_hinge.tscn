@@ -17,4 +17,5 @@ texture = SubResource("GradientTexture2D_vkrsx")
 
 [node name="angleLabel" type="Label3D" parent="." unique_id=1396202644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5432758, 0)
+visible = false
 text = "0"
