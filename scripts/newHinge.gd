@@ -149,10 +149,10 @@ func adjustTargetSpeed():
 	var PI2 = PI * 2
 	
 	var difference = angle_difference(targetAngle,currentAngle)
-	motorSpeed = abs(difference) * difference * TPS
+	motorSpeed = abs(difference) * difference #* TPS
 	
 	motorSpeed = clamp(motorSpeed,-maxMotorSpeed,maxMotorSpeed)
-	
+	#print(motorSpeed)
 	
 	pass
 
@@ -172,10 +172,10 @@ func handleMotor():
 	
 	var rotSpeed = nodeAAngVel - nodeBAngVel
 	
-	var dif = deg_to_rad(motorSpeed) - rotSpeed
+	var dif = motorSpeed - rotSpeed
 	
-	nodeA.angular_velocity += axis * dif * getAPortion() * TPS
-	nodeB.angular_velocity -= axis * dif * getBPortion() * TPS
+	nodeA.angular_velocity += axis * dif * getAPortion()# * TPS
+	nodeB.angular_velocity -= axis * dif * getBPortion()# * TPS
 	pass
 
 func alignToAxis():

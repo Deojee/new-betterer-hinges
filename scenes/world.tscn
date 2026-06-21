@@ -71,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 4.3554573, 9.2
 projectileScene = ExtResource("2_aqk2v")
 
 [node name="chain" type="Node3D" parent="." unique_id=1588322184]
+process_mode = 4
 
 [node name="box" parent="chain" unique_id=1039348423 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7744713, -15.430909)
@@ -155,6 +156,7 @@ freeze = true
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 16.177208, 2.0496721, -3.8197353)
 
 [node name="walkerGuy" type="Node3D" parent="." unique_id=26806753]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1934595, 7.0516143, -1.0256414)
 
 [node name="body" type="RigidBody3D" parent="walkerGuy" unique_id=621303919]
