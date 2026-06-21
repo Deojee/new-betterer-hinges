@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	var shuffledHinges = allHinges.duplicate()
 	
 	
-	for i in 30:
+	for i in 90:
 		shuffledHinges.shuffle()
 		for h in shuffledHinges:
 			h.update()

@@ -45,6 +45,9 @@ size = Vector3(1.2, 0.3, 0.2)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qfnet"]
 points = PackedVector3Array(0.3, 0.15, 0.15, 0.3, 0.15, -0.15, -0.3, 0.15, 0.15, 0.3, -0.15, 0.15, 0.3, -0.15, -0.15, -0.3, 0.15, -0.15, -0.3, -0.15, 0.15, -0.3, -0.15, -0.15)
 
+[sub_resource type="BoxMesh" id="BoxMesh_i7141"]
+size = Vector3(1.2, 0.3, 0.2)
+
 [node name="world" type="Node3D" unique_id=184105334]
 script = ExtResource("1_tlwt5")
 boxScene = ExtResource("2_aqk2v")
@@ -316,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR3/segment3" unique_id=1914936873]
-mesh = SubResource("BoxMesh_7wv7s")
+mesh = SubResource("BoxMesh_i7141")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR3/segment3" unique_id=1099182777]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
@@ -408,6 +411,7 @@ nodeB = NodePath("..")
 [node name="segment3" type="RigidBody3D" parent="walkerGuy/leg2L" unique_id=2031255410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
+freeze = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2L/segment3" unique_id=667341604]
 mesh = SubResource("BoxMesh_7wv7s")

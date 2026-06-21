@@ -29,6 +29,8 @@ func _ready() -> void:
 	if !can_process():
 		return
 	
+	visible = false
+	
 	lastFrameTransform = global_transform
 	
 	#Node A in the hinge's local space
@@ -77,10 +79,11 @@ func _physics_process(delta: float) -> void:
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
 	
-	Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
-	Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
+	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
+	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
 	
+	return
 	for i in 30:
 		update()
 	pass
@@ -97,7 +100,7 @@ func update():
 
 
 ##degrees per second
-var motorSpeed = 90
+var motorSpeed = 200
 
 func handleMotor():
 	
@@ -117,8 +120,8 @@ func handleMotor():
 	
 	var dif = deg_to_rad(motorSpeed) - rotSpeed
 	
-	nodeA.angular_velocity += axis * dif/2.0
-	nodeB.angular_velocity -= axis * dif/2.0
+	nodeA.angular_velocity += axis * dif * getAPortion()
+	nodeB.angular_velocity -= axis * dif * getBPortion()
 	pass
 
 func alignToAxis():
@@ -142,8 +145,8 @@ func alignToAxis():
 		
 		#nodeA.angular_velocity -= nodeA.angular_velocity.dot(objectAAxis) * objectAAxis * 0.5
 		var dif = (objectAAxis * objectAAngleOffAxis * TPS ) - nodeA.angular_velocity
-		nodeA.angular_velocity += dif/2.0
-		nodeB.angular_velocity -= dif/2.0
+		nodeA.angular_velocity += dif * getAPortion()
+		nodeB.angular_velocity -= dif * getBPortion()
 	
 	var objBAxis = -(objectBPoint.origin - objectAxisBPoint.origin)
 	var objectBAngleOffAxis = objBAxis.angle_to(middle.basis.z)
@@ -153,8 +156,8 @@ func alignToAxis():
 		
 		var dif = (objectBAxis * objectBAngleOffAxis * TPS ) - nodeB.angular_velocity
 		
-		nodeA.angular_velocity -= dif/2.0
-		nodeB.angular_velocity += dif/2.0
+		nodeA.angular_velocity -= dif * getAPortion()
+		nodeB.angular_velocity += dif * getBPortion()
 		
 	
 
@@ -197,11 +200,11 @@ func showMiddle():
 	
 	var divisor = 2.0
 	
-	nodeA.linear_velocity += (aDif)/divisor
-	nodeB.linear_velocity -= (aDif)/divisor
+	nodeA.linear_velocity += (aDif) * getAPortion()
+	nodeB.linear_velocity -= (aDif) * getBPortion()
 	
-	nodeA.linear_velocity -= (bDif)/divisor
-	nodeB.linear_velocity += (bDif)/divisor
+	nodeA.linear_velocity -= (bDif) * getAPortion()
+	nodeB.linear_velocity += (bDif) * getBPortion()
 	
 	
 	
