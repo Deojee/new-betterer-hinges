@@ -82,6 +82,8 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
+	return
+	
 	if Input.is_action_just_pressed("ui_right"):
 		targetAngleDegrees += 15
 	if Input.is_action_just_pressed("ui_left"):
@@ -89,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_up"):
 		targetAngleDegrees *= -1
 	if Input.is_action_just_pressed("ui_down"):
-		targetAngleDegrees += -180
+		targetAngleDegrees += 180
 	
 	for i in 30:
 		update()
@@ -115,25 +117,30 @@ func update():
 	lastFrameTransform = global_transform
 
 
+
+#if true; motorSpeedDegrees will be set so that it rotates towards targetAngleDegrees
+@export var aimForTarget : bool = true
+
+#whether or not the hinge will try to approach rotation speeds of motorSpeedDegrees
+@export var enableMotor : bool = true
+
 ##degrees per second
-var motorSpeedDegrees : float:
+@export var motorSpeedDegrees : float:
 	get:
 		return rad_to_deg(motorSpeed)
 	set(value):
 		motorSpeed = deg_to_rad(value)
 var motorSpeed = PI
 
-var aimForTarget : bool = true
-
 @export var targetAngleDegrees : float:
 	get:
 		return rad_to_deg(targetAngle)
 	set(value):
-		targetAngle = deg_to_rad(value)
-var targetAngle = PI/2.0
+		targetAngle = fmod(deg_to_rad(value),PI * 2)
+var targetAngle = -PI/4.0
 
 
-var maxMotorSpeedDegrees : float:
+@export var maxMotorSpeedDegrees : float:
 	get:
 		return rad_to_deg(maxMotorSpeed)
 	set(value):
@@ -148,8 +155,8 @@ func adjustTargetSpeed():
 	var currentAngle = getAngle()
 	var PI2 = PI * 2
 	
-	var difference = angle_difference(targetAngle,currentAngle)
-	motorSpeed = abs(difference) * difference #* TPS
+	var difference = angle_difference(currentAngle,targetAngle)
+	motorSpeed = abs(difference) * difference * TPS
 	
 	motorSpeed = clamp(motorSpeed,-maxMotorSpeed,maxMotorSpeed)
 	#print(motorSpeed)
