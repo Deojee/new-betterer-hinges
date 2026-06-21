@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name HingePlus
+
 @export var nodeA : RigidBody3D
 @export var nodeB : RigidBody3D
 
@@ -12,8 +14,9 @@ var offsetB : Transform3D
 var axisOffsetA : Transform3D
 var axisOffsetB : Transform3D
 
-##degrees per second
-var motor = 5
+
+
+static var bodiesDict : Dictionary = {}
 
 var rotAxis : Vector3:
 	get:
@@ -22,6 +25,9 @@ var rotAxis : Vector3:
 		print("can't change rot axis")
 
 func _ready() -> void:
+	
+	if !can_process():
+		return
 	
 	lastFrameTransform = global_transform
 	
@@ -40,7 +46,25 @@ func _ready() -> void:
 	nodeA.add_collision_exception_with(nodeB)
 	nodeB.add_collision_exception_with(nodeA)
 	
+	if !bodiesDict.has(nodeA):
+		bodiesDict[nodeA] = [self]
+	else:
+		bodiesDict[nodeA].append(self)
+	
+	if !bodiesDict.has(nodeB):
+		bodiesDict[nodeB] = [self]
+	else:
+		bodiesDict[nodeB].append(self)
+	
 	pass
+
+#returns the next hinge in the chain or null
+#only checks for other hinges on nodeB
+func getNextInChain():
+	for body in bodiesDict[nodeB]:
+		if body != self:
+			return body
+	return null
 
 var TPS:
 	get:
@@ -50,12 +74,52 @@ var TPS:
 
 func _physics_process(delta: float) -> void:
 	
+	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
+	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	
+	Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
+	Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
+	
+	
+	for i in 30:
+		update()
+	pass
+	
+
+func update():
 	alignToAxis()
 	
-	 
 	showMiddle()
 	
+	handleMotor()
+	
 	lastFrameTransform = global_transform
+
+
+##degrees per second
+var motorSpeed = 90
+
+func handleMotor():
+	
+	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
+	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()
+	var objectAxisBPoint = nodeB.global_transform * axisOffsetB.affine_inverse()
+	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
+	
+	
+	var axis = middle.basis.z
+	#along our axis
+	var nodeAAngVel = nodeA.angular_velocity.dot(axis)
+	var nodeBAngVel = nodeB.angular_velocity.dot(axis)
+	
+	var rotSpeed = nodeAAngVel - nodeBAngVel
+	
+	var dif = deg_to_rad(motorSpeed) - rotSpeed
+	
+	nodeA.angular_velocity += axis * dif/2.0
+	nodeB.angular_velocity -= axis * dif/2.0
+	pass
 
 func alignToAxis():
 	
@@ -93,6 +157,16 @@ func alignToAxis():
 		nodeB.angular_velocity += dif/2.0
 		
 	
+
+
+func getAPortion():
+	if nodeA.freeze:
+		return 0.0
+	return nodeA.mass / (nodeA.mass + nodeB.mass)
+func getBPortion():
+	if nodeB.freeze:
+		return 0.0
+	return nodeB.mass / (nodeA.mass + nodeB.mass)
 
 func showMiddle():
 	

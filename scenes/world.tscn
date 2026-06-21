@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="5_036b0"]
+[ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="6_qfnet"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -155,8 +156,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.051614, 15.787714)
 
 [node name="body" type="RigidBody3D" parent="walkerGuy" unique_id=621303919]
 collision_layer = 2
+mass = 40.0
 linear_damp = 10.0
 angular_damp = 10.0
+script = ExtResource("6_qfnet")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/body" unique_id=1982923573]
 transform = Transform3D(0.8171618, 0.5764083, -2.5195607e-08, 0, -4.371139e-08, -1, -0.5764083, 0.8171618, -3.5719278e-08, -0.19491936, -0.26298904, 1.10849)
@@ -182,143 +185,284 @@ mesh = SubResource("BoxMesh_71j4m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, -0.178)
 shape = SubResource("BoxShape3D_7wv7s")
 
-[node name="leg" type="Node3D" parent="walkerGuy" unique_id=1776860055]
+[node name="legR" type="Node3D" parent="walkerGuy" unique_id=1776860055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3263189, 0, -0.28975773)
 
-[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg" unique_id=1212798613]
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/legR" unique_id=1212798613]
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg/segment1" unique_id=589245563]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR/segment1" unique_id=589245563]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg/segment1" unique_id=1292972432]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR/segment1" unique_id=1292972432]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg/segment1" unique_id=1441067391 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR/segment1" unique_id=1441067391 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
 nodeA = NodePath("../../../body")
 nodeB = NodePath("..")
 
-[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg" unique_id=939097216]
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/legR" unique_id=939097216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg/segment2" unique_id=2140131588]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR/segment2" unique_id=2140131588]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg/segment2" unique_id=1527993843]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR/segment2" unique_id=1527993843]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg/segment2" unique_id=1111536209 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR/segment2" unique_id=1111536209 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment1")
 nodeB = NodePath("..")
 
-[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg" unique_id=2064987616]
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/legR" unique_id=2064987616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg/segment3" unique_id=1475534195]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR/segment3" unique_id=1475534195]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg/segment3" unique_id=1253638260]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR/segment3" unique_id=1253638260]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg/segment3" unique_id=1928668206 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR/segment3" unique_id=1928668206 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment2")
 nodeB = NodePath("..")
 
-[node name="leg2" type="Node3D" parent="walkerGuy" unique_id=152294220]
+[node name="legR2" type="Node3D" parent="walkerGuy" unique_id=152294220]
 transform = Transform3D(0.9002447, 0, -0.4353842, 0, 1, 0, 0.4353842, 0, 0.9002447, -1.2100782, 0, -0.8148918)
 
-[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg2" unique_id=645457119]
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/legR2" unique_id=645457119]
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2/segment1" unique_id=2033182443]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR2/segment1" unique_id=2033182443]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2/segment1" unique_id=1715789435]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR2/segment1" unique_id=1715789435]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg2/segment1" unique_id=2111575608 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR2/segment1" unique_id=2111575608 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
 nodeA = NodePath("../../../body")
 nodeB = NodePath("..")
 
-[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg2" unique_id=1328206553]
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/legR2" unique_id=1328206553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2/segment2" unique_id=60680410]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR2/segment2" unique_id=60680410]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2/segment2" unique_id=702124126]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR2/segment2" unique_id=702124126]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg2/segment2" unique_id=380964491 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR2/segment2" unique_id=380964491 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment1")
 nodeB = NodePath("..")
 
-[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg2" unique_id=732759269]
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/legR2" unique_id=732759269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2/segment3" unique_id=1741571491]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR2/segment3" unique_id=1741571491]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2/segment3" unique_id=978406472]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR2/segment3" unique_id=978406472]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg2/segment3" unique_id=376682758 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR2/segment3" unique_id=376682758 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment2")
 nodeB = NodePath("..")
 
-[node name="leg3" type="Node3D" parent="walkerGuy" unique_id=1807992705]
+[node name="legR3" type="Node3D" parent="walkerGuy" unique_id=1807992705]
 transform = Transform3D(0.66400176, 0, 0.74773115, 0, 1, 0, -0.74773115, 0, 0.66400176, -1.0413427, 0, 0.4306736)
 
-[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg3" unique_id=1269346720]
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/legR3" unique_id=1269346720]
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3/segment1" unique_id=42121531]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR3/segment1" unique_id=42121531]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3/segment1" unique_id=2089770416]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR3/segment1" unique_id=2089770416]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg3/segment1" unique_id=1302174668 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR3/segment1" unique_id=1302174668 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
 nodeA = NodePath("../../../body")
 nodeB = NodePath("..")
 
-[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg3" unique_id=915447648]
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/legR3" unique_id=915447648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3/segment2" unique_id=1248635443]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR3/segment2" unique_id=1248635443]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3/segment2" unique_id=1696819518]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR3/segment2" unique_id=1696819518]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg3/segment2" unique_id=507631394 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR3/segment2" unique_id=507631394 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment1")
 nodeB = NodePath("..")
 
-[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg3" unique_id=891769048]
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/legR3" unique_id=891769048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3/segment3" unique_id=1914936873]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR3/segment3" unique_id=1914936873]
 mesh = SubResource("BoxMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3/segment3" unique_id=1099182777]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR3/segment3" unique_id=1099182777]
 shape = SubResource("ConvexPolygonShape3D_qfnet")
 
-[node name="newHinge" parent="walkerGuy/leg3/segment3" unique_id=1210673957 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+[node name="newHinge" parent="walkerGuy/legR3/segment3" unique_id=1210673957 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment2")
+nodeB = NodePath("..")
+
+[node name="leg1L" type="Node3D" parent="walkerGuy" unique_id=638802177]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.326, 0, -0.29)
+
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg1L" unique_id=405109474]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg1L/segment1" unique_id=483024664]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg1L/segment1" unique_id=1538267803]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg1L/segment1" unique_id=902848616 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
+nodeA = NodePath("../../../body")
+nodeB = NodePath("..")
+
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg1L" unique_id=1612645371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg1L/segment2" unique_id=1344265274]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg1L/segment2" unique_id=495862188]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg1L/segment2" unique_id=618401271 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment1")
+nodeB = NodePath("..")
+
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg1L" unique_id=924224750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg1L/segment3" unique_id=2049916270]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg1L/segment3" unique_id=730168593]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg1L/segment3" unique_id=345100449 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment2")
+nodeB = NodePath("..")
+
+[node name="leg2L" type="Node3D" parent="walkerGuy" unique_id=1730310744]
+transform = Transform3D(-0.9003187, 0, -0.43523118, 0, 1, 0, 0.43523118, 0, -0.9003187, 1.21, 0, -0.815)
+
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg2L" unique_id=1530624818]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2L/segment1" unique_id=1218618457]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2L/segment1" unique_id=462032425]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg2L/segment1" unique_id=2088661273 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
+nodeA = NodePath("../../../body")
+nodeB = NodePath("..")
+
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg2L" unique_id=1053655866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2L/segment2" unique_id=1209172771]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2L/segment2" unique_id=321039338]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg2L/segment2" unique_id=649329772 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment1")
+nodeB = NodePath("..")
+
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg2L" unique_id=2031255410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2L/segment3" unique_id=667341604]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg2L/segment3" unique_id=1836275186]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg2L/segment3" unique_id=2102634054 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment2")
+nodeB = NodePath("..")
+
+[node name="leg3L" type="Node3D" parent="walkerGuy" unique_id=1696223278]
+transform = Transform3D(-0.6639263, 0, 0.74779814, 0, 1, 0, -0.74779814, 0, -0.6639263, 1.041, 0, 0.431)
+
+[node name="segment1" type="RigidBody3D" parent="walkerGuy/leg3L" unique_id=30363854]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3L/segment1" unique_id=463540331]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3L/segment1" unique_id=1237536120]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg3L/segment1" unique_id=1568132831 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3, 0, 0)
+nodeA = NodePath("../../../body")
+nodeB = NodePath("..")
+
+[node name="segment2" type="RigidBody3D" parent="walkerGuy/leg3L" unique_id=1444726364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3L/segment2" unique_id=1951319007]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3L/segment2" unique_id=489265222]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg3L/segment2" unique_id=1248318170 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+nodeA = NodePath("../../segment1")
+nodeB = NodePath("..")
+
+[node name="segment3" type="RigidBody3D" parent="walkerGuy/leg3L" unique_id=451634060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg3L/segment3" unique_id=213414787]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/leg3L/segment3" unique_id=1631213267]
+shape = SubResource("ConvexPolygonShape3D_qfnet")
+
+[node name="newHinge" parent="walkerGuy/leg3L/segment3" unique_id=866617561 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment2")
 nodeB = NodePath("..")
