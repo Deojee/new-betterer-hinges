@@ -14,3 +14,7 @@ script = ExtResource("1_c2b7d")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1025748830]
 texture = SubResource("GradientTexture2D_vkrsx")
+
+[node name="angleLabel" type="Label3D" parent="." unique_id=1396202644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5432758, 0)
+text = "0"

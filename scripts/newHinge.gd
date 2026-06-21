@@ -29,7 +29,7 @@ func _ready() -> void:
 	if !can_process():
 		return
 	
-	visible = false
+	#visible = false
 	
 	lastFrameTransform = global_transform
 	
@@ -83,9 +83,16 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
 	
-	return
 	for i in 30:
 		update()
+	
+	$angleLabel.text = str(
+		snappedf(
+			rad_to_deg(getAngle()),
+			0.1
+		),
+		" d"
+		)
 	pass
 	
 
@@ -100,7 +107,7 @@ func update():
 
 
 ##degrees per second
-var motorSpeed = 200
+var motorSpeed = 100
 
 func handleMotor():
 	
@@ -161,6 +168,19 @@ func alignToAxis():
 		
 	
 
+func getAngle():
+	
+	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
+	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	
+	var angleY = objectAPoint.basis.y.angle_to(objectBPoint.basis.y)
+	var angleX = objectAPoint.basis.x.angle_to(objectBPoint.basis.y)
+	
+	if angleX > PI/2.0:
+		return 2.0 * PI - angleY
+	else:
+		return angleY
+	
 
 func getAPortion():
 	if nodeA.freeze:
