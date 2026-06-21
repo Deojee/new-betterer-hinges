@@ -159,9 +159,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.051614, 15.787714)
 
 [node name="body" type="RigidBody3D" parent="walkerGuy" unique_id=621303919]
 collision_layer = 2
-mass = 40.0
-linear_damp = 10.0
-angular_damp = 10.0
 script = ExtResource("6_qfnet")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/body" unique_id=1982923573]
@@ -411,7 +408,6 @@ nodeB = NodePath("..")
 [node name="segment3" type="RigidBody3D" parent="walkerGuy/leg2L" unique_id=2031255410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0)
 collision_layer = 2
-freeze = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/leg2L/segment3" unique_id=667341604]
 mesh = SubResource("BoxMesh_7wv7s")

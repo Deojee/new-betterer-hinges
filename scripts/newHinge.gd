@@ -165,11 +165,11 @@ func alignToAxis():
 func getAPortion():
 	if nodeA.freeze:
 		return 0.0
-	return nodeA.mass / (nodeA.mass + nodeB.mass)
+	return nodeB.mass / (nodeA.mass + nodeB.mass)
 func getBPortion():
 	if nodeB.freeze:
 		return 0.0
-	return nodeB.mass / (nodeA.mass + nodeB.mass)
+	return nodeA.mass / (nodeA.mass + nodeB.mass)
 
 func showMiddle():
 	
