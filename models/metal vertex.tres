@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://booprj7g0dem4"]
+
+[resource]
+resource_name = "vertex metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+metallic = 0.83181816
+roughness = 0.20909092
