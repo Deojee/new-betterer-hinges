@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="1_g8roy"]
 [ext_resource type="Texture2D" uid="uid://bnggbqrr5rmdu" path="res://icon.svg" id="2_1ene6"]
 [ext_resource type="Material" uid="uid://booprj7g0dem4" path="res://models/metal vertex.tres" id="3_1ene6"]
-[ext_resource type="Script" uid="uid://dvroqol2v4hny" path="res://scenes/meshConverterTest.gd" id="3_247hi"]
+[ext_resource type="Script" uid="uid://dvroqol2v4hny" path="res://scripts/meshConverterTest.gd" id="3_247hi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_247hi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
