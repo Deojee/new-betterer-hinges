@@ -2,8 +2,8 @@ extends Node3D
 
 class_name HingePlus
 
-@export var nodeA : RigidBody3D
-@export var nodeB : RigidBody3D
+@export var nodeA : PhysicsBody3D
+@export var nodeB : PhysicsBody3D
 
 var lastFrameTransform : Transform3D
 
@@ -82,16 +82,16 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
-	return
-	
-	if Input.is_action_just_pressed("ui_right"):
-		targetAngleDegrees += 15
-	if Input.is_action_just_pressed("ui_left"):
-		targetAngleDegrees -= 15
-	if Input.is_action_just_pressed("ui_up"):
-		targetAngleDegrees *= -1
-	if Input.is_action_just_pressed("ui_down"):
-		targetAngleDegrees += 180
+	#return
+	if false:
+		if Input.is_action_just_pressed("ui_right"):
+			targetAngleDegrees += 15
+		if Input.is_action_just_pressed("ui_left"):
+			targetAngleDegrees -= 15
+		if Input.is_action_just_pressed("ui_up"):
+			targetAngleDegrees *= -1
+		if Input.is_action_just_pressed("ui_down"):
+			targetAngleDegrees += 180
 	
 	for i in 30:
 		update()
