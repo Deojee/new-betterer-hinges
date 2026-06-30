@@ -6,8 +6,9 @@ const hingePlus = preload("res://scenes/new_hinge.tscn")
 # int id : PhysicalBone3D 
 var idsToBones : Dictionary = {-1 : null}
 
-func _init() -> void:
-	pbs = $PhysicalBoneSimulator3D
+func _ready() -> void:
+	
+	$PhysicalBoneSimulator3D.is_simulating_physics()
 	
 	var num = 0
 	for bone in pbs.get_children():
@@ -50,22 +51,29 @@ func _init() -> void:
 		newHinge.nodeB = bone
 		#
 		
+		#newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
+		#newHinge.rotation = Vector3(0,PI/2.0,0)
+		#newHinge.position = get_bone_pose_position(parentBone.get_bone_id())
+		
+		var newHingeZ = bone.basis.z.cross(parentBone.basis.z)
+		var quat = Quaternion(newHingeZ,0.0)
+		newHinge.basis = Basis.IDENTITY.rotated(Vector3.UP,2.0/PI) #Basis(quat)
 		
 		parentBone.add_child(newHinge)
 		
 		
-		newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
-		var ogDist = newHinge.global_position.distance_to(bone.global_position)
-		newHinge.position = Vector3.BACK * parentBone.get_child(0).shape.height/2.0
-		var newDist = newHinge.global_position.distance_to(bone.global_position)
-		
-		if ogDist < newDist:
-			newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
-		
+		#newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
+		#var ogDist = newHinge.global_position.distance_to(bone.global_position)
+		#newHinge.position = Vector3.BACK * parentBone.get_child(0).shape.height/2.0
+		#var newDist = newHinge.global_position.distance_to(bone.global_position)
+		#
+		#if ogDist < newDist:
+			#newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
+		#
 		#newHinge.look_at(bone.global_position)
-		newHinge.rotation = Vector3(0,PI/2.0,0)
+		#newHinge.rotation = Vector3(0,PI/2.0,0)
 		
-		#newHinge.setup()
+		newHinge.setup()
 		
 		#prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
 		#print()
