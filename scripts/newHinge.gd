@@ -135,14 +135,14 @@ func update(del):
 		return rad_to_deg(motorSpeed)
 	set(value):
 		motorSpeed = deg_to_rad(value)
-var motorSpeed = PI
+var motorSpeed = PI/4.0
 
 @export var targetAngleDegrees : float:
 	get:
 		return rad_to_deg(targetAngle)
 	set(value):
 		targetAngle = fmod(deg_to_rad(value),PI * 2)
-var targetAngle = 0 #-PI/4.0
+var targetAngle = PI #-PI/4.0
 
 
 @export var maxMotorSpeedDegrees : float:

@@ -1060,18 +1060,20 @@ transform = Transform3D(-2.5840438e-07, 0.72255105, 3.0804206e-14, -8.61348e-08,
 mesh = SubResource("ArrayMesh_nm333")
 
 [node name="squid" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=1634134686]
+visible = false
 mesh = SubResource("ArrayMesh_ra3p5")
 skin = SubResource("Skin_dvrgt")
 skeleton = NodePath("..")
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="Armature/Skeleton3D" unique_id=1605323614]
 
-[node name="Physical Bone Bone" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1073543258]
+[node name="Physical Bone Bone" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1073543258 groups=["skeletonCore"]]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.5, 0)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 body_offset = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.5, 0)
 bone_name = "Bone"
 script = ExtResource("4_m0yoy")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Bone" unique_id=864205342]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1082,6 +1084,7 @@ transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 2.222005, 0)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2220049)
 body_offset = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1.2220049, 0)
 bone_name = "spine 2"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone spine 2" unique_id=2034771115]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1092,6 +1095,7 @@ transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 4.976041, 0)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.532031)
 body_offset = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1.532031, 0)
 bone_name = "head top"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone head top" unique_id=262433264]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1102,6 +1106,7 @@ transform = Transform3D(-1.4210854e-14, 0, -1, 0, 1, 0, 1, 0, -1.4210854e-14, 0.
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4703295e-22, 0, 0.2500001)
 body_offset = Transform3D(1, 0, -1.4210854e-14, -1.4210855e-14, 0, -1.0000001, 0, 1, 0, 3.5527137e-15, 0.25000012, 0)
 bone_name = "rear eye"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone rear eye" unique_id=1909431732]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1112,6 +1117,7 @@ transform = Transform3D(-8.881783e-14, 1.5879861e-07, 1, 1, -4.0133932e-07, 1.52
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8137513e-14, -3.907986e-14, 0.25000006)
 body_offset = Transform3D(1, 2.842172e-14, 1.5255001e-13, 8.881783e-14, 1.2789769e-13, -1, -1.4104161e-20, 1, 1.563194e-13, 0, 0.25000006, 0)
 bone_name = "front eye tip"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone front eye tip" unique_id=409468948]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1122,46 +1128,51 @@ transform = Transform3D(1, 6.6174454e-22, -3.297844e-15, -2.6090777e-16, 0.99686
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3129011e-20, 8.8290605e-08, 1.0772877)
 body_offset = Transform3D(1, 6.617444e-22, -3.297844e-15, -3.297844e-15, -7.4505806e-08, -1.0000001, -9.264423e-22, 1, -8.195639e-08, 3.5527137e-15, 1.0772878, 0)
 bone_name = "tentacle.001.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_R" unique_id=2094848747]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_fuk43")
 
 [node name="Physical Bone tentacle_002_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1348190408]
-transform = Transform3D(1, 7.037779e-17, -1.7664823e-15, -7.0378075e-17, 1, -1.6142121e-07, 1.7664823e-15, 1.6142121e-07, 1, 9.577028e-15, 0.17045784, -3.5392094)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3739106e-17, 6.8998984e-09, 1.3913875)
-body_offset = Transform3D(1, -1.9852335e-23, 9.8743925e-18, 9.8742866e-18, 2.491575e-09, -1, 0, 1, -4.9590057e-09, 0, 1.3913875, 0)
+transform = Transform3D(1, 7.037779e-17, -1.7289622e-15, -7.037807e-17, 1, -1.6142121e-07, 1.7289622e-15, 1.6142121e-07, 1, 9.577028e-15, 0.17045784, -3.5392094)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59442e-17, 6.8998984e-09, 1.3913875)
+body_offset = Transform3D(1, -1.9852335e-23, 4.7394564e-17, 4.7394458e-17, 2.491575e-09, -1, 0, 1, -4.9590057e-09, 0, 1.3913875, 0)
 bone_name = "tentacle.002.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R" unique_id=1319672621]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_0pt84")
 
 [node name="Physical Bone tentacle_003_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=233811397]
-transform = Transform3D(1, 7.03778e-17, -1.7664823e-15, -7.0378075e-17, 1, -1.564622e-07, 1.7664823e-15, 1.564622e-07, 1, 1.4727768e-14, 0.17045832, -6.4388185)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4892772e-17, 1.1237127e-08, 1.5082216)
-body_offset = Transform3D(1, -1.9852335e-23, 9.8743925e-18, 9.8742866e-18, 1.2501607e-31, -1, 0, 1, -7.450581e-09, 0, 1.5082216, 0)
+transform = Transform3D(1, 7.03778e-17, -1.7289622e-15, -7.037807e-17, 1, -1.564622e-07, 1.7289622e-15, 1.564622e-07, 1, 1.4727768e-14, 0.17045832, -6.4388185)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.148151e-17, 1.1237127e-08, 1.5082216)
+body_offset = Transform3D(1, -1.9852335e-23, 4.7394564e-17, 4.7394458e-17, 1.2501607e-31, -1, 0, 1, -7.450581e-09, 0, 1.5082216, 0)
 bone_name = "tentacle.003.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R" unique_id=549688277]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_s5sbo")
 
 [node name="Physical Bone tentacle_004_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1313749198]
-transform = Transform3D(1, 6.9760654e-17, -1.7763566e-15, -6.976093e-17, 1, -1.551369e-07, 1.7763566e-15, 1.551369e-07, 1, 2.0633196e-14, 0.17045927, -9.763278)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.692001e-22, 1.1125014e-08, 1.8162386)
-body_offset = Transform3D(1, -6.171694e-19, 4.2351647e-22, 0, 1.3253043e-09, -1.0000001, 6.171429e-19, 1.0000001, -6.1253047e-09, 0, 1.8162389, 0)
+transform = Transform3D(1, 6.7415657e-17, -1.7763566e-15, -6.741592e-17, 1, -1.5010103e-07, 1.7763566e-15, 1.5010103e-07, 1, 2.0633196e-14, 0.17045927, -9.763278)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6920113e-22, 1.9786695e-09, 1.8162386)
+body_offset = Transform3D(1, -2.96218e-18, 4.2351647e-22, 0, 6.3611765e-09, -1.0000001, 2.9621536e-18, 1.0000001, -1.0894325e-09, 0, 1.8162389, 0)
 bone_name = "tentacle.004.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R" unique_id=978106851]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_a81yb")
 
-[node name="Physical Bone tentacle_005_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2082122542]
-transform = Transform3D(1, 6.97605e-17, -2.2054051e-14, -6.976392e-17, 1, -1.551369e-07, 2.2054051e-14, 1.551369e-07, 1, 5.479053e-14, 0.17045927, -13.081086)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.184642e-15, 9.19757e-09, 1.5015695)
-body_offset = Transform3D(1, -6.173216e-19, -2.0277693e-14, -2.0277696e-14, 1.3253043e-09, -1.0000001, 6.17176e-19, 1.0000001, -6.1253047e-09, 2.8263723e-14, 1.5015697, 0)
+[node name="Physical Bone tentacle_005_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2082122542 groups=["legTip"]]
+transform = Transform3D(1, 6.7415485e-17, -2.2654374e-14, -6.7418886e-17, 1, -1.5010103e-07, 2.2654374e-14, 1.5010103e-07, 1, 5.469426e-14, 0.29022026, -13.419038)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0846493e-14, -0.1197605, 1.8395212)
+body_offset = Transform3D(1, -2.9623521e-18, -2.0878015e-14, -2.0878019e-14, 6.3611765e-09, -1.0000001, 2.9622992e-18, 1.0000001, -1.0894325e-09, 2.7558703e-14, 1.8395214, 0.11976051)
 bone_name = "tentacle.005.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R" unique_id=1351937579]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1172,46 +1183,51 @@ transform = Transform3D(0.8103377, -0.00487521, -0.58594286, -0.051216673, 0.995
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0102635e-07, -2.8474199e-08, 0.8992322)
 body_offset = Transform3D(1, 8.4750354e-08, -2.9802322e-08, -2.9802322e-08, 3.958121e-08, -1.0000002, -1.2572855e-07, 0.99999994, 3.1664968e-08, 3.2782555e-07, 0.8992324, 0)
 bone_name = "tentacle.001.R.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_R_001" unique_id=694472391]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_kqso3")
 
 [node name="Physical Bone tentacle_002_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=560408177]
-transform = Transform3D(0.8090173, 7.677141e-08, -0.5877849, -6.6265743e-10, 1, 1.2969934e-07, 0.5877849, -1.045395e-07, 0.8090173, 1.7364602, 0.18675375, -2.3900332)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1949315e-07, -0.04446978, 1.1614166)
-body_offset = Transform3D(1.0000002, -4.934926e-08, 2.3841858e-07, 2.3841858e-07, 1.2693668e-09, -1.0000002, -6.6261663e-10, 1.0000001, -4.1664084e-08, -5.9604645e-08, 1.1614169, 0.044469833)
+transform = Transform3D(0.8090173, 8.250381e-08, -0.5877849, -3.1805933e-09, 1, 1.3598626e-07, 0.5877849, -1.0814571e-07, 0.8090173, 1.7364602, 0.35572958, -2.3900332)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2729454e-07, -0.21344559, 1.1614166)
+body_offset = Transform3D(1.0000002, -4.683133e-08, 2.3841858e-07, 2.3841858e-07, 7.556274e-09, -1.0000002, -3.1805527e-09, 1.0000001, -3.5377173e-08, -5.9604645e-08, 1.1614169, 0.21344566)
 bone_name = "tentacle.002.R.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_001" unique_id=1202444839]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_e5sao")
 
 [node name="Physical Bone tentacle_003_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=988799685]
-transform = Transform3D(0.8090171, 7.214635e-08, -0.5877852, -1.597708e-09, 1, 1.2054367e-07, 0.5877852, -9.6582774e-08, 0.8090171, 3.1591098, 0.18675327, -4.3481436)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9436454e-08, -0.044469777, 1.2589399)
-body_offset = Transform3D(1.0000002, -5.067452e-08, 2.9802322e-08, 2.9802322e-08, -4.3572257e-10, -1.0000002, 6.6264505e-10, 1, -4.336913e-08, -1.1920929e-07, 1.2589402, 0.044469833)
+transform = Transform3D(0.8090171, 6.959496e-08, -0.5877852, 9.202279e-10, 1, 1.1966864e-07, 0.5877852, -9.7354864e-08, 0.8090171, 3.1591098, 0.3557291, -4.3481436)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.033624e-08, -0.2134456, 1.2589399)
+body_offset = Transform3D(1.0000002, -5.3192448e-08, 2.9802322e-08, 2.9802322e-08, -1.310763e-09, -1.0000002, 3.1805811e-09, 1, -4.4244164e-08, -1.1920929e-07, 1.2589402, 0.21344566)
 bone_name = "tentacle.003.R.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_001" unique_id=6640318]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_8fy8h")
 
 [node name="Physical Bone tentacle_004_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=9374388]
-transform = Transform3D(0.80901706, 6.930028e-08, -0.5877852, -9.350413e-10, 1, 1.1661372e-07, 0.5877852, -9.3792885e-08, 0.80901706, 4.790206, 0.14228249, -6.593155)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8647363e-07, 7.1707625e-08, 1.5160466)
-body_offset = Transform3D(1.0000002, -5.1337175e-08, -5.9604645e-08, -5.9604645e-08, -4.3656705e-09, -1.0000002, 1.3253043e-09, 1.0000001, -4.7299096e-08, 4.7683716e-07, 1.516047, 0)
+transform = Transform3D(0.80901706, 6.645243e-08, -0.5877852, 4.100831e-09, 1, 1.18699944e-07, 0.5877852, -9.844069e-08, 0.80901706, 4.790206, 0.14228249, -6.593155)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8647363e-07, 6.8544814e-08, 1.5160466)
+body_offset = Transform3D(1.0000002, -5.6373043e-08, -5.9604645e-08, -5.9604645e-08, -2.279446e-09, -1.0000002, 6.3611765e-09, 1.0000001, -4.521287e-08, 4.7683716e-07, 1.516047, 0)
 bone_name = "tentacle.004.R.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_001" unique_id=222123031]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_k6ec8")
 
-[node name="Physical Bone tentacle_005_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1731205173]
-transform = Transform3D(0.8090172, 7.5776526e-08, -0.58778507, -9.350664e-10, 1, 1.2763178e-07, 0.58778507, -1.0270667e-07, 0.8090172, 6.374401, 0.14228249, -8.773614)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536741e-07, 4.2780695e-08, 1.1791475)
-body_offset = Transform3D(1.0000002, -5.1337175e-08, 0, 0, 6.6523818e-09, -1.0000002, 1.3253043e-09, 1.0000001, -3.6281044e-08, -9.536743e-07, 1.1791477, 0)
+[node name="Physical Bone tentacle_005_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1731205173 groups=["legTip"]]
+transform = Transform3D(0.8090172, 7.245415e-08, -0.58778507, 4.1008055e-09, 1, 1.2891068e-07, 0.58778507, -1.0670134e-07, 0.8090172, 6.374401, 0.14228249, -8.773614)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536741e-07, 4.127265e-08, 1.1791475)
+body_offset = Transform3D(1.0000002, -5.637304e-08, 0, 0, 7.931302e-09, -1.0000002, 6.3611765e-09, 1.0000001, -3.5002124e-08, -9.536743e-07, 1.1791477, 0)
 bone_name = "tentacle.005.R.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_001" unique_id=1493517520]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1222,6 +1238,7 @@ transform = Transform3D(0.81033754, -0.004875698, 0.58594316, 0.06319222, 0.9948
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2940921e-07, -9.735643e-08, 0.8992319)
 body_offset = Transform3D(1.0000001, -1.7601997e-07, 8.940697e-08, 0, 1.2782402e-07, -1, 1.8347055e-07, 1, 1.0826625e-07, 1.4901161e-07, 0.8992319, 0)
 bone_name = "tentacle.006.R"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_006_R" unique_id=1489286954]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1232,6 +1249,7 @@ transform = Transform3D(0.80901676, -3.8103686e-08, 0.58778566, 5.9604666e-08, 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01895e-07, 1.1338118e-08, 1.1614168)
 body_offset = Transform3D(1.0000002, 1.9130532e-08, 2.0861626e-07, 1.7881393e-07, -7.419736e-10, -1.0000002, -3.5527137e-15, 1.0000002, -9.762319e-09, 5.9604645e-08, 1.161417, 0)
 bone_name = "tentacle.002.R.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_002" unique_id=880954039]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1242,26 +1260,29 @@ transform = Transform3D(0.80901676, -2.5159393e-08, 0.58778566, 5.81917e-08, 1, 
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3887263e-06, 1.8806752e-08, 1.2589446)
 body_offset = Transform3D(1.0000004, 1.9130535e-08, 5.066395e-07, 4.7683716e-07, -5.918154e-09, -1.0000002, 1.7763568e-15, 1.0000002, -1.4938509e-08, -2.026558e-06, 1.258945, 0)
 bone_name = "tentacle.003.R.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_002" unique_id=819995076]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_6arlk")
 
 [node name="Physical Bone tentacle_004_R_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1403582494]
-transform = Transform3D(0.8090169, -2.8610543e-08, 0.5877854, 5.8026032e-08, 1, -3.11908e-08, -0.5877854, 5.934074e-08, 0.8090169, -4.7902083, 0.1422844, -6.593154)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7853684e-08, 1.3400425e-08, 1.5160481)
-body_offset = Transform3D(1.0000002, 1.9296186e-08, -2.0861626e-07, -2.0861626e-07, 1.8129676e-10, -1.0000002, -1.6566304e-10, 1.0000002, -8.839052e-09, 2.3841858e-07, 1.5160484, 0)
+transform = Transform3D(0.8090169, -2.8517318e-08, 0.5877854, 5.7396548e-08, 1, -3.0482997e-08, -0.5877854, 5.839811e-08, 0.8090169, -4.7902083, 0.1422844, -6.593154)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7853684e-08, 1.2327354e-08, 1.5160481)
+body_offset = Transform3D(1.0000002, 1.992567e-08, -2.0861626e-07, -2.0861626e-07, 8.8910035e-10, -1.0000002, -7.9514706e-10, 1.0000002, -8.131245e-09, 2.3841858e-07, 1.5160484, 0)
 bone_name = "tentacle.004.R.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_002" unique_id=11640115]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_3gswi")
 
-[node name="Physical Bone tentacle_005_R_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1220392114]
+[node name="Physical Bone tentacle_005_R_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1220392114 groups=["legTip"]]
 transform = Transform3D(0.8090167, -2.8637997e-08, 0.58778566, 5.8191702e-08, 1, -3.1372085e-08, -0.58778566, 5.958479e-08, 0.8090167, -6.374406, 0.1422844, -8.773613)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9999476e-08, 1.0636344e-08, 1.1791484)
 body_offset = Transform3D(1.0000002, 1.9130525e-08, 3.874302e-07, 3.874302e-07, -8.881784e-15, -1.0000002, 3.5527137e-15, 1.0000002, -9.020363e-09, -4.7683716e-07, 1.1791487, 0)
 bone_name = "tentacle.005.R.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_002" unique_id=1714315423]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1272,46 +1293,51 @@ transform = Transform3D(0.31510675, -0.043133393, -0.94807553, -0.10229787, 0.99
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.038872e-07, 1.1392852e-05, 0.72390056)
 body_offset = Transform3D(1.0000002, 2.7939677e-08, -5.9604645e-08, -2.9802322e-08, 1.6763806e-07, -1, -7.450581e-09, 1.0000001, 7.0780516e-08, 4.4703484e-07, 0.72390056, -1.1444092e-05)
 bone_name = "tentacle.001.R.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_R_003" unique_id=1435881740]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_kb3m0")
 
 [node name="Physical Bone tentacle_002_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1838533598]
-transform = Transform3D(0.3090167, 1.6950133e-07, -0.9510566, 7.185527e-08, 1, 2.015714e-07, 0.95105666, -1.3062736e-07, 0.3090167, 2.2618253, 0.07007074, -0.7349113)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.637105e-07, 0.044469915, 0.93496335)
-body_offset = Transform3D(1, 3.4534438e-08, -2.0861626e-07, -1.4901161e-07, -1.4277504e-09, -0.9999999, -2.6505802e-09, 1, -8.9001205e-08, 2.9802322e-08, 0.9349632, -0.044469833)
+transform = Transform3D(0.3090167, 1.7278906e-07, -0.9510566, 6.1783524e-08, 1, 2.0175581e-07, 0.95105666, -1.2110554e-07, 0.3090167, 2.2618248, -0.09890509, -0.73491025)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.787399e-07, 0.21344575, 0.93496263)
+body_offset = Transform3D(1, 4.4606168e-08, -2.0861626e-07, -1.4901161e-07, -1.2433503e-09, -0.9999999, -1.27223245e-08, 1, -8.881679e-08, 8.6426735e-07, 0.9349625, -0.21344566)
 bone_name = "tentacle.002.R.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_003" unique_id=1613894608]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_scwim")
 
 [node name="Physical Bone tentacle_003_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1625487767]
-transform = Transform3D(0.3090167, 1.8675725e-07, -0.95105666, 6.56061e-08, 1, 2.1768487e-07, 0.95105666, -1.2966336e-07, 0.3090167, 4.1148973, 0.07007027, -1.3370104)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4764852e-07, 0.044469923, 1.0134717)
-body_offset = Transform3D(1, 3.2546513e-08, -2.0861626e-07, -1.1920929e-07, -2.1546498e-10, -0.99999994, -6.6265216e-10, 1, -8.778892e-08, 3.5762787e-07, 1.0134716, -0.044469833)
+transform = Transform3D(0.3090167, 1.8675725e-07, -0.95105666, 6.3088166e-08, 1, 2.1686674e-07, 0.95105666, -1.2701585e-07, 0.3090167, 4.1148973, -0.09890556, -1.3370104)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4476255e-08, 0.21344575, 1.0134717)
+body_offset = Transform3D(1, 3.5064456e-08, -2.0861626e-07, -1.1920929e-07, -1.0335839e-09, -0.99999994, -3.1805882e-09, 1, -8.8607024e-08, 2.3841858e-07, 1.0134716, -0.21344566)
 bone_name = "tentacle.003.R.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_003" unique_id=245979857]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ojieq")
 
 [node name="Physical Bone tentacle_004_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=419794990]
-transform = Transform3D(0.30901694, 1.9141982e-07, -0.95105654, 6.428074e-08, 1, 2.2215677e-07, 0.9510566, -1.2978482e-07, 0.30901694, 6.23948, 0.11453962, -2.0273292)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.018561e-08, 1.0168402e-07, 1.2204472)
-body_offset = Transform3D(1, 3.387181e-08, -1.7881393e-07, -1.1920929e-07, 4.256435e-09, -0.9999999, -1.9879351e-09, 1, -8.331702e-08, 2.3841858e-07, 1.2204471, 0)
+transform = Transform3D(0.30901694, 1.9805572e-07, -0.95105654, 5.6726932e-08, 1, 2.2667979e-07, 0.9510566, -1.239984e-07, 0.30901694, 6.23948, 0.11453962, -2.0273292)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.018561e-08, 9.616395e-08, 1.2204472)
+body_offset = Transform3D(1, 4.1425622e-08, -1.7881393e-07, -1.1920929e-07, 8.779438e-09, -0.9999999, -9.541743e-09, 1, -7.879403e-08, 2.3841858e-07, 1.2204471, 0)
 bone_name = "tentacle.004.R.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_003" unique_id=1781136873]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_4c27m")
 
-[node name="Physical Bone tentacle_005_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=282663648]
+[node name="Physical Bone tentacle_005_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=282663648 groups=["legTip"]]
 transform = Transform3D(0.3090167, 1.8675729e-07, -0.9510566, 6.6268754e-08, 1, 2.1790021e-07, 0.95105666, -1.3036014e-07, 0.3090167, 8.302975, 0.11453867, -2.6978002)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.031531e-07, 8.312815e-08, 0.94923794)
 body_offset = Transform3D(1, 3.1883882e-08, -2.3841858e-07, -1.7881393e-07, -1.1368684e-13, -0.9999999, 0, 1, -8.757357e-08, -4.7683716e-07, 0.9492378, 0)
 bone_name = "tentacle.005.R.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_003" unique_id=1655272062]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1322,16 +1348,18 @@ transform = Transform3D(0.31510648, -0.043129988, 0.94807583, 0.36501375, 0.9276
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.639109e-07, 3.0214492e-06, 0.7238994)
 body_offset = Transform3D(0.9999999, 7.757917e-07, 1.7881393e-07, 1.7881393e-07, -3.85195e-06, -0.99999976, -7.7299774e-07, 0.99999994, -3.8444996e-06, 8.34465e-07, 0.72389925, -2.3841858e-07)
 bone_name = "tentacle.001.R.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_R_004" unique_id=961339195]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_jgk1t")
 
 [node name="Physical Bone tentacle_002_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=827527218]
-transform = Transform3D(0.3090167, -2.38284e-07, 0.9510566, -2.7087148e-07, 1, 3.3855798e-07, -0.95105666, -3.6223418e-07, 0.3090167, -2.2618256, 0.11454058, -0.7349111)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.572815e-08, -3.0932565e-08, 0.9349632)
-body_offset = Transform3D(1, -2.5072502e-08, 5.9604645e-08, 8.940697e-08, -4.371074e-09, -0.99999976, -2.6505305e-09, 1.0000001, 3.3084262e-08, 0, 0.934963, 0)
+transform = Transform3D(0.3090167, -2.38284e-07, 0.9510566, -2.8094323e-07, 1, 3.4183046e-07, -0.95105666, -3.7282422e-07, 0.3090167, -2.2618256, 0.11454058, -0.7349111)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.572815e-08, -3.3992208e-08, 0.9349632)
+body_offset = Transform3D(1, -1.5000758e-08, 5.9604645e-08, 8.940697e-08, -1.0985701e-09, -0.99999976, -1.2722275e-08, 1.0000001, 3.6356738e-08, 0, 0.934963, 0)
 bone_name = "tentacle.002.R.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_004" unique_id=885945883]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1342,26 +1370,29 @@ transform = Transform3D(0.3090164, -2.7392014e-07, 0.9510567, -1.4607257e-07, 1,
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4286545e-07, -3.795982e-08, 1.0134712)
 body_offset = Transform3D(0.9999999, -2.7723026e-08, 4.7683716e-07, 4.4703484e-07, -5.684342e-14, -0.99999964, -2.1316282e-14, 1.0000001, 3.745525e-08, 5.9604645e-08, 1.0134709, 0)
 bone_name = "tentacle.003.R.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_004" unique_id=196065976]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_h2y38")
 
 [node name="Physical Bone tentacle_004_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1434248121]
-transform = Transform3D(0.30901644, -2.7101694e-07, 0.9510567, -1.4739777e-07, 1, 3.3285636e-07, -0.9510567, -2.430417e-07, 0.30901644, -6.23948, 0.07006979, -2.0273278)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8703386e-07, 0.044469785, 1.2204468)
-body_offset = Transform3D(1, -2.6397835e-08, 2.3841858e-07, 2.682209e-07, -2.6220448e-09, -0.9999998, -1.3252119e-09, 1.0000002, 3.4833306e-08, -4.7683716e-07, 1.2204466, -0.044469833)
+transform = Transform3D(0.30901644, -2.7101694e-07, 0.9510567, -1.5583699e-07, 1, 3.3559843e-07, -0.9510567, -2.5191522e-07, 0.30901644, -6.239477, 0.017566204, -2.0273268)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8760227e-07, 0.09697336, 1.2204435)
+body_offset = Transform3D(1, -1.795862e-08, 2.3841858e-07, 2.682209e-07, 1.2002488e-10, -0.9999998, -9.7644275e-09, 1.0000002, 3.7575376e-08, -4.7683716e-07, 1.2204432, -0.09697342)
 bone_name = "tentacle.004.R.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_004" unique_id=1416620460]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_4gbr8")
 
-[node name="Physical Bone tentacle_005_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=577868832]
-transform = Transform3D(0.30901638, -2.7197174e-07, 0.9510567, -1.4474723e-07, 1, 3.3299906e-07, -0.9510567, -2.40565e-07, 0.3090164, -8.302976, 0.070068836, -2.6977952)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0621906e-06, 0.044469792, 0.9492371)
-body_offset = Transform3D(1, -2.9048337e-08, 8.940697e-08, 1.1920929e-07, -2.479311e-09, -0.9999998, 1.3252972e-09, 1.0000002, 3.4975997e-08, -2.1457672e-06, 0.94923687, -0.044469833)
+[node name="Physical Bone tentacle_005_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=577868832 groups=["legTip"]]
+transform = Transform3D(0.30901638, -2.788417e-07, 0.9510567, -1.397133e-07, 1, 3.3858697e-07, -0.9510567, -2.3750418e-07, 0.3090164, -8.302976, 0.007683277, -2.6977952)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0645407e-06, 0.10685533, 0.9492371)
+body_offset = Transform3D(1, -3.408227e-08, 8.940697e-08, 1.1920929e-07, 3.1085676e-09, -0.9999998, 6.3592367e-09, 1.0000002, 4.0563904e-08, -2.1457672e-06, 0.94923687, -0.10685539)
 bone_name = "tentacle.005.R.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_004" unique_id=1333904402]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1372,16 +1403,18 @@ transform = Transform3D(1, -7.691331e-07, -8.715897e-08, -7.736178e-07, -0.99686
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1971915e-13, -1.9153933e-06, 1.0772936)
 body_offset = Transform3D(1, 5.684342e-14, 7.1054274e-15, 7.1054274e-15, -7.450647e-09, -1, 0, 0.99999046, 7.450647e-09, -2.2737368e-13, 1.0772936, 1.9073486e-06)
 bone_name = "tentacle.001.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_L" unique_id=1861930611]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_xjlon")
 
 [node name="Physical Bone tentacle_002_L" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2091009839]
-transform = Transform3D(5.836888e-08, 1, -7.891034e-08, 1, -5.8368975e-08, -1.224375e-06, -1.224375e-06, -7.891027e-08, -1, 2.9911658e-07, 0.17045641, 3.5392098)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1389794e-06, -1.5312613e-09, 1.3913877)
-body_offset = Transform3D(0.99999046, 1.933401e-09, -1.5372847e-06, -2.4913287e-09, 7.1054274e-15, -1, 0, 1, 3.005539e-09, 0, 1.3913877, -2.6506086e-09)
+transform = Transform3D(5.836888e-08, 1, -7.891034e-08, 1, -5.8368975e-08, -1.224375e-06, -1.224375e-06, -7.891027e-08, -1, 2.8904483e-07, 0.17045641, 3.5392098)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1389794e-06, 8.540483e-09, 1.3913877)
+body_offset = Transform3D(0.99999046, 1.933401e-09, -1.5372847e-06, -2.4913287e-09, 7.1054274e-15, -1, 0, 1, 3.005539e-09, 0, 1.3913877, -1.2722353e-08)
 bone_name = "tentacle.002.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L" unique_id=2085090405]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1392,6 +1425,7 @@ transform = Transform3D(8.532525e-08, 1, -8.070145e-08, 1, -8.532535e-08, -1.229
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3148311e-06, -4.5330526e-09, 1.5082221)
 body_offset = Transform3D(0.99999046, 1.9339197e-09, -1.5347932e-06, 6.8858705e-15, -7.1054274e-15, -1, 0, 1, 3.0055602e-09, 0, 1.5082221, 0)
 bone_name = "tentacle.003.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L" unique_id=1109635136]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1402,16 +1436,18 @@ transform = Transform3D(8.532496e-08, 1, -8.0701426e-08, 1, -8.532506e-08, -1.22
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7875792e-06, -5.458831e-09, 1.8162398)
 body_offset = Transform3D(0.99999046, 1.9339197e-09, -1.5347932e-06, 6.8858463e-15, 0, -1, 0, 1, 3.0055674e-09, 0, 1.8162398, 0)
 bone_name = "tentacle.004.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L" unique_id=1932665728]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_cer62")
 
-[node name="Physical Bone tentacle_005_L" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=891407704]
+[node name="Physical Bone tentacle_005_L" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=891407704 groups=["legTip"]]
 transform = Transform3D(8.532497e-08, 1, -8.070145e-08, 1, -8.532507e-08, -1.229334e-06, -1.229334e-06, -8.070134e-08, -1, 1.090551e-06, 0.17045355, 12.992148)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1681158e-06, -4.2456714e-09, 1.4126301)
 body_offset = Transform3D(0.99999046, 1.9339197e-09, -1.5347932e-06, 6.8858506e-15, 2.1316282e-14, -1, 0, 1, 3.0055887e-09, 0, 1.4126301, -1.1368684e-13)
 bone_name = "tentacle.005.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L" unique_id=1173291592]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1422,16 +1458,18 @@ transform = Transform3D(-0.7677381, 0.25932476, 0.58594275, 0.26428884, 0.961193
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6421316e-06, 5.1703597e-07, 0.8992331)
 body_offset = Transform3D(0.9999995, 1.4901161e-08, -2.9802322e-08, 2.9802322e-08, -4.4703484e-08, -1, 1.4901161e-08, 1.0000001, -4.4703484e-08, 1.66893e-06, 0.8992331, -4.7683716e-07)
 bone_name = "tentacle.001.L.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_L_001" unique_id=1223077744]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_vh7uj")
 
 [node name="Physical Bone tentacle_002_L_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1945272120]
-transform = Transform3D(-0.80901724, -1.5582586e-07, 0.58778495, -3.2517482e-07, 1, -1.8245821e-07, -0.58778495, -3.3874468e-07, -0.80901724, -1.7364597, 0.1422844, 2.3900332)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4217604e-08, 3.019218e-08, 1.1614165)
-body_offset = Transform3D(0.9999995, -1.9074669e-07, -2.9802322e-08, 0, -4.7315467e-09, -1, 2.6505802e-09, 1, -2.5995995e-08, -5.9604645e-08, 1.1614165, 0)
+transform = Transform3D(-0.80901724, -1.5137643e-07, 0.58778495, -3.1510308e-07, 1, -1.7616541e-07, -0.58778495, -3.277337e-07, -0.80901724, -1.7364597, 0.1422844, 2.3900332)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4217604e-08, 2.288364e-08, 1.1614165)
+body_offset = Transform3D(0.9999995, -2.0081845e-07, -2.9802322e-08, 0, 1.5612329e-09, -1, 1.27223245e-08, 1, -1.9703215e-08, -5.9604645e-08, 1.1614165, 0)
 bone_name = "tentacle.002.L.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_001" unique_id=1998198906]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1442,6 +1480,7 @@ transform = Transform3D(-0.80901736, 8.4784766e-08, 0.5877848, -2.4326122e-08, 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8849606e-07, 2.6770662e-08, 1.2589401)
 body_offset = Transform3D(0.99999964, -1.8809581e-07, 1.1920929e-07, 1.7881393e-07, 1.4210855e-14, -1.0000001, -1.7763568e-14, 1, -2.1264444e-08, 2.3841858e-07, 1.2589402, 0)
 bone_name = "tentacle.003.L.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L_001" unique_id=578804510]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1452,16 +1491,18 @@ transform = Transform3D(-0.80901706, 8.7673236e-08, 0.58778524, -2.4326411e-08, 
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6056512e-07, -4.3714877e-07, 1.5160476)
 body_offset = Transform3D(0.99999976, -1.8809584e-07, -2.0861626e-07, -1.4901161e-07, -4.914476e-09, -1.0000002, -1.4210855e-14, 1, -2.6178856e-08, 4.7683716e-07, 1.516048, 4.7683716e-07)
 bone_name = "tentacle.004.L.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_001" unique_id=1773248414]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_og35e")
 
-[node name="Physical Bone tentacle_005_L_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=944997834]
-transform = Transform3D(-0.80901754, 8.4784546e-08, 0.58778465, -2.4326255e-08, 1, -1.7772652e-07, -0.58778465, -1.5808246e-07, -0.8090175, -6.3744, 0.09781599, 8.773615)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6776744e-08, 0.04446986, 1.1791475)
-body_offset = Transform3D(0.99999976, -1.8809584e-07, 2.9802322e-08, 8.940697e-08, 2.5579538e-13, -1.0000002, -1.0658141e-14, 1, -2.1264253e-08, 0, 1.1791477, -0.044469833)
+[node name="Physical Bone tentacle_005_L_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=944997834 groups=["legTip"]]
+transform = Transform3D(-0.80901754, 8.4784546e-08, 0.58778465, -2.4326255e-08, 1, -1.7772652e-07, -0.58778465, -1.5808246e-07, -0.8090175, -6.3744, -0.07115984, 8.773615)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.006914e-09, 0.2134457, 1.1791475)
+body_offset = Transform3D(0.99999976, -1.8809584e-07, 2.9802322e-08, 8.940697e-08, 2.5579538e-13, -1.0000002, -1.0658141e-14, 1, -2.1264253e-08, 0, 1.1791477, -0.21344566)
 bone_name = "tentacle.005.L.001"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_001" unique_id=556630606]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1472,16 +1513,18 @@ transform = Transform3D(-0.7645621, -0.2685438, -0.5859429, -0.27583548, 0.95794
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.039765e-08, 4.0198817e-08, 0.8992324)
 body_offset = Transform3D(1, -5.9604645e-08, -8.940697e-08, 2.9802322e-08, 0, -1.0000001, -1.4901161e-08, 1.0000001, -4.4703484e-08, 0, 0.8992325, 0)
 bone_name = "tentacle.006.L"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_006_L" unique_id=1597563671]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_o88d0")
 
 [node name="Physical Bone tentacle_002_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=460350200]
-transform = Transform3D(-0.80901694, -1.7023439e-07, -0.5877854, -1.7881396e-07, 1, -4.350375e-08, 0.58778536, 6.9908964e-08, -0.80901694, 1.7364613, 0.09781456, 2.3900332)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1511707e-08, 0.044469845, 1.1614169)
-body_offset = Transform3D(1.0000001, -4.2512212e-08, -5.9604645e-08, 8.940697e-08, 6.786081e-09, -1, 0, 0.9999999, -6.2508505e-09, 5.9604645e-08, 1.1614169, -0.044469833)
+transform = Transform3D(-0.80901694, -1.7023439e-07, -0.5877853, -1.7881396e-07, 1, -4.3503736e-08, 0.58778536, 6.9908964e-08, -0.80901694, 1.7364614, -0.07116127, 2.3900332)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5143505e-08, 0.2134457, 1.1614169)
+body_offset = Transform3D(1.0000001, -4.2512212e-08, 2.9802322e-08, 8.940697e-08, 6.786081e-09, -1, 0, 0.9999999, -6.2508434e-09, 5.9604645e-08, 1.1614169, -0.21344566)
 bone_name = "tentacle.002.L.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_002" unique_id=1062808207]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1492,26 +1535,29 @@ transform = Transform3D(-0.8090169, -1.9234331e-08, -0.5877855, 3.0498257e-09, 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2010848e-07, 8.962117e-09, 1.2589397)
 body_offset = Transform3D(1.0000001, -4.25123e-08, 2.9802322e-08, 1.4901161e-07, 5.9181335e-09, -1, 8.881784e-16, 1, -7.118782e-09, -3.5762787e-07, 1.2589397, 0)
 bone_name = "tentacle.003.L.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L_002" unique_id=1944811450]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_chy23")
 
 [node name="Physical Bone tentacle_004_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=590961123]
-transform = Transform3D(-0.80901694, -1.957691e-08, -0.5877854, 3.2983347e-09, 1, -3.784599e-08, 0.5877854, -3.2556756e-08, -0.8090169, 4.79021, 0.1422844, 6.593155)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2672062e-08, 1.21945645e-08, 1.5160487)
-body_offset = Transform3D(1.0000001, -4.2760796e-08, -1.7881393e-07, -8.940697e-08, 4.9932716e-09, -1.0000001, 2.4849456e-10, 1.0000001, -8.04365e-09, 2.3841858e-07, 1.5160489, 0)
+transform = Transform3D(-0.80901694, -1.8639554e-08, -0.5877854, 4.2425605e-09, 1, -3.755088e-08, 0.5877854, -3.2873007e-08, -0.8090169, 4.79021, 0.1422844, 6.593155)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2672062e-08, 1.1747158e-08, 1.5160487)
+body_offset = Transform3D(1.0000001, -4.3705022e-08, -1.7881393e-07, -8.940697e-08, 5.288383e-09, -1.0000001, 1.1927206e-09, 1.0000001, -7.748537e-09, 2.3841858e-07, 1.5160489, 0)
 bone_name = "tentacle.004.L.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_002" unique_id=1188120693]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_3cdpf")
 
-[node name="Physical Bone tentacle_005_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1316808107]
+[node name="Physical Bone tentacle_005_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1316808107 groups=["legTip"]]
 transform = Transform3D(-0.80901694, -1.89989e-08, -0.5877853, 3.049841e-09, 1, -3.65206e-08, 0.58778536, -3.1338438e-08, -0.80901694, 6.374408, 0.1422844, 8.773614)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4598958e-07, 7.921832e-09, 1.1791487)
 body_offset = Transform3D(1, -4.2512305e-08, -2.0861626e-07, -1.7881393e-07, 6.3186567e-09, -1, 6.217249e-15, 1.0000001, -6.718265e-09, 0, 1.1791487, 0)
 bone_name = "tentacle.005.L.002"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_002" unique_id=1041845945]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1522,16 +1568,18 @@ transform = Transform3D(-0.29379597, 0.121811755, 0.9480748, 0.15310982, 0.98503
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8729299e-06, -6.465371e-06, 0.72390395)
 body_offset = Transform3D(1.0000002, -6.183982e-07, 2.1755695e-06, 2.115965e-06, -2.2351742e-07, -1.0000001, 5.6251884e-07, 1.0000002, -2.9057264e-07, 2.9802322e-07, 0.723904, 6.67572e-06)
 bone_name = "tentacle.001.L.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_L_003" unique_id=1746082545]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_00fan")
 
 [node name="Physical Bone tentacle_002_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1976311375]
-transform = Transform3D(-0.309017, -8.1706666e-08, 0.9510566, 1.4901168e-08, 1, 9.075316e-08, -0.95105654, 4.2216122e-08, -0.309017, -2.261825, 0.11454153, 0.73491156)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7666377e-08, 1.2673405e-08, 0.9349632)
-body_offset = Transform3D(1.0000004, -8.964973e-08, 2.9802322e-08, -5.9604645e-08, 5.364356e-09, -1, -1.7763568e-15, 1.0000002, -1.3554981e-08, 2.9802322e-08, 0.9349632, 0)
+transform = Transform3D(-0.309017, -8.681304e-08, 0.9510566, 1.4901168e-08, 1, 9.612232e-08, -0.95105654, 4.3875282e-08, -0.309017, -2.261825, 0.11454153, 0.73491156)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7666377e-08, 7.653448e-09, 0.9349632)
+body_offset = Transform3D(1.0000004, -8.964973e-08, 2.9802322e-08, -5.9604645e-08, 1.0733508e-08, -1, -1.7763568e-15, 1.0000002, -8.185829e-09, 2.9802322e-08, 0.9349632, 0)
 bone_name = "tentacle.002.L.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_003" unique_id=1687358651]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1542,26 +1590,29 @@ transform = Transform3D(-0.30901694, -7.0630634e-08, 0.9510566, 4.5547235e-08, 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1760332e-07, 1.5448848e-08, 1.0134717)
 body_offset = Transform3D(1.0000001, -8.964972e-08, -1.1920929e-07, -1.4901161e-07, 3.6758436e-09, -0.99999994, 0, 1.0000001, -1.5243494e-08, 2.3841858e-07, 1.0134716, 0)
 bone_name = "tentacle.003.L.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L_003" unique_id=1897960696]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7q5xf")
 
 [node name="Physical Bone tentacle_004_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=285462669]
-transform = Transform3D(-0.30901733, -6.442569e-08, 0.9510564, 4.5215863e-08, 1, 8.2432734e-08, -0.9510564, 6.847598e-08, -0.30901733, -6.239485, 0.114541054, 2.0273316)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2836976e-08, 2.6697906e-08, 1.220452)
-body_offset = Transform3D(1.0000001, -8.931839e-08, -2.9802322e-08, -5.9604645e-08, -2.9560567e-09, -0.9999999, -3.3132963e-10, 1, -2.1875426e-08, 1.1920929e-07, 1.2204518, 0)
+transform = Transform3D(-0.30901733, -6.5163135e-08, 0.9510564, 4.3956895e-08, 1, 8.279906e-08, -0.9510564, 6.739183e-08, -0.30901733, -6.239485, 0.114541054, 2.0273316)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2836976e-08, 2.6250811e-08, 1.220452)
+body_offset = Transform3D(1.0000001, -8.805941e-08, -2.9802322e-08, -5.9604645e-08, -2.5897222e-09, -0.9999999, -1.5902977e-09, 1, -2.1509091e-08, 1.1920929e-07, 1.2204518, 0)
 bone_name = "tentacle.004.L.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_003" unique_id=670365320]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_spi02")
 
-[node name="Physical Bone tentacle_005_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2072273832]
-transform = Transform3D(-0.30901706, -6.7232506e-08, 0.95105654, 4.587855e-08, 1, 8.55993e-08, -0.95105654, 7.008473e-08, -0.30901706, -8.302975, 0.11454058, 2.6978006)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8289474e-08, 1.7759133e-08, 0.94923735)
-body_offset = Transform3D(1.0000001, -8.998104e-08, 2.9802322e-08, 0, 2.1048407e-10, -1, 3.3132785e-10, 1.0000001, -1.8708846e-08, 0, 0.94923735, 0)
+[node name="Physical Bone tentacle_005_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2072273832 groups=["legTip"]]
+transform = Transform3D(-0.30901706, -6.761097e-08, 0.95105654, 4.713752e-08, 1, 8.6406295e-08, -0.95105654, 7.153146e-08, -0.30901706, -8.302975, 0.11454058, 2.6978006)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8289474e-08, 1.6993086e-08, 0.94923735)
+body_offset = Transform3D(1.0000001, -9.124001e-08, 2.9802322e-08, 0, 1.0174901e-09, -1, 1.5902959e-09, 1.0000001, -1.7901833e-08, 0, 0.94923735, 0)
 bone_name = "tentacle.005.L.003"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_003" unique_id=538378170]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1572,6 +1623,7 @@ transform = Transform3D(-0.25025132, -0.19628334, -0.94807553, -0.4121921, 0.907
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3682975e-07, 2.4920547e-07, 0.72389936)
 body_offset = Transform3D(0.99999994, -4.0978193e-08, -2.9802322e-08, -2.9802322e-08, -2.9802322e-08, -1, 3.3527613e-08, 1.0000001, -1.4901161e-08, -7.1525574e-07, 0.72389936, -2.3841858e-07)
 bone_name = "tentacle.001.L.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_001_L_004" unique_id=819446354]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
@@ -1582,36 +1634,40 @@ transform = Transform3D(-0.309017, 2.6809315e-07, -0.9510566, 2.9802315e-08, 1, 
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7864075e-08, -3.855646e-08, 0.93496346)
 body_offset = Transform3D(1, 1.8487614e-07, 2.9802322e-08, 2.9802322e-08, -2.736499e-09, -1, 0, 1.0000002, 4.123848e-08, 0, 0.93496346, 0)
 bone_name = "tentacle.002.L.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_004" unique_id=1504777117]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_g53k2")
 
 [node name="Physical Bone tentacle_003_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=757876239]
-transform = Transform3D(-0.3090169, 2.289465e-07, -0.95105654, -1.395444e-07, 1, 2.860693e-07, 0.95105654, 2.2111486e-07, -0.3090169, 4.1148973, 0.15900993, 1.3370118)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87825e-07, -0.044469878, 1.013473)
-body_offset = Transform3D(1, 1.8487609e-07, 0, 0, 3.6757513e-09, -1, 0, 1.0000001, 4.765073e-08, 5.9604645e-07, 1.013473, 0.044469833)
+transform = Transform3D(-0.3090169, 2.289465e-07, -0.95105654, -1.395444e-07, 1, 2.860693e-07, 0.95105654, 2.2111486e-07, -0.3090169, 4.1148973, 0.32798576, 1.3370118)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5658546e-07, -0.21344568, 1.013473)
+body_offset = Transform3D(1, 1.8487609e-07, 0, 0, 3.6757513e-09, -1, 0, 1.0000001, 4.765073e-08, 5.9604645e-07, 1.013473, 0.21344566)
 bone_name = "tentacle.003.L.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L_004" unique_id=1810128910]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2jwsx")
 
 [node name="Physical Bone tentacle_004_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=707712058]
-transform = Transform3D(-0.3090166, 2.2254773e-07, -0.95105666, -1.3821916e-07, 1, 2.7891056e-07, 0.95105666, 2.1764224e-07, -0.3090166, 6.2394733, 0.07006979, 2.0273287)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6205339e-06, 0.04446978, 1.2204418)
-body_offset = Transform3D(1, 1.8355077e-07, 1.4901161e-07, 1.4901161e-07, -3.4829952e-09, -1, 1.3253043e-09, 1.0000001, 4.049204e-08, 1.4305115e-06, 1.2204418, -0.044469833)
+transform = Transform3D(-0.3090166, 2.2254773e-07, -0.95105666, -1.3318329e-07, 1, 2.772743e-07, 0.95105666, 2.123472e-07, -0.3090166, 6.2394733, -0.09890604, 2.0273287)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6504748e-06, 0.21344559, 1.2204418)
+body_offset = Transform3D(1, 1.785149e-07, 1.4901161e-07, 1.4901161e-07, -5.1192472e-09, -1, 6.3611765e-09, 1.0000001, 3.8855774e-08, 1.4305115e-06, 1.2204418, -0.21344566)
 bone_name = "tentacle.004.L.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_004" unique_id=923202241]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_su6m2")
 
-[node name="Physical Bone tentacle_005_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=757473714]
-transform = Transform3D(-0.30901694, 2.2519191e-07, -0.95105654, -1.3821912e-07, 1, 2.816909e-07, 0.9510566, 2.1850146e-07, -0.30901694, 8.302973, 0.11453962, 2.6977983)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8289458e-08, -4.1075705e-08, 0.9492371)
-body_offset = Transform3D(1.0000002, 1.8355084e-07, 2.9802322e-08, 0, -7.026557e-10, -1.0000002, 1.3252901e-09, 1.0000001, 4.3272337e-08, 0, 0.94923735, 0)
+[node name="Physical Bone tentacle_005_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=757473714 groups=["legTip"]]
+transform = Transform3D(-0.30901694, 2.2407774e-07, -0.95105654, -1.3318325e-07, 1, 2.788831e-07, 0.9510566, 2.1284438e-07, -0.30901694, 8.302973, 0.11453962, 2.6977983)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8289458e-08, -3.8410427e-08, 0.9492371)
+body_offset = Transform3D(1.0000002, 1.7851497e-07, 2.9802322e-08, 0, -3.5104364e-09, -1.0000002, 6.3611623e-09, 1.0000001, 4.0464528e-08, 0, 0.94923735, 0)
 bone_name = "tentacle.005.L.004"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_004" unique_id=2092233785]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
