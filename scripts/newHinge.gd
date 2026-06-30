@@ -26,10 +26,20 @@ var rotAxis : Vector3:
 
 func _ready() -> void:
 	
+	setup()
+	
+
+var isSetup = false
+func setup():
+	
+	if isSetup:
+		return
+	isSetup = true
+	
 	if !can_process():
 		return
 	
-	visible = false
+	visible = true
 	
 	lastFrameTransform = global_transform
 	
@@ -60,6 +70,8 @@ func _ready() -> void:
 	
 	pass
 
+
+
 #returns the next hinge in the chain or null
 #only checks for other hinges on nodeB
 func getNextInChain():
@@ -82,8 +94,8 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
-	#return
-	if false:
+	
+	if true:
 		if Input.is_action_just_pressed("ui_right"):
 			targetAngleDegrees += 15
 		if Input.is_action_just_pressed("ui_left"):
@@ -93,8 +105,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_down"):
 			targetAngleDegrees += 180
 	
+	
+	return
 	for i in 30:
-		update()
+		#update(del)
+		pass
 	
 	return
 	$angleLabel.text = str(
@@ -107,13 +122,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 
-func update():
-	alignToAxis()
+func update(del):
+	alignToAxis(del)
 	
-	showMiddle()
+	showMiddle(del)
 	
 	adjustTargetSpeed()
-	handleMotor()
+	handleMotor(del)
 	
 	lastFrameTransform = global_transform
 
@@ -138,7 +153,7 @@ var motorSpeed = PI
 		return rad_to_deg(targetAngle)
 	set(value):
 		targetAngle = fmod(deg_to_rad(value),PI * 2)
-var targetAngle = -PI/4.0
+var targetAngle = 0 #-PI/4.0
 
 
 @export var maxMotorSpeedDegrees : float:
@@ -164,7 +179,7 @@ func adjustTargetSpeed():
 	
 	pass
 
-func handleMotor():
+func handleMotor(del):
 	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
@@ -182,11 +197,11 @@ func handleMotor():
 	
 	var dif = motorSpeed - rotSpeed
 	
-	nodeA.angular_velocity += axis * dif * getAPortion()# * TPS
-	nodeB.angular_velocity -= axis * dif * getBPortion()# * TPS
+	nodeA.angular_velocity += axis * dif * getAPortion(del)# * TPS
+	nodeB.angular_velocity -= axis * dif * getBPortion(del)# * TPS
 	pass
 
-func alignToAxis():
+func alignToAxis(del):
 	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
@@ -202,24 +217,24 @@ func alignToAxis():
 	var objAAxis = -(objectAPoint.origin - objectAxisAPoint.origin)
 	var objectAAngleOffAxis = objAAxis.angle_to(middle.basis.z)
 	var objectAAxis
-	if objectAAngleOffAxis > 0 and !nodeA.freeze:
+	if objectAAngleOffAxis > 0: # and !nodeA.freeze:
 		objectAAxis = (objAAxis.cross(middle.basis.z)).normalized()
 		
 		#nodeA.angular_velocity -= nodeA.angular_velocity.dot(objectAAxis) * objectAAxis * 0.5
 		var dif = (objectAAxis * objectAAngleOffAxis * TPS ) - nodeA.angular_velocity
-		nodeA.angular_velocity += dif * getAPortion()
-		nodeB.angular_velocity -= dif * getBPortion()
+		nodeA.angular_velocity += dif * getAPortion(del)
+		nodeB.angular_velocity -= dif * getBPortion(del)
 	
 	var objBAxis = -(objectBPoint.origin - objectAxisBPoint.origin)
 	var objectBAngleOffAxis = objBAxis.angle_to(middle.basis.z)
 	var objectBAxis
-	if objectBAngleOffAxis > 0 and !nodeB.freeze:
+	if objectBAngleOffAxis > 0: # and !nodeB.freeze:
 		objectBAxis = (objBAxis.cross(middle.basis.z)).normalized()
 		
 		var dif = (objectBAxis * objectBAngleOffAxis * TPS ) - nodeB.angular_velocity
 		
-		nodeA.angular_velocity -= dif * getAPortion()
-		nodeB.angular_velocity += dif * getBPortion()
+		nodeA.angular_velocity -= dif * getAPortion(del)
+		nodeB.angular_velocity += dif * getBPortion(del)
 		
 	
 
@@ -237,16 +252,16 @@ func getAngle():
 		return angleY
 	
 
-func getAPortion():
-	if nodeA.freeze:
-		return 0.0
-	return nodeB.mass / (nodeA.mass + nodeB.mass)
-func getBPortion():
-	if nodeB.freeze:
-		return 0.0
-	return nodeA.mass / (nodeA.mass + nodeB.mass)
+func getAPortion(del):
+	#if nodeA.freeze:
+	#	return 0.0
+	return (nodeB.mass / (nodeA.mass + nodeB.mass)) * del
+func getBPortion(del):
+	#if nodeB.freeze:
+	#	return 0.0
+	return (nodeA.mass / (nodeA.mass + nodeB.mass)) * del
 
-func showMiddle():
+func showMiddle(del):
 	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
@@ -275,11 +290,11 @@ func showMiddle():
 	
 	var divisor = 2.0
 	
-	nodeA.linear_velocity += (aDif) * getAPortion()
-	nodeB.linear_velocity -= (aDif) * getBPortion()
+	nodeA.linear_velocity += (aDif) * getAPortion(del)
+	nodeB.linear_velocity -= (aDif) * getBPortion(del)
 	
-	nodeA.linear_velocity -= (bDif) * getAPortion()
-	nodeB.linear_velocity += (bDif) * getBPortion()
+	nodeA.linear_velocity -= (bDif) * getAPortion(del)
+	nodeB.linear_velocity += (bDif) * getBPortion(del)
 	
 	
 	

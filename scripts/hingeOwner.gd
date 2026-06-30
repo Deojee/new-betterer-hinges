@@ -16,10 +16,14 @@ func _physics_process(delta: float) -> void:
 	
 	var shuffledHinges = allHinges.duplicate()
 	
+	var iterations = 10
+	var inv = 0.1 # 1.0/iterations * 0.001
 	
-	for i in 90:
+	print(shuffledHinges.size())
+	for i in iterations:
 		shuffledHinges.shuffle()
 		for h in shuffledHinges:
-			h.update()
+			h.update(inv)
+			
 	
 	pass
