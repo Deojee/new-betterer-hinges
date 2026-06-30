@@ -38,7 +38,7 @@ func _ready() -> void:
 		bonesToRigidBodies[bone] = rigidBody
 		bone.set_collision_mask_value(1, false)
 		bone.set_collision_layer_value(1, false)
-		#rigidBody.set_collision_layer_value(1, false)
+		rigidBody.set_collision_layer_value(1, false)
 	
 	#print(idsToBones)
 	
@@ -87,8 +87,8 @@ func _ready() -> void:
 		
 		newHinge.setup()
 		
-		#newHinge.aimForTarget = false
-		#newHinge.enableMotor = false
+		newHinge.aimForTarget = false
+		newHinge.enableMotor = false
 		
 		prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
 		print()
