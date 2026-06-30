@@ -12,6 +12,18 @@ var bonesToRigidBodies : Dictionary
 
 var hingeOwnerScript = preload("res://scripts/hingeOwner.gd")
 
+enum jointType {SIDE,UP,FORWARD}
+
+var legPattern = [
+	jointType.SIDE,
+	jointType.SIDE,
+	jointType.UP,
+	jointType.SIDE,
+	jointType.UP
+	]
+
+var boneJointTypes = {}
+
 func _ready() -> void:
 	
 	$PhysicalBoneSimulator3D.is_simulating_physics()
@@ -38,12 +50,29 @@ func _ready() -> void:
 		bonesToRigidBodies[bone] = rigidBody
 		bone.set_collision_mask_value(1, false)
 		bone.set_collision_layer_value(1, false)
-		#rigidBody.set_collision_layer_value(1, false)
+		rigidBody.set_collision_layer_value(1, false)
 	
 	#print(idsToBones)
 	
 	var spineRb : RigidBody3D = bonesToRigidBodies[idsToBones[0]]
 	spineRb.set_script(hingeOwnerScript)
+	
+	for id in idsToBones:
+	
+		if id == -1:
+			continue
+		
+		#continue
+		var bone : PhysicalBone3D = idsToBones[id]
+		#var parentBone : PhysicalBone3D = idsToBones[get_bone_parent(id)]
+		
+		if bone.is_in_group("legTip"):
+			var i = 0
+			var curentBone = bone
+			while curentBone and !curentBone.is_in_group("skeletonCore"):
+				boneJointTypes[curentBone] = legPattern[i]
+				curentBone = idsToBones[get_bone_parent(curentBone.get_bone_id())]
+				i += 1
 	
 	for id in idsToBones.keys():
 		
