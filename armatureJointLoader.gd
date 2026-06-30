@@ -3,14 +3,8 @@ extends Skeleton3D
 @onready var pbs = $PhysicalBoneSimulator3D
 const hingePlus = preload("res://scenes/new_hinge.tscn")
 
-@export var rbp : Node3D
-
 # int id : PhysicalBone3D 
 var idsToBones : Dictionary = {-1 : null}
-
-var bonesToRigidBodies : Dictionary
-
-var hingeOwnerScript = preload("res://scripts/hingeOwner.gd")
 
 func _ready() -> void:
 	
@@ -24,37 +18,18 @@ func _ready() -> void:
 		
 		bone.joint_type = PhysicalBone3D.JOINT_TYPE_NONE
 		
-		var rigidBody = RigidBody3D.new()
-		
-		rbp.add_child(rigidBody)
-		rigidBody.global_transform = bone.global_transform
-		for child in bone.get_children():
-			#child.reparent(rigidBody,true)
-			
-			var duplicate = child.duplicate()
-			rigidBody.add_child(duplicate)
-			
-		
-		bonesToRigidBodies[bone] = rigidBody
-		bone.set_collision_mask_value(1, false)
-		bone.set_collision_layer_value(1, false)
-		rigidBody.set_collision_layer_value(1, false)
 	
 	#print(idsToBones)
 	
-	var spineRb : RigidBody3D = bonesToRigidBodies[idsToBones[0]]
-	spineRb.set_script(hingeOwnerScript)
 	
-	for id in idsToBones.keys():
+	for id in idsToBones:
 		
-		if id == -1: # or id > 20:
+		if id == -1 or id > 20:
 			continue
 		
 		#continue
 		var bone : PhysicalBone3D = idsToBones[id]
 		var parentBone : PhysicalBone3D = idsToBones[get_bone_parent(id)]
-		
-		
 		
 		if !parentBone:
 			parentBone = idsToBones[0]
@@ -62,16 +37,13 @@ func _ready() -> void:
 		if bone.is_in_group("noHinge"):
 			continue
 		
-		var rb = bonesToRigidBodies[bone]
-		var prb = bonesToRigidBodies[parentBone]
-		
 		var newHinge : HingePlus = hingePlus.instantiate()
-		newHinge.nodeA = prb
-		newHinge.nodeB = rb
+		newHinge.nodeA = parentBone
+		newHinge.nodeB = bone
 		#newHinge.rotation = Vector3(0,PI/2.0,0)
 		
 		
-		prb.add_child(newHinge)
+		parentBone.add_child(newHinge)
 		
 		
 		newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
@@ -87,29 +59,18 @@ func _ready() -> void:
 		
 		newHinge.setup()
 		
-		newHinge.aimForTarget = false
-		newHinge.enableMotor = false
-		
 		prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
 		print()
 	
-	
+	pbs.physical_bones_start_simulation()
 	
 	pass
 
 
 func _physics_process(delta: float) -> void:
 	
-	pbs.physical_bones_start_simulation()
+	#print(pbs.is_simulating_physics())
 	
-	for key in bonesToRigidBodies.keys():
-		var rb : RigidBody3D = bonesToRigidBodies[key]
-		var b : PhysicalBone3D = key
-		
-		b.angular_velocity = rb.angular_velocity
-		b.linear_velocity = rb.linear_velocity
-		b.global_transform = rb.global_transform
-		
-	
+	#
 	pass
 	
