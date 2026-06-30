@@ -6,9 +6,8 @@ const hingePlus = preload("res://scenes/new_hinge.tscn")
 # int id : PhysicalBone3D 
 var idsToBones : Dictionary = {-1 : null}
 
-func _ready() -> void:
-	
-	$PhysicalBoneSimulator3D.is_simulating_physics()
+func _init() -> void:
+	pbs = $PhysicalBoneSimulator3D
 	
 	var num = 0
 	for bone in pbs.get_children():
@@ -18,13 +17,22 @@ func _ready() -> void:
 		
 		bone.joint_type = PhysicalBone3D.JOINT_TYPE_NONE
 		
+		bone.set_collision_layer_value(1,true)
+		bone.set_collision_layer_value(2,true)
+		bone.set_collision_mask_value(3,false)
+		
+		bone.set_collision_mask_value(1,false)
+		bone.set_collision_mask_value(2,false)
+		bone.set_collision_mask_value(3,true)
+		bone.set_collision_mask_value(4,true)
+		
 	
 	#print(idsToBones)
 	
 	
 	for id in idsToBones:
 		
-		if id == -1 or id > 20:
+		if id == -1:
 			continue
 		
 		#continue
@@ -40,7 +48,7 @@ func _ready() -> void:
 		var newHinge : HingePlus = hingePlus.instantiate()
 		newHinge.nodeA = parentBone
 		newHinge.nodeB = bone
-		#newHinge.rotation = Vector3(0,PI/2.0,0)
+		#
 		
 		
 		parentBone.add_child(newHinge)
@@ -54,20 +62,23 @@ func _ready() -> void:
 		if ogDist < newDist:
 			newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
 		
-		newHinge.look_at(bone.global_position)
-		newHinge.rotate_y(PI/2.0)
+		#newHinge.look_at(bone.global_position)
+		newHinge.rotation = Vector3(0,PI/2.0,0)
 		
-		newHinge.setup()
+		#newHinge.setup()
 		
-		prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
-		print()
+		#prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
+		#print()
 	
-	pbs.physical_bones_start_simulation()
+	
 	
 	pass
 
 
 func _physics_process(delta: float) -> void:
+	
+	if !pbs.is_simulating_physics():
+		pbs.physical_bones_start_simulation()
 	
 	#print(pbs.is_simulating_physics())
 	

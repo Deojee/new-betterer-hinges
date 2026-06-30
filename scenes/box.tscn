@@ -17,6 +17,8 @@ bottom_radius = 0.3
 height = 0.5
 
 [node name="box" type="RigidBody3D" unique_id=1039348423]
+collision_layer = 11
+collision_mask = 14
 physics_material_override = SubResource("PhysicsMaterial_036b0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1274811902]

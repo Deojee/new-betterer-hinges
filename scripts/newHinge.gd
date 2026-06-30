@@ -41,6 +41,8 @@ func setup():
 	
 	visible = true
 	
+	force_update_transform()
+	
 	lastFrameTransform = global_transform
 	
 	#Node A in the hinge's local space
@@ -106,19 +108,6 @@ func _physics_process(delta: float) -> void:
 			targetAngleDegrees += 180
 	
 	
-	return
-	for i in 30:
-		#update(del)
-		pass
-	
-	return
-	$angleLabel.text = str(
-		snappedf(
-			rad_to_deg(getAngle()),
-			0.1
-		),
-		" d"
-		)
 	
 	
 
