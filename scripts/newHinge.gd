@@ -181,6 +181,9 @@ func adjustTargetSpeed():
 
 func handleMotor(del):
 	
+	if !enableMotor:
+		return
+	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
 	var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()

@@ -11,13 +11,20 @@ func _physics_process(delta: float) -> void:
 	for h in hingeRoots:
 		var current = h as HingePlus
 		while current != null:
+			
+			#current.enableMotor = false
+			#current.aimForTarget = false
+			
 			allHinges.append(current)
 			current = current.getNextInChain()
+			
+			
+			
 	
 	var shuffledHinges = allHinges.duplicate()
 	
-	var iterations = 10
-	var inv = 0.1 # 1.0/iterations * 0.001
+	var iterations = 20
+	var inv = 1 # 1.0/iterations * 0.001
 	
 	print(shuffledHinges.size())
 	for i in iterations:
