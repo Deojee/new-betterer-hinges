@@ -45,7 +45,7 @@ func _ready() -> void:
 			
 			var duplicate = child.duplicate()
 			rigidBody.add_child(duplicate)
-			
+			child.queue_free()
 		
 		bonesToRigidBodies[bone] = rigidBody
 		bone.set_collision_mask_value(1, false)
@@ -119,8 +119,8 @@ func _ready() -> void:
 		#newHinge.aimForTarget = false
 		#newHinge.enableMotor = false
 		
-		prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
-		print()
+		#prints("made hinge:" , newHinge, newHinge.nodeA,newHinge.nodeB)
+		#print()
 	
 	
 	

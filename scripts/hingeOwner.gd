@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	var iterations = 20
 	var inv = 1 # 1.0/iterations * 0.001
 	
-	print(shuffledHinges.size())
+	#print(shuffledHinges.size())
 	for i in iterations:
 		shuffledHinges.shuffle()
 		for h in shuffledHinges:
