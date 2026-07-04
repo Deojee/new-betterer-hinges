@@ -30,7 +30,7 @@ func _ready() -> void:
 	pass
 	
 
-var setupNow = false:
+@export var setupNow = false:
 	get:
 		return false
 	set(value):
@@ -54,11 +54,10 @@ func setup():
 		
 		var rigidBody = RigidBody3D.new()
 		
-		rbp.add_child(rigidBody)
+		#rbp.add_child(rigidBody)
 		editorAddChild(rigidBody,rbp,bone.name + " rb")
 		
-		#rigidBody.global_transform = get_bone_global_rest(id)
-		#bone.global_transform
+		rigidBody.global_transform = bone.global_transform
 		
 		
 		for child in bone.get_children():
@@ -125,7 +124,7 @@ func setup():
 		#newHinge.rotation = Vector3(0,PI/2.0,0)
 		
 		
-		prb.add_child(newHinge)
+		#prb.add_child(newHinge)
 		editorAddChild(newHinge,prb,prb.name + " hinge")
 		
 		newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
@@ -136,10 +135,17 @@ func setup():
 		if ogDist < newDist:
 			newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
 		
-		newHinge.look_at(bone.global_position)
-		newHinge.rotate_y(PI/2.0)
+		newHinge.look_at(bone.global_position,Vector3.UP,true)
+		#newHinge.rotation.y += PI/2.0
+		newHinge.global_rotate(Vector3.UP,PI/2.0)
 		
-		newHinge.setup()
+		print((newHinge.global_position - bone.global_position).length())
+		
+		#newHinge.RotationEditMode(PI/2.0)
+		
+		#newHinge
+		
+		#newHinge.setup()
 		
 		#newHinge.aimForTarget = false
 		#newHinge.enableMotor = false
