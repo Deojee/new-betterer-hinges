@@ -1,3 +1,4 @@
+@tool
 extends Skeleton3D
 
 @onready var pbs = $PhysicalBoneSimulator3D
@@ -23,10 +24,25 @@ var legPattern = [
 	]
 
 var boneJointTypes = {}
+var bonesToParents = {}
 
 func _ready() -> void:
+	pass
 	
+
+var setupNow = false:
+	get:
+		return false
+	set(value):
+		print("setup start")
+		setup()
+		print("setup done!")
+
+func setup():
 	$PhysicalBoneSimulator3D.is_simulating_physics()
+	
+	for child in rbp.get_children():
+		child.queue_free()
 	
 	var num = 0
 	for bone in pbs.get_children():
@@ -39,13 +55,18 @@ func _ready() -> void:
 		var rigidBody = RigidBody3D.new()
 		
 		rbp.add_child(rigidBody)
-		rigidBody.global_transform = bone.global_transform
+		editorAddChild(rigidBody,rbp,bone.name + " rb")
+		
+		#rigidBody.global_transform = get_bone_global_rest(id)
+		#bone.global_transform
+		
+		
 		for child in bone.get_children():
 			#child.reparent(rigidBody,true)
 			
 			var duplicate = child.duplicate()
-			rigidBody.add_child(duplicate)
-			child.queue_free()
+			editorAddChild(duplicate,rigidBody,"collision shape")
+			#child.queue_free()
 		
 		bonesToRigidBodies[bone] = rigidBody
 		bone.set_collision_mask_value(1, false)
@@ -71,8 +92,12 @@ func _ready() -> void:
 			var curentBone = bone
 			while curentBone and !curentBone.is_in_group("skeletonCore"):
 				boneJointTypes[curentBone] = legPattern[i]
-				curentBone = idsToBones[get_bone_parent(curentBone.get_bone_id())]
+				bonesToParents[curentBone] = idsToBones[get_bone_parent(curentBone.get_bone_id())]
+				curentBone = bonesToParents[curentBone]
+				
 				i += 1
+	
+	#
 	
 	for id in idsToBones.keys():
 		
@@ -101,7 +126,7 @@ func _ready() -> void:
 		
 		
 		prb.add_child(newHinge)
-		
+		editorAddChild(newHinge,prb,prb.name + " hinge")
 		
 		newHinge.position = Vector3.FORWARD * parentBone.get_child(0).shape.height/2.0
 		var ogDist = newHinge.global_position.distance_to(bone.global_position)
@@ -126,10 +151,16 @@ func _ready() -> void:
 	
 	pass
 
+func editorAddChild(childNode : Node,newParent : Node,newName : StringName):
+	childNode.set_name(newName)
+	newParent.add_child(childNode)
+	childNode.owner = get_tree().edited_scene_root
+
 
 func _physics_process(delta: float) -> void:
 	
-	pbs.physical_bones_start_simulation()
+	if !pbs.is_simulating_physics():
+		pbs.physical_bones_start_simulation()
 	
 	for key in bonesToRigidBodies.keys():
 		var rb : RigidBody3D = bonesToRigidBodies[key]
