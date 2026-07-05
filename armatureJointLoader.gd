@@ -43,6 +43,11 @@ func setup():
 	
 	for child in rbp.get_children():
 		child.queue_free()
+	bonesToRigidBodies.clear()
+	idsToBones.clear()
+	bonesToParents.clear()
+	boneJointTypes.clear()
+	
 	
 	var num = 0
 	for bone in pbs.get_children():
