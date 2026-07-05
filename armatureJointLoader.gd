@@ -175,7 +175,7 @@ func _physics_process(delta: float) -> void:
 		b.angular_velocity = rb.angular_velocity
 		b.linear_velocity = rb.linear_velocity
 		b.global_transform = rb.global_transform
-		
-	
+		print(key.name)
+	print()
 	pass
 	

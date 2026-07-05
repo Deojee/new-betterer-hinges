@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="4_m8fgr"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="5_6uhsp"]
 [ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="5_m0yoy"]
-[ext_resource type="Script" uid="uid://bpf7ljp1rg6sm" path="res://scripts/newHinge.gd" id="6_kldop"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ojnt"]
 resource_name = "eye mat"
@@ -1064,7 +1063,6 @@ visible = false
 mesh = SubResource("ArrayMesh_nm333")
 
 [node name="squid" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=1634134686]
-visible = false
 mesh = SubResource("ArrayMesh_ra3p5")
 skin = SubResource("Skin_dvrgt")
 skeleton = NodePath("..")
@@ -1150,12 +1148,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_c3mwt")
 
 [node name="Physical Bone tentacle_002_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1312712505]
-transform = Transform3D(-1.7762909e-15, -1.6142121e-07, -1, -7.0378075e-17, 1, -1.6142121e-07, 1, 7.037779e-17, -1.7762909e-15, 3.5392094, 4.3977547, 9.577028e-15)
+transform = Transform3D(-1.7762905e-15, -1.6142121e-07, -1, -7.0378075e-17, 1, -1.6142121e-07, 1, 7.037779e-17, -1.7762905e-15, 3.5392094, 4.3977547, 9.577028e-15)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.163234e-20, 6.8998984e-09, 1.3913875)
-body_offset = Transform3D(1, -1.9852335e-23, 6.585681e-20, 6.575093e-20, 2.491575e-09, -1, 0, 1, -4.9590057e-09, 0, 1.3913875, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.222162e-20, 6.8998984e-09, 1.3913875)
+body_offset = Transform3D(1, -1.9852335e-23, 6.628033e-20, 6.617445e-20, 2.491575e-09, -1, 0, 1, -4.9590057e-09, 0, 1.3913875, 0)
 bone_name = "tentacle.002.R"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R" unique_id=43694745]
@@ -1163,12 +1161,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_smvi1")
 
 [node name="Physical Bone tentacle_003_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1072989082]
-transform = Transform3D(-1.7762909e-15, -1.564622e-07, -1, -7.0378075e-17, 1, -1.564622e-07, 1, 7.03778e-17, -1.7762909e-15, 6.4388185, 4.397755, 1.4727768e-14)
+transform = Transform3D(-1.7762905e-15, -1.564622e-07, -1, -7.0378075e-17, 1, -1.564622e-07, 1, 7.03778e-17, -1.7762905e-15, 6.4388185, 4.397755, 1.4727768e-14)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9326665e-20, 1.1237127e-08, 1.5082216)
-body_offset = Transform3D(1, -1.9852335e-23, 6.585681e-20, 6.575093e-20, 1.2501607e-31, -1, 0, 1, -7.450581e-09, 0, 1.5082216, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9965423e-20, 1.1237127e-08, 1.5082216)
+body_offset = Transform3D(1, -1.9852335e-23, 6.628033e-20, 6.617445e-20, 1.2501607e-31, -1, 0, 1, -7.450581e-09, 0, 1.5082216, 0)
 bone_name = "tentacle.003.R"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R" unique_id=151846082]
@@ -1176,12 +1174,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ntiun")
 
 [node name="Physical Bone tentacle_004_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=160670291]
-transform = Transform3D(-1.7763566e-15, -1.5645338e-07, -1, -7.0373966e-17, 1, -1.5645338e-07, 1, 7.037369e-17, -1.7763566e-15, 9.763278, 4.397756, 2.0633196e-14)
+transform = Transform3D(-1.7763566e-15, -1.5645332e-07, -1, -7.037394e-17, 1, -1.5645332e-07, 1, 7.037366e-17, -1.7763566e-15, 9.763278, 4.397756, 2.0633196e-14)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.692069e-22, 1.3516054e-08, 1.8162386)
-body_offset = Transform3D(1, -4.135903e-21, 4.2351647e-22, 0, 8.824941e-12, -1.0000001, 4.1094333e-21, 1.0000001, -7.441784e-09, 0, 1.8162389, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.692069e-22, 1.3515951e-08, 1.8162386)
+body_offset = Transform3D(1, -4.162373e-21, 4.2351647e-22, 0, 8.881784e-12, -1.0000001, 4.135903e-21, 1.0000001, -7.4417272e-09, 0, 1.8162389, 0)
 bone_name = "tentacle.004.R"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R" unique_id=1502790677]
@@ -1189,12 +1187,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ta46g")
 
 [node name="Physical Bone tentacle_005_R" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=815417490]
-transform = Transform3D(-2.1897115e-14, -1.5645338e-07, -1, -7.037696e-17, 1, -1.5645338e-07, 1, 7.0373535e-17, -2.1897115e-14, 12.992739, 4.397756, 5.479053e-14)
+transform = Transform3D(-2.1897121e-14, -1.5645332e-07, -1, -7.037694e-17, 1, -1.5645332e-07, 1, 7.037351e-17, -2.1897121e-14, 12.992743, 4.397756, 5.479053e-14)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4438524e-17, 1.0516893e-08, 1.4132222)
-body_offset = Transform3D(1, -4.2881043e-21, -2.0120756e-14, -2.012076e-14, 8.824941e-12, -1.0000001, 4.1094333e-21, 1.0000001, -7.441784e-09, 2.8420657e-14, 1.4132223, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4533391e-17, 1.0516841e-08, 1.413226)
+body_offset = Transform3D(1, -4.314574e-21, -2.0120763e-14, -2.0120766e-14, 8.881784e-12, -1.0000001, 4.135903e-21, 1.0000001, -7.4417272e-09, 2.842065e-14, 1.4132261, 0)
 bone_name = "tentacle.005.R"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R" unique_id=758476704]
@@ -1215,12 +1213,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2p7f5")
 
 [node name="Physical Bone tentacle_002_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=595986310]
-transform = Transform3D(-0.5877849, 1.0360826e-07, -0.8090173, -4.417799e-12, 1, 1.2807003e-07, 0.8090173, 7.52812e-08, -0.5877849, 2.3900332, 4.369877, 1.7364602)
+transform = Transform3D(-0.5877849, 1.0360829e-07, -0.8090173, -4.4462207e-12, 1, 1.2807008e-07, 0.8090173, 7.528126e-08, -0.5877849, 2.3900332, 4.369879, 1.7364602)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.173134e-07, -0.00029606555, 1.1614166)
-body_offset = Transform3D(1.0000002, -5.00075e-08, 2.3841858e-07, 2.3841858e-07, -3.5994674e-10, -1.0000002, -4.3769433e-12, 1.0000001, -4.32934e-08, -5.9604645e-08, 1.1614169, 0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.173135e-07, -0.0002979729, 1.1614166)
+body_offset = Transform3D(1.0000002, -5.0007472e-08, 2.3841858e-07, 2.3841858e-07, -3.598828e-10, -1.0000002, -4.405365e-12, 1.0000001, -4.329333e-08, -5.9604645e-08, 1.1614169, 0.00029802322)
 bone_name = "tentacle.002.R.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_001" unique_id=1961654979]
@@ -1228,12 +1226,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_25i72")
 
 [node name="Physical Bone tentacle_003_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2096424296]
-transform = Transform3D(-0.5877852, 9.6547446e-08, -0.8090171, -2.2559477e-09, 1, 1.2097824e-07, 0.8090171, 7.293432e-08, -0.5877852, 4.3481436, 4.3698764, 3.1591098)
+transform = Transform3D(-0.5877852, 9.654746e-08, -0.8090171, -2.2559192e-09, 1, 1.2097824e-07, 0.8090171, 7.293429e-08, -0.5877852, 4.3481436, 4.3698783, 3.1591098)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.167513e-08, -0.00029606183, 1.2589399)
-body_offset = Transform3D(1.0000002, -5.0016276e-08, 2.9802322e-08, 2.9802322e-08, -1.1475265e-12, -1.0000002, 4.405365e-12, 1, -4.2934563e-08, -1.1920929e-07, 1.2589402, 0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.167503e-08, -0.00029796918, 1.2589399)
+body_offset = Transform3D(1.0000002, -5.00163e-08, 2.9802322e-08, 2.9802322e-08, -1.1475265e-12, -1.0000002, 4.4337867e-12, 1, -4.293455e-08, -1.1920929e-07, 1.2589402, 0.00029802322)
 bone_name = "tentacle.003.R.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_001" unique_id=1811074330]
@@ -1241,12 +1239,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_28w46")
 
 [node name="Physical Bone tentacle_004_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=534050315]
-transform = Transform3D(-0.5877852, 9.257807e-08, -0.80901706, -2.2515205e-09, 1, 1.16068605e-07, 0.80901706, 7.0044926e-08, -0.5877852, 6.593155, 4.3695793, 4.790206)
+transform = Transform3D(-0.5877852, 9.257813e-08, -0.80901706, -2.2514637e-09, 1, 1.1606864e-07, 0.80901706, 7.00449e-08, -0.5877852, 6.593155, 4.3695793, 4.790206)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8647363e-07, 7.2534036e-08, 1.5160466)
-body_offset = Transform3D(1.0000002, -5.0020695e-08, -5.9604645e-08, -5.9604645e-08, -4.9107847e-09, -1.0000002, 8.824941e-12, 1.0000001, -4.7844203e-08, 4.7683716e-07, 1.516047, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8647363e-07, 7.253399e-08, 1.5160466)
+body_offset = Transform3D(1.0000002, -5.0020756e-08, -5.9604645e-08, -5.9604645e-08, -4.91076e-09, -1.0000002, 8.881784e-12, 1.0000001, -4.7844175e-08, 4.7683716e-07, 1.516047, 0)
 bone_name = "tentacle.004.R.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_001" unique_id=1865513811]
@@ -1254,12 +1252,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tada5")
 
 [node name="Physical Bone tentacle_005_R_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2139574917]
-transform = Transform3D(-0.58778507, 1.0166455e-07, -0.8090172, -2.2515456e-09, 1, 1.2730011e-07, 0.8090172, 7.664664e-08, -0.58778507, 8.773614, 4.3695793, 6.374401)
+transform = Transform3D(-0.58778507, 1.01664604e-07, -0.8090172, -2.2514888e-09, 1, 1.2730014e-07, 0.8090172, 7.664661e-08, -0.58778507, 8.773614, 4.3695793, 6.374401)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536741e-07, 4.3171763e-08, 1.1791475)
-body_offset = Transform3D(1.0000002, -5.0020688e-08, 0, 0, 6.3207217e-09, -1.0000002, 8.824941e-12, 1.0000001, -3.6612697e-08, -9.536743e-07, 1.1791477, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536741e-07, 4.3171745e-08, 1.1791475)
+body_offset = Transform3D(1.0000002, -5.0020752e-08, 0, 0, 6.32075e-09, -1.0000002, 8.881784e-12, 1.0000001, -3.6612683e-08, -9.536743e-07, 1.1791477, 0)
 bone_name = "tentacle.005.R.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_001" unique_id=527880459]
@@ -1306,12 +1304,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tr5dj")
 
 [node name="Physical Bone tentacle_004_R_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=230287916]
-transform = Transform3D(0.5877854, -5.9583126e-08, -0.8090168, 5.819059e-08, 1, -3.137085e-08, 0.8090168, -2.8637844e-08, 0.5877854, 6.593154, 4.369581, -4.7902083)
+transform = Transform3D(0.5877854, -5.958312e-08, -0.8090168, 5.8190583e-08, 1, -3.1370842e-08, 0.8090168, -2.8637839e-08, 0.5877854, 6.593154, 4.369581, -4.7902083)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2303536e-07, 1.3673395e-08, 1.5160478)
-body_offset = Transform3D(1.0000004, 1.913163e-08, -2.3841858e-07, -2.3841858e-07, 1.2452261e-12, -1.0000004, -1.1031176e-12, 1.0000002, -9.019107e-09, 2.3841858e-07, 1.5160484, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2303536e-07, 1.36733895e-08, 1.5160478)
+body_offset = Transform3D(1.0000004, 1.9131637e-08, -2.3841858e-07, -2.3841858e-07, 1.2487789e-12, -1.0000004, -1.110223e-12, 1.0000002, -9.019104e-09, 2.3841858e-07, 1.5160484, 0)
 bone_name = "tentacle.004.R.002"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_002" unique_id=2099303451]
@@ -1345,12 +1343,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_xg7q5")
 
 [node name="Physical Bone tentacle_002_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1648330387]
-transform = Transform3D(-0.95105666, 1.3311278e-07, -0.3090167, 7.448823e-08, 1, 2.0151103e-07, 0.3090167, 1.686303e-07, -0.9510566, 0.7349113, 4.3415413, 2.2618253)
+transform = Transform3D(-0.95105666, 1.3311268e-07, -0.3090167, 7.448811e-08, 1, 2.0151104e-07, 0.3090167, 1.6863034e-07, -0.9510566, 0.7349113, 4.3415394, 2.2618253)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6523678e-07, 0.00029619914, 0.93496335)
-body_offset = Transform3D(1, 3.190147e-08, -2.0861626e-07, -1.4901161e-07, -1.4881323e-09, -0.9999999, -1.762146e-11, 1, -8.90616e-08, 2.9802322e-08, 0.9349632, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6523673e-07, 0.0002981065, 0.93496335)
+body_offset = Transform3D(1, 3.190159e-08, -2.0861626e-07, -1.4901161e-07, -1.4881181e-09, -0.9999999, -1.7735147e-11, 1, -8.906157e-08, 2.9802322e-08, 0.9349632, -0.00029802322)
 bone_name = "tentacle.002.R.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_003" unique_id=761573416]
@@ -1358,12 +1356,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ielwa")
 
 [node name="Physical Bone tentacle_003_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1440558100]
-transform = Transform3D(-0.95105666, 1.3035549e-07, -0.3090167, 6.626434e-08, 1, 2.1789873e-07, 0.3090167, 1.8675723e-07, -0.95105666, 1.3370104, 4.341541, 4.1148973)
+transform = Transform3D(-0.95105666, 1.3035546e-07, -0.3090167, 6.626431e-08, 1, 2.1789873e-07, 0.3090167, 1.8675723e-07, -0.95105666, 1.3370104, 4.341539, 4.1148973)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4621062e-07, 0.00029620464, 1.0134717)
-body_offset = Transform3D(1, 3.1888288e-08, -2.0861626e-07, -1.1920929e-07, -1.5916157e-12, -0.99999994, -4.4124704e-12, 1, -8.757503e-08, 3.5762787e-07, 1.0134716, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.462107e-07, 0.000298112, 1.0134717)
+body_offset = Transform3D(1, 3.188831e-08, -2.0861626e-07, -1.1920929e-07, -1.6058266e-12, -0.99999994, -4.440892e-12, 1, -8.757506e-08, 3.5762787e-07, 1.0134716, -0.00029802322)
 bone_name = "tentacle.003.R.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_R_003" unique_id=146851285]
@@ -1371,12 +1369,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1hvod")
 
 [node name="Physical Bone tentacle_004_R_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=996468899]
-transform = Transform3D(-0.9510566, 1.3129329e-07, -0.30901694, 6.625546e-08, 1, 2.2096077e-07, 0.30901694, 1.8967214e-07, -0.95105654, 2.0273292, 4.3418365, 6.23948)
+transform = Transform3D(-0.9510566, 1.3129323e-07, -0.30901694, 6.6255375e-08, 1, 2.2096083e-07, 0.30901694, 1.896722e-07, -0.95105654, 2.0273292, 4.3418365, 6.23948)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.018561e-08, 1.0314371e-07, 1.2204472)
-body_offset = Transform3D(1, 3.18971e-08, -1.7881393e-07, -1.1920929e-07, 3.0604212e-09, -0.9999999, -1.3216095e-11, 1, -8.451305e-08, 2.3841858e-07, 1.2204471, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.018561e-08, 1.0314362e-07, 1.2204472)
+body_offset = Transform3D(1, 3.1897184e-08, -1.7881393e-07, -1.1920929e-07, 3.060478e-09, -0.9999999, -1.330136e-11, 1, -8.4512976e-08, 2.3841858e-07, 1.2204471, 0)
 bone_name = "tentacle.004.R.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_003" unique_id=1152175916]
@@ -1410,12 +1408,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_qh0k2")
 
 [node name="Physical Bone tentacle_002_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2146161014]
-transform = Transform3D(0.95105666, 3.5946573e-07, -0.3090167, -2.6823852e-07, 1, 3.377025e-07, 0.3090167, -2.38284e-07, 0.9510566, 0.7349111, 4.3418374, -2.2618256)
+transform = Transform3D(0.95105666, 3.5946584e-07, -0.3090167, -2.6823864e-07, 1, 3.3770252e-07, 0.3090167, -2.38284e-07, 0.9510566, 0.7349111, 4.3418374, -2.2618256)
 top_level = true
 collision_layer = 0
 collision_mask = 0
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.572815e-08, -3.013271e-08, 0.9349632)
-body_offset = Transform3D(1, -2.7705461e-08, 5.9604645e-08, 8.940697e-08, -5.2265676e-09, -0.99999976, -1.7571722e-11, 1.0000001, 3.222877e-08, 0, 0.934963, 0)
+body_offset = Transform3D(1, -2.7705347e-08, 5.9604645e-08, 8.940697e-08, -5.226539e-09, -0.99999976, -1.7685409e-11, 1.0000001, 3.222877e-08, 0, 0.934963, 0)
 bone_name = "tentacle.002.R.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_R_004" unique_id=168458631]
@@ -1436,12 +1434,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_sj8w5")
 
 [node name="Physical Bone tentacle_004_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=647343757]
-transform = Transform3D(0.9510567, 2.416575e-07, -0.30901644, -1.4608129e-07, 1, 3.324286e-07, 0.30901644, -2.7101694e-07, 0.9510567, 2.0273278, 4.3415403, -6.23948)
+transform = Transform3D(0.9510567, 2.4165755e-07, -0.30901644, -1.4608135e-07, 1, 3.3242867e-07, 0.30901644, -2.7101697e-07, 0.9510567, 2.0273278, 4.3415384, -6.23948)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8586816e-07, 0.00029607382, 1.2204468)
-body_offset = Transform3D(1, -2.7714329e-08, 2.3841858e-07, 2.682209e-07, -3.0497915e-09, -0.9999998, -8.73257e-12, 1.0000002, 3.440556e-08, -4.7683716e-07, 1.2204466, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8586822e-07, 0.00029798117, 1.2204468)
+body_offset = Transform3D(1, -2.7714258e-08, 2.3841858e-07, 2.682209e-07, -3.049763e-09, -0.9999998, -8.789414e-12, 1.0000002, 3.4405616e-08, -4.7683716e-07, 1.2204466, -0.00029802322)
 bone_name = "tentacle.004.R.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_R_004" unique_id=1331437968]
@@ -1449,12 +1447,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_3ktrh")
 
 [node name="Physical Bone tentacle_005_R_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=713246143]
-transform = Transform3D(0.9510567, 2.4137339e-07, -0.3090164, -1.4606371e-07, 1, 3.3156334e-07, 0.30901638, -2.7019945e-07, 0.9510567, 2.6977952, 4.3415394, -8.302976)
+transform = Transform3D(0.9510567, 2.4137336e-07, -0.3090164, -1.4606366e-07, 1, 3.3156343e-07, 0.30901638, -2.7019956e-07, 0.9510567, 2.6977952, 4.3415375, -8.302976)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.060907e-06, 0.00029608398, 0.9492371)
-body_offset = Transform3D(1, -2.7731843e-08, 8.940697e-08, 1.1920929e-07, -3.915062e-09, -0.9999998, 8.817835e-12, 1.0000002, 3.3540246e-08, -2.1457672e-06, 0.94923687, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.060907e-06, 0.00029799133, 0.9492371)
+body_offset = Transform3D(1, -2.7731893e-08, 8.940697e-08, 1.1920929e-07, -3.9149484e-09, -0.9999998, 8.874679e-12, 1.0000002, 3.354033e-08, -2.1457672e-06, 0.94923687, -0.00029802322)
 bone_name = "tentacle.005.R.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_R_004" unique_id=1648467480]
@@ -1475,12 +1473,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_wxitg")
 
 [node name="Physical Bone tentacle_002_L" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2075265883]
-transform = Transform3D(1.224375e-06, 7.891027e-08, 1, 1, -5.8368975e-08, -1.224375e-06, 5.836888e-08, 1, -7.891034e-08, -3.5392098, 4.3977532, 3.0174954e-07)
+transform = Transform3D(1.224375e-06, 7.891027e-08, 1, 1, -5.8368975e-08, -1.224375e-06, 5.836888e-08, 1, -7.891034e-08, -3.5392098, 4.3977532, 3.0174942e-07)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1389794e-06, -4.16422e-09, 1.3913877)
-body_offset = Transform3D(0.99999046, 1.933401e-09, -1.5372847e-06, -2.4913287e-09, 7.1054274e-15, -1, 0, 1, 3.005539e-09, 0, 1.3913877, -1.7649882e-11)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1389794e-06, -4.1641064e-09, 1.3913877)
+body_offset = Transform3D(0.99999046, 1.933401e-09, -1.5372847e-06, -2.4913287e-09, 7.1054274e-15, -1, 0, 1, 3.005539e-09, 0, 1.3913877, -1.7763568e-11)
 bone_name = "tentacle.002.L"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L" unique_id=1323393372]
@@ -1540,12 +1538,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2n4to")
 
 [node name="Physical Bone tentacle_002_L_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1392966596]
-transform = Transform3D(0.58778495, 3.4164543e-07, 0.80901724, -3.2780778e-07, 1, -1.8413077e-07, -0.80901724, -1.5697285e-07, 0.58778495, -2.3900332, 4.369581, -1.7364597)
+transform = Transform3D(0.58778495, 3.4164532e-07, 0.80901724, -3.2780767e-07, 1, -1.8413071e-07, -0.80901724, -1.569728e-07, 0.58778495, -2.3900332, 4.369581, -1.7364597)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4217604e-08, 3.213475e-08, 1.1614165)
-body_offset = Transform3D(0.9999995, -1.8811372e-07, -2.9802322e-08, 0, -6.40415e-09, -1, 1.762146e-11, 1, -2.7668584e-08, -5.9604645e-08, 1.1614165, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4217604e-08, 3.213465e-08, 1.1614165)
+body_offset = Transform3D(0.9999995, -1.8811386e-07, -2.9802322e-08, 0, -6.4040506e-09, -1, 1.7735147e-11, 1, -2.7668499e-08, -5.9604645e-08, 1.1614165, 0)
 bone_name = "tentacle.002.L.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_001" unique_id=1790521730]
@@ -1579,12 +1577,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_0s451")
 
 [node name="Physical Bone tentacle_005_L_001" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=32735435]
-transform = Transform3D(0.58778465, 1.5808246e-07, 0.8090175, -2.4326255e-08, 1, -1.7772652e-07, -0.80901754, 8.4784546e-08, 0.58778465, -8.773615, 4.3692865, -6.3744)
+transform = Transform3D(0.58778465, 1.5808246e-07, 0.8090175, -2.4326255e-08, 1, -1.7772652e-07, -0.80901754, 8.4784546e-08, 0.58778465, -8.773615, 4.3692846, -6.3744)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5085638e-08, 0.00029614096, 1.1791475)
-body_offset = Transform3D(0.99999976, -1.8809584e-07, 2.9802322e-08, 8.940697e-08, 2.5579538e-13, -1.0000002, -1.0658141e-14, 1, -2.1264253e-08, 0, 1.1791477, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.508528e-08, 0.0002980483, 1.1791475)
+body_offset = Transform3D(0.99999976, -1.8809584e-07, 2.9802322e-08, 8.940697e-08, 2.5579538e-13, -1.0000002, -1.0658141e-14, 1, -2.1264253e-08, 0, 1.1791477, -0.00029802322)
 bone_name = "tentacle.005.L.001"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_001" unique_id=396504145]
@@ -1605,12 +1603,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dd4gb")
 
 [node name="Physical Bone tentacle_002_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1089529281]
-transform = Transform3D(-0.58778536, -6.9908964e-08, 0.8090169, -1.7881396e-07, 1, -4.350375e-08, -0.80901694, -1.7023439e-07, -0.58778536, -2.3900332, 4.369285, 1.7364613)
+transform = Transform3D(-0.58778536, -6.9908964e-08, 0.80901694, -1.7881396e-07, 1, -4.3503736e-08, -0.80901694, -1.7023439e-07, -0.5877853, -2.3900332, 4.369283, 1.7364613)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4204964e-08, 0.00029612315, 1.1614168)
-body_offset = Transform3D(1.0000001, -4.2512212e-08, 2.9802322e-08, 8.940697e-08, 6.786081e-09, -1.0000001, 0, 0.9999999, -6.2508434e-09, 5.9604645e-08, 1.1614169, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4204886e-08, 0.0002980305, 1.1614169)
+body_offset = Transform3D(1.0000001, -4.2512212e-08, 2.9802322e-08, 8.940697e-08, 6.786081e-09, -1, 0, 0.9999999, -6.2508434e-09, 5.9604645e-08, 1.1614169, -0.00029802322)
 bone_name = "tentacle.002.L.002"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_002" unique_id=941104170]
@@ -1631,12 +1629,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_8lq58")
 
 [node name="Physical Bone tentacle_004_L_002" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=528468206]
-transform = Transform3D(-0.5877854, 3.247501e-08, 0.80901694, 3.0514948e-09, 1, -3.7924288e-08, -0.80901694, -1.9822629e-08, -0.5877854, -6.593155, 4.369581, 4.79021)
+transform = Transform3D(-0.5877854, 3.2475015e-08, 0.80901694, 3.0515055e-09, 1, -3.7924284e-08, -0.80901694, -1.9822618e-08, -0.5877854, -6.593155, 4.369581, 4.79021)
 top_level = true
 collision_layer = 0
 collision_mask = 0
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2509702e-08, 1.2313267e-08, 1.5160489)
-body_offset = Transform3D(1.0000001, -4.2513953e-08, -1.4901161e-07, -8.940697e-08, 4.914976e-09, -1, 1.6546764e-12, 1.0000001, -8.121947e-09, 2.3841858e-07, 1.5160489, 0)
+body_offset = Transform3D(1.0000001, -4.2513967e-08, -1.4901161e-07, -8.940697e-08, 4.914977e-09, -1, 1.6653345e-12, 1.0000001, -8.121947e-09, 2.3841858e-07, 1.5160489, 0)
 bone_name = "tentacle.004.L.002"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_002" unique_id=2118198855]
@@ -1670,12 +1668,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_j4t0d")
 
 [node name="Physical Bone tentacle_002_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2127308828]
-transform = Transform3D(0.95105654, -4.1792514e-08, 0.309017, 1.4901168e-08, 1, 8.9382326e-08, -0.309017, -8.0402934e-08, 0.9510565, -0.73491156, 4.3418384, -2.261825)
+transform = Transform3D(0.95105654, -4.1792532e-08, 0.309017, 1.4901168e-08, 1, 8.938239e-08, -0.309017, -8.040299e-08, 0.9510565, -0.73491156, 4.3418384, -2.261825)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.980231e-08, 1.3955072e-08, 0.9349631)
-body_offset = Transform3D(1.0000004, -8.964973e-08, 0, -5.9604645e-08, 3.9935273e-09, -1.0000001, -1.7763568e-15, 1.0000002, -1.4925803e-08, 2.9802322e-08, 0.9349632, 0)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.980231e-08, 1.3955012e-08, 0.9349631)
+body_offset = Transform3D(1.0000004, -8.964973e-08, 0, -5.9604645e-08, 3.9935912e-09, -1.0000001, -1.7763568e-15, 1.0000002, -1.4925739e-08, 2.9802322e-08, 0.9349632, 0)
 bone_name = "tentacle.002.L.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_002_L_003" unique_id=1634166540]
@@ -1696,12 +1694,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_27ukg")
 
 [node name="Physical Bone tentacle_004_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=607000792]
-transform = Transform3D(0.9510564, -6.8759434e-08, 0.30901733, 4.5544983e-08, 1, 8.233711e-08, -0.30901733, -6.423304e-08, 0.9510564, -2.0273316, 4.341838, -6.239485)
+transform = Transform3D(0.9510564, -6.875942e-08, 0.30901733, 4.554497e-08, 1, 8.233712e-08, -0.30901733, -6.4233056e-08, 0.9510564, -2.0273316, 4.341838, -6.239485)
 top_level = true
 collision_layer = 0
 collision_mask = 0
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2836976e-08, 2.6814602e-08, 1.220452)
-body_offset = Transform3D(1.0000001, -8.96475e-08, -2.9802322e-08, -5.9604645e-08, -3.0516816e-09, -0.9999999, -2.209788e-12, 1, -2.1971044e-08, 1.1920929e-07, 1.2204518, 0)
+body_offset = Transform3D(1.0000001, -8.9647486e-08, -2.9802322e-08, -5.9604645e-08, -3.0516745e-09, -0.9999999, -2.2239988e-12, 1, -2.1971044e-08, 1.1920929e-07, 1.2204518, 0)
 bone_name = "tentacle.004.L.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_003" unique_id=99300508]
@@ -1709,12 +1707,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_78rge")
 
 [node name="Physical Bone tentacle_005_L_003" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=549405298]
-transform = Transform3D(0.95105654, -6.970697e-08, 0.30901703, 4.554943e-08, 1, 8.538977e-08, -0.30901706, -6.713495e-08, 0.9510565, -2.6978006, 4.3418374, -8.302975)
+transform = Transform3D(0.95105654, -6.9706985e-08, 0.30901703, 4.5549445e-08, 1, 8.538978e-08, -0.30901706, -6.713495e-08, 0.9510565, -2.6978006, 4.3418374, -8.302975)
 top_level = true
 collision_layer = 0
 collision_mask = 0
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.828947e-08, 1.7958012e-08, 0.9492372)
-body_offset = Transform3D(1.0000001, -8.965192e-08, 2.9802322e-08, 0, 9.734435e-13, -1.0000001, 2.2080116e-12, 1.0000001, -1.8918364e-08, 0, 0.94923735, 0)
+body_offset = Transform3D(1.0000001, -8.9651934e-08, 2.9802322e-08, 0, 9.734435e-13, -1.0000001, 2.2222224e-12, 1.0000001, -1.8918364e-08, 0, 0.94923735, 0)
 bone_name = "tentacle.005.L.003"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_003" unique_id=875057231]
@@ -1748,12 +1746,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_qeyvy")
 
 [node name="Physical Bone tentacle_003_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=855817296]
-transform = Transform3D(-0.95105654, -2.2111486e-07, 0.3090169, -1.395444e-07, 1, 2.860693e-07, -0.3090169, 2.289465e-07, -0.95105654, -1.3370118, 4.342133, 4.1148973)
+transform = Transform3D(-0.95105654, -2.2111486e-07, 0.3090169, -1.395444e-07, 1, 2.860693e-07, -0.3090169, 2.289465e-07, -0.95105654, -1.3370118, 4.342135, 4.1148973)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.959917e-07, -0.00029616413, 1.013473)
-body_offset = Transform3D(1, 1.8487609e-07, 0, 0, 3.6757513e-09, -1, 0, 1.0000001, 4.765073e-08, 5.9604645e-07, 1.013473, 0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9599137e-07, -0.00029807148, 1.013473)
+body_offset = Transform3D(1, 1.8487609e-07, 0, 0, 3.6757513e-09, -1, 0, 1.0000001, 4.765073e-08, 5.9604645e-07, 1.013473, 0.00029802322)
 bone_name = "tentacle.003.L.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_003_L_004" unique_id=347317219]
@@ -1761,12 +1759,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_lrjme")
 
 [node name="Physical Bone tentacle_004_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=6548243]
-transform = Transform3D(-0.95105666, -2.1902648e-07, 0.3090166, -1.3953564e-07, 1, 2.793383e-07, -0.3090166, 2.2254774e-07, -0.95105666, -2.0273287, 4.3415403, 6.2394733)
+transform = Transform3D(-0.95105666, -2.1902642e-07, 0.3090166, -1.3953559e-07, 1, 2.793383e-07, -0.3090166, 2.2254773e-07, -0.95105666, -2.0273287, 4.3415384, 6.2394733)
 top_level = true
 collision_layer = 0
 collision_mask = 0
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6124262e-06, 0.0002960659, 1.2204418)
-body_offset = Transform3D(1, 1.8486725e-07, 1.4901161e-07, 1.4901161e-07, -3.0552343e-09, -1, 8.824941e-12, 1.0000001, 4.0919787e-08, 1.4305115e-06, 1.2204418, -0.00029611588)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6124266e-06, 0.00029797325, 1.2204418)
+body_offset = Transform3D(1, 1.848672e-07, 1.4901161e-07, 1.4901161e-07, -3.0552627e-09, -1, 8.881784e-12, 1.0000001, 4.091976e-08, 1.4305115e-06, 1.2204418, -0.00029802322)
 bone_name = "tentacle.004.L.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_004_L_004" unique_id=2027842370]
@@ -1774,12 +1772,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7s7i1")
 
 [node name="Physical Bone tentacle_005_L_004" type="PhysicalBone3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1223187313]
-transform = Transform3D(-0.9510566, -2.199691e-07, 0.30901694, -1.395356e-07, 1, 2.8238858e-07, -0.30901694, 2.2544863e-07, -0.95105654, -2.6977983, 4.3418365, 8.302973)
+transform = Transform3D(-0.9510566, -2.1996902e-07, 0.30901694, -1.3953554e-07, 1, 2.8238856e-07, -0.30901694, 2.2544863e-07, -0.95105654, -2.6977983, 4.3418365, 8.302973)
 top_level = true
 collision_layer = 0
 collision_mask = 0
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8289456e-08, -4.1737955e-08, 0.9492371)
-body_offset = Transform3D(1.0000002, 1.8486733e-07, 2.9802322e-08, 0, -4.98801e-12, -1.0000002, 8.81073e-12, 1.0000001, 4.3970005e-08, 0, 0.94923735, 0)
+body_offset = Transform3D(1.0000002, 1.8486728e-07, 2.9802322e-08, 0, -5.002221e-12, -1.0000002, 8.867573e-12, 1.0000001, 4.3970005e-08, 0, 0.94923735, 0)
 bone_name = "tentacle.005.L.004"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone tentacle_005_L_004" unique_id=1107402287]
@@ -1797,75 +1795,63 @@ script = ExtResource("4_m0yoy")
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2jwsx")
 
-[node name="Physical Bone Bone rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1618069539 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone Bone rb hinge" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1618069539 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(4.371139e-08, 1, -6.600236e-15, 1, -4.371139e-08, -1.509958e-07, -1.509958e-07, 0, -1, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("..")
 
-[node name="@Node3D@131563" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1368677034 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131563" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1368677034 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(4.371139e-08, 1, -6.600236e-15, 1, -4.371139e-08, -1.509958e-07, -1.509958e-07, 0, -1, 0, 0, -0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone spine 2 rb")
 
-[node name="@Node3D@131566" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=306622547 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131566" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=306622547 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(4.3711385e-08, 0.079114005, -0.9968656, 1, -1.5398065e-07, 3.1628495e-08, -1.5099576e-07, -0.9968656, -0.079114005, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_R rb")
 
-[node name="@Node3D@131567" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=62449356 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131567" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=62449356 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.58778536, 0.064004436, -0.80648106, 0.8090169, 0.046501894, -0.585943, -5.2154064e-08, -0.99686563, -0.07911382, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_R_001 rb")
 
-[node name="@Node3D@131568" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=238091926 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131568" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=238091926 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.5877854, 0.06400486, -0.80648106, 0.8090168, -0.046502408, 0.58594304, -9.685755e-08, -0.9968655, -0.079114445, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_006_R rb")
 
-[node name="@Node3D@131569" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=2031707155 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131569" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=2031707155 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.9510562, 0.024442699, -0.30804974, 0.30901796, 0.07522665, -0.9480764, 1.8626451e-09, -0.9968669, -0.079098, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_R_003 rb")
 
-[node name="@Node3D@131570" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=719602272 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131570" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=719602272 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.9510562, 0.02444757, -0.30804932, 0.30901793, -0.07524183, 0.9480752, -5.7742e-08, -0.9968656, -0.079113945, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_R_004 rb")
 
-[node name="@Node3D@131571" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1597119026 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131571" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1597119026 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.3110377e-07, -0.07911175, 0.99686575, -1, 6.920417e-09, -1.3096677e-07, 3.4623326e-09, -0.99686575, -0.07911175, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_L rb")
 
-[node name="@Node3D@131572" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1494258717 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131572" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1494258717 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.5877866, -0.06400477, 0.80648017, -0.809016, -0.04650234, 0.5859442, 0, -0.9968656, -0.07911433, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_L_001 rb")
 
-[node name="@Node3D@131573" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1895269711 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131573" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=1895269711 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.5877854, -0.06400484, 0.80648106, -0.8090169, 0.04650231, -0.58594304, -4.4703484e-08, -0.9968656, -0.07911437, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_006_L rb")
 
-[node name="@Node3D@131574" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=815645841 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131574" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=815645841 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.9510562, -0.024450496, 0.30804926, -0.30901805, -0.075250745, 0.94807446, 4.656613e-08, -0.9968648, -0.079123326, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_L_003 rb")
 
-[node name="@Node3D@131575" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=416151406 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131575" parent="Armature/rigidBodyParent/Physical Bone Bone rb" unique_id=416151406 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.95105684, -0.024447443, 0.30804738, -0.309016, 0.075241804, -0.94807583, -1.1175871e-08, -0.9968656, -0.079113886, 0, 0, 0.5)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_001_L_004 rb")
 
@@ -1877,21 +1863,18 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_su6m2")
 
-[node name="Physical Bone spine 2 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=826646234 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone spine 2 rb hinge" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=826646234 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(4.371139e-08, 1, -6.600236e-15, 1, -4.371139e-08, -1.509958e-07, -1.509958e-07, 0, -1, 0, 0, -1.2220049)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone head top rb")
 
-[node name="@Node3D@131564" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=244794966 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131564" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=244794966 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1, -9.43966e-09, -2.7131787e-08, 9.43966e-09, 0.78404576, -0.620703, 2.7131787e-08, -0.620703, -0.78404576, 0, 0, 1.2220049)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone rear eye rb")
 
-[node name="@Node3D@131565" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=1580897642 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="@Node3D@131565" parent="Armature/rigidBodyParent/Physical Bone spine 2 rb" unique_id=1580897642 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1, -7.798312e-08, 5.3070448e-08, -9.408332e-08, -0.78404576, 0.620703, -6.794693e-09, -0.620703, -0.78404576, 0, 0, 1.2220049)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone front eye tip rb")
 
@@ -1927,9 +1910,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_c3mwt")
 
-[node name="Physical Bone tentacle_001_R rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R rb" unique_id=1038156819 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_R rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R rb" unique_id=1038156819 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.942339e-07, -7.450581e-09, -1, 0.07911444, 0.99686545, 7.939482e-09, 0.99686545, -0.07911444, 1.9421452e-07, 4.2351647e-22, 0, -1.0772872)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_R rb")
 
@@ -1941,9 +1923,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_smvi1")
 
-[node name="Physical Bone tentacle_002_R rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R rb" unique_id=432417947 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_R rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R rb" unique_id=432417947 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.07284414e-07, 3.1615855e-07, -1, 1.6142124e-07, 1, 3.1615852e-07, 1, -1.614212e-07, -1.07284464e-07, -4.2351647e-22, -9.536743e-07, -1.3913867)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_R rb")
 
@@ -1955,9 +1936,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ntiun")
 
-[node name="Physical Bone tentacle_003_R rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R rb" unique_id=1670358548 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_R rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R rb" unique_id=1670358548 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.07284414e-07, 5.2508227e-07, -1, 1.5646224e-07, 1, 5.2508227e-07, 1, -1.5646218e-07, -1.072845e-07, 0, -9.536743e-07, -1.5082216)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_R rb")
 
@@ -1969,9 +1949,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ta46g")
 
-[node name="Physical Bone tentacle_004_R rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R rb" unique_id=330488271 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_R rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R rb" unique_id=330488271 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.07284414e-07, -3.374115e-07, -1, 1.5645342e-07, 1, -3.3741154e-07, 1, -1.5645345e-07, -1.07284365e-07, 0, 0, -1.8162384)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_R rb")
 
@@ -1991,9 +1970,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2p7f5")
 
-[node name="Physical Bone tentacle_001_R_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_001 rb" unique_id=1139982216 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_R_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_001 rb" unique_id=1139982216 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.004064083, -0.050962046, -0.9986923, 0.07900959, 0.9955621, -0.05112382, 0.99686545, -0.07911404, -1.9580126e-05, 5.9604645e-08, 0, -0.8992319)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_R_001 rb")
 
@@ -2005,9 +1983,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_25i72")
 
-[node name="Physical Bone tentacle_002_R_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_001 rb" unique_id=415506856 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_R_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_001 rb" unique_id=415506856 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-3.2782555e-07, -3.7876518e-07, -0.9999999, -1.2806998e-07, 1, -3.787652e-07, 0.9999999, 1.2806987e-07, -3.2782555e-07, 0, 0, -1.161417)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_R_001 rb")
 
@@ -2019,9 +1996,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_28w46")
 
-[node name="Physical Bone tentacle_003_R_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_001 rb" unique_id=977647831 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_R_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_001 rb" unique_id=977647831 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-8.940697e-08, -0.0001956379, -0.99999994, -1.2097826e-07, 1, -0.0001956379, 0.99999994, 1.209628e-07, -8.940697e-08, 2.3841858e-07, 9.536743e-07, -1.2589393)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_R_001 rb")
 
@@ -2033,9 +2009,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tada5")
 
-[node name="Physical Bone tentacle_004_R_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_001 rb" unique_id=511269389 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_R_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_001 rb" unique_id=511269389 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(6.854534e-07, -2.2515216e-09, -1, -1.16068605e-07, 1, -2.2516176e-09, 1, 1.1606861e-07, 6.854534e-07, 4.7683716e-07, 9.536743e-07, -1.5160475)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_R_001 rb")
 
@@ -2055,9 +2030,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1wc27")
 
-[node name="Physical Bone tentacle_006_R rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_006_R rb" unique_id=1850554438 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_006_R rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_006_R rb" unique_id=1850554438 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.005015075, 0.06319181, -0.99798894, 0.078955054, 0.99486065, 0.06339053, 0.9968655, -0.079114154, -1.1920929e-07, -1.7881393e-07, 0, -0.8992318)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_R_002 rb")
 
@@ -2069,9 +2043,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_cpehg")
 
-[node name="Physical Bone tentacle_002_R_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_002 rb" unique_id=602913933 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_R_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_002 rb" unique_id=602913933 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.1026859e-06, 5.9604666e-08, -1.0000001, 1.7212821e-08, 1, 5.960469e-08, 1, -1.7212882e-08, 1.1920929e-06, 0, 0, -1.161417)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_R_002 rb")
 
@@ -2083,9 +2056,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tr5dj")
 
-[node name="Physical Bone tentacle_003_R_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_002 rb" unique_id=1173870651 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_R_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_002 rb" unique_id=1173870651 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-2.026558e-06, 3.7271917e-07, -1, 3.7290352e-08, 1, 3.7271911e-07, 1, -3.728958e-08, -2.026558e-06, 0, 0, -1.2589393)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_R_002 rb")
 
@@ -2097,9 +2069,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_8ntf1")
 
-[node name="Physical Bone tentacle_004_R_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_002 rb" unique_id=2027767903 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_R_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_002 rb" unique_id=2027767903 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(6.854534e-07, 5.8190583e-08, -1.0000001, 3.1370817e-08, 1, 5.8190615e-08, 1.0000001, -3.1370853e-08, 6.854534e-07, 9.536743e-07, 0, -1.5160484)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_R_002 rb")
 
@@ -2119,9 +2090,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_xg7q5")
 
-[node name="Physical Bone tentacle_001_R_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_003 rb" unique_id=630635838 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_R_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_003 rb" unique_id=630635838 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.008119434, -0.10260073, -0.99468946, 0.07869614, 0.99157155, -0.1029215, 0.9968657, -0.07911388, 2.3275614e-05, 0, 0, -0.72389925)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_R_003 rb")
 
@@ -2133,9 +2103,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ielwa")
 
-[node name="Physical Bone tentacle_002_R_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_003 rb" unique_id=2030967041 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_R_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_003 rb" unique_id=2030967041 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.4901161e-07, -3.9601045e-07, -1, -2.0151101e-07, 1, -3.9601048e-07, 1.0000001, 2.0151109e-07, 2.0861626e-07, -1.7881393e-07, 0, -0.9349632)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_R_003 rb")
 
@@ -2147,9 +2116,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1hvod")
 
-[node name="Physical Bone tentacle_003_R_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_003 rb" unique_id=677188260 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_R_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_003 rb" unique_id=677188260 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(6.2584877e-07, 0.00024191383, -1, -2.1789879e-07, 1, 0.00024191383, 1, 2.1774758e-07, 6.2584877e-07, -2.3841858e-07, 0, -1.0134716)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_R_003 rb")
 
@@ -2161,9 +2129,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_kqx06")
 
-[node name="Physical Bone tentacle_004_R_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_003 rb" unique_id=1065547558 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_R_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_003 rb" unique_id=1065547558 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.1026859e-06, -4.3608085e-07, -1, -2.2096083e-07, 1, -4.360811e-07, 1.0000001, 2.2096133e-07, 1.1622906e-06, 0, 0, -1.220448)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_R_003 rb")
 
@@ -2183,9 +2150,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_qh0k2")
 
-[node name="Physical Bone tentacle_001_R_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_004 rb" unique_id=2129685905 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_R_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_R_004 rb" unique_id=2129685905 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.028968096, 0.3650109, -0.93055254, 0.07362351, 0.9276355, 0.3661586, 0.9968653, -0.07911747, -1.4901161e-06, 0, 0, -0.7238991)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_R_004 rb")
 
@@ -2197,9 +2163,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_b8nug")
 
-[node name="Physical Bone tentacle_002_R_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_004 rb" unique_id=1583259140 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_R_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_R_004 rb" unique_id=1583259140 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.1920929e-07, -2.682384e-07, -0.99999994, -3.3770255e-07, 1, -2.682384e-07, 1.0000001, 3.377025e-07, -1.4901161e-07, 0, 0, -0.9349637)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_R_004 rb")
 
@@ -2211,9 +2176,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_sj8w5")
 
-[node name="Physical Bone tentacle_003_R_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_004 rb" unique_id=1154835345 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_R_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_R_004 rb" unique_id=1154835345 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.4901161e-07, -0.00024238431, -1, -3.3547838e-07, 1, -0.00024238431, 1, 3.3545803e-07, -8.940697e-08, -2.3841858e-07, 0, -1.0134711)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_R_004 rb")
 
@@ -2225,9 +2189,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_3ktrh")
 
-[node name="Physical Bone tentacle_004_R_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_004 rb" unique_id=1636781077 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_R_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_R_004 rb" unique_id=1636781077 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.5795231e-06, -6.484175e-07, -1, -3.3242839e-07, 1, -6.484181e-07, 1, 3.3242947e-07, 1.5795231e-06, -2.3841858e-07, -9.536743e-07, -1.2204485)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_R_004 rb")
 
@@ -2247,9 +2210,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_wxitg")
 
-[node name="Physical Bone tentacle_001_L rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L rb" unique_id=405026512 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_L rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L rb" unique_id=405026512 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-1.9423457e-07, -1.4590712e-06, 1, -0.07911398, -0.9968656, -1.4550101e-06, 0.99686563, -0.07911399, 7.937169e-08, -2.2737368e-13, -9.536743e-07, -1.0772879)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_L rb")
 
@@ -2261,9 +2223,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2bfs6")
 
-[node name="Physical Bone tentacle_002_L rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L rb" unique_id=1579570694 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_L rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L rb" unique_id=1579570694 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.2097174e-06, 1, -1.7292749e-06, -5.129231e-08, 1.7292749e-06, 1, 1, -1.2097173e-06, 5.12944e-08, 0, -2.842171e-14, -1.3913872)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_L rb")
 
@@ -2275,9 +2236,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_pnd53")
 
-[node name="Physical Bone tentacle_003_L rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L rb" unique_id=1908831474 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_L rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L rb" unique_id=1908831474 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.18772e-06, 1, -1.4589409e-06, -4.921273e-08, 1.4589409e-06, 1, 1, -1.1877199e-06, 4.9214442e-08, 9.536743e-07, 1.7053026e-13, -1.5082221)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_L rb")
 
@@ -2289,9 +2249,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_tw3fh")
 
-[node name="Physical Bone tentacle_004_L rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L rb" unique_id=392693304 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_L rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L rb" unique_id=392693304 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.1877203e-06, 1, -2.1741969e-06, -5.05812e-08, 2.1741969e-06, 1, 1, -1.1877203e-06, 5.0583765e-08, 0, -2.2737368e-13, -1.8162384)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_L rb")
 
@@ -2311,9 +2270,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2n4to")
 
-[node name="Physical Bone tentacle_001_L_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_001 rb" unique_id=1829730424 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_L_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_001 rb" unique_id=1829730424 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.020976573, 0.2642889, -0.9642155, 0.076282956, 0.9611933, 0.26512003, 0.99686563, -0.07911443, 1.8179417e-06, -1.1920929e-07, -9.536743e-07, -0.8992318)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_L_001 rb")
 
@@ -2325,9 +2283,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ykesa")
 
-[node name="Physical Bone tentacle_002_L_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_001 rb" unique_id=633161017 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_L_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_001 rb" unique_id=633161017 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-8.940697e-08, 5.0952963e-08, -1, 1.8413073e-07, 1, 5.095292e-08, 1, -1.8413074e-07, -8.940697e-08, 1.1920929e-07, 0, -1.1614158)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_L_001 rb")
 
@@ -2339,9 +2296,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_vfeev")
 
-[node name="Physical Bone tentacle_003_L_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_001 rb" unique_id=1241283474 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_L_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_001 rb" unique_id=1241283474 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-3.2782555e-07, 6.04727e-07, -1, 1.7772665e-07, 1, 6.0472695e-07, 1, -1.7772645e-07, -3.2782555e-07, -2.3841858e-07, -9.536743e-07, -1.2589417)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_L_001 rb")
 
@@ -2353,9 +2309,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_0s451")
 
-[node name="Physical Bone tentacle_004_L_001 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_001 rb" unique_id=1501963336 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_L_001 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_001 rb" unique_id=1501963336 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(7.4505806e-07, -0.00025115142, -0.9999999, 1.8264109e-07, 0.99999994, -0.00025115145, 1, -1.8248102e-07, 6.556511e-07, 0, 0, -1.5160475)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_L_001 rb")
 
@@ -2375,9 +2330,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dd4gb")
 
-[node name="Physical Bone tentacle_006_L rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_006_L rb" unique_id=354379888 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_006_L rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_006_L rb" unique_id=354379888 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.021890998, -0.27608007, -0.9608853, 0.07602539, 0.957873, -0.2769466, 0.99686563, -0.07911429, 2.0295382e-05, 0, -9.536743e-07, -0.8992324)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_L_002 rb")
 
@@ -2389,9 +2343,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1kmux")
 
-[node name="Physical Bone tentacle_002_L_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_002 rb" unique_id=1962324772 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_L_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_002 rb" unique_id=1962324772 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(5.9604645e-07, 0.00023465295, -1, 4.3503874e-08, 1, 0.00023465295, 1, -4.3655746e-08, 7.1525574e-07, 2.3841858e-07, 0, -1.161417)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_L_002 rb")
 
@@ -2403,9 +2356,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_8lq58")
 
-[node name="Physical Bone tentacle_003_L_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_002 rb" unique_id=343169937 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_L_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_002 rb" unique_id=343169937 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-8.940697e-08, 3.0498255e-09, -1.0000001, 3.692112e-08, 1, 3.049827e-09, 1.0000001, -3.6921115e-08, -8.940697e-08, 2.3841858e-07, 0, -1.2589397)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_L_002 rb")
 
@@ -2417,9 +2369,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_i8hlv")
 
-[node name="Physical Bone tentacle_004_L_002 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_002 rb" unique_id=2010730418 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_L_002 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_002 rb" unique_id=2010730418 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(6.556511e-07, 3.0514875e-09, -1.0000001, 3.7924288e-08, 1, 3.0515164e-09, 1.0000002, -3.7924288e-08, 7.1525574e-07, -2.3841858e-07, -9.536743e-07, -1.5160484)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_L_002 rb")
 
@@ -2439,9 +2390,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_j4t0d")
 
-[node name="Physical Bone tentacle_001_L_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_003 rb" unique_id=1456317533 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_L_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_003 rb" unique_id=1456317533 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(0.012146562, 0.15310276, -0.9881356, 0.078176096, 0.9850384, 0.15358384, 0.9968657, -0.07911413, -4.053116e-06, -5.9604645e-08, 9.536743e-07, -0.72389925)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_L_003 rb")
 
@@ -2453,9 +2403,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ili6o")
 
-[node name="Physical Bone tentacle_002_L_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_003 rb" unique_id=152315354 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_L_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_003 rb" unique_id=152315354 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-3.2782555e-07, -4.555974e-07, -1, -8.938232e-08, 1, -4.5559733e-07, 0.99999994, 8.938214e-08, -3.874302e-07, 5.9604645e-08, 9.536743e-07, -0.93496346)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_L_003 rb")
 
@@ -2467,9 +2416,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_27ukg")
 
-[node name="Physical Bone tentacle_003_L_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_003 rb" unique_id=1988919634 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_L_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_003 rb" unique_id=1988919634 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(3.874302e-07, 4.5547235e-08, -1, -8.9064656e-08, 1, 4.5547193e-08, 1, 8.906462e-08, 3.874302e-07, -2.3841858e-07, 0, -1.0134706)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_L_003 rb")
 
@@ -2481,9 +2429,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_78rge")
 
-[node name="Physical Bone tentacle_004_L_003 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_003 rb" unique_id=490516497 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_L_003 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_003 rb" unique_id=490516497 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-3.5762787e-07, -4.5679414e-07, -1, -8.233709e-08, 1, -4.5679408e-07, 1, 8.233692e-08, -3.5762787e-07, 0, 0, -1.2204485)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_L_003 rb")
 
@@ -2503,9 +2450,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_x70vd")
 
-[node name="Physical Bone tentacle_001_L_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_004 rb" unique_id=1887108125 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_001_L_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_001_L_004 rb" unique_id=1887108125 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-0.032713234, -0.4121921, -0.9105095, 0.07203379, 0.9076557, -0.41348818, 0.99686575, -0.079113975, -6.556511e-07, -1.1920929e-07, -2.3841858e-07, -0.723899)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_002_L_004 rb")
 
@@ -2517,9 +2463,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_qeyvy")
 
-[node name="Physical Bone tentacle_002_L_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_004 rb" unique_id=1606659259 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_002_L_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_002_L_004 rb" unique_id=1606659259 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-5.9604645e-07, 0.00029126822, -0.99999994, -2.7220645e-07, 0.99999994, 0.00029126822, 1, 2.723682e-07, -5.662441e-07, 0, 0, -0.934963)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_003_L_004 rb")
 
@@ -2531,9 +2476,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_lrjme")
 
-[node name="Physical Bone tentacle_003_L_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_004 rb" unique_id=2134991310 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_003_L_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_003_L_004 rb" unique_id=2134991310 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(-3.2782555e-07, -0.00048461882, -0.9999998, -2.8606937e-07, 0.9999999, -0.00048461882, 0.99999994, 2.8590148e-07, -3.5762787e-07, 1.1920929e-07, -9.536743e-07, -1.0134716)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_004_L_004 rb")
 
@@ -2545,9 +2489,8 @@ collision_layer = 0
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7s7i1")
 
-[node name="Physical Bone tentacle_004_L_004 rb hinge" type="Node3D" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_004 rb" unique_id=1293323977 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
+[node name="Physical Bone tentacle_004_L_004 rb hinge" parent="Armature/rigidBodyParent/Physical Bone tentacle_004_L_004 rb" unique_id=1293323977 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_6uhsp")]
 transform = Transform3D(1.1324883e-06, 0.00031180985, -1, -2.7933817e-07, 0.99999994, 0.00031180988, 1, 2.7898204e-07, 1.1622906e-06, -5.9604645e-07, -9.536743e-07, -1.220448)
-script = ExtResource("6_kldop")
 nodeA = NodePath("..")
 nodeB = NodePath("../../Physical Bone tentacle_005_L_004 rb")
 
