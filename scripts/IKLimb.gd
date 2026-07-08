@@ -53,17 +53,66 @@ func _physics_process(delta: float) -> void:
 		
 		i += 1
 	
-	forwardKinematics(chain)
+	forwardKinematics(chain,endPointMarker)
 	
 	pass
 
-func forwardKinematics(chain : Array[HingePlus]):
+func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D):
 	
 	var currentNode : HingePlus = chain[0]
 	var currentTrans : Transform3D = chain[0].global_transform
 	
-	var targetPoses = []
+	var targetPoses : Array[Vector3] = []
 	
+	#keeps track of the differences between each hinge. local space
+	var hingeToNextTransforms : Array[Transform3D] = []
+	
+	var i : int = 0
+	hingeToNextTransforms.resize(chain.size())
+	while i < chain.size():
+		
+		#it's endpoint unless there's an actual next link in the chain
+		
+		var nextTrans : Transform3D = endPoint.global_transform
+		if i + 1 != chain.size():
+			nextTrans = chain[i+1].global_transform
+		
+		hingeToNextTransforms[i] = chain[i].global_transform.affine_inverse() * nextTrans
+		
+		#hingeToNextTransforms[i] = hingeToNextTransforms[i].rotated_local(
+			#Vector3.FORWARD,
+			##-chain[i].getAngleToTargetAngle()
+			#-PI/2.0
+			#)
+		
+		hingeToNextTransforms[i] = hingeToNextTransforms[i].rotated(
+			chain[i].rotAxis,
+			chain[i].getAngleToTargetAngle()
+			#-PI/2.0
+			)
+		
+		print(rad_to_deg(chain[i].getAngleToTargetAngle()))
+		
+		i += 1
+	print()
+	
+	i = 0
+	while i < chain.size() + 1:
+		
+		MP.mark(
+			currentTrans.origin,
+			3.0,
+			Color.GREEN.lerp(
+				Color.RED,
+				float(i)/float(chain.size()
+				)
+			)
+		)
+		
+		if i < chain.size():
+			currentTrans = currentTrans * hingeToNextTransforms[i]
+		
+		i += 1
 	
 	pass
 
