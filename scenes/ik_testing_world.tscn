@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://cftin6so4jbqm"]
+
+[ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="2_22wh1"]
+[ext_resource type="Script" uid="uid://chalyxj3xy648" path="res://scripts/IKLimb.gd" id="3_22wh1"]
+[ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="3_ph5w1"]
+[ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_3u38t"]
+[ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="4_ph5w1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_qfnet"]
+sky_material = SubResource("ProceduralSkyMaterial_3u38t")
+
+[sub_resource type="Environment" id="Environment_amlxo"]
+background_mode = 2
+sky = SubResource("Sky_qfnet")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3u38t"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amlxo"]
+resource_name = "vertex metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_3u38t")
+metallic = 0.83181816
+roughness = 0.20909092
+uv1_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5jdpw"]
+bounce = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_in1ee"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22wh1"]
+resource_name = "vertex metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.07484112, 0.8285906, 0.5144333, 1)
+albedo_texture = SubResource("CompressedTexture2D_in1ee")
+metallic = 0.83181816
+roughness = 0.20909092
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7wv7s"]
+material = SubResource("StandardMaterial3D_22wh1")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7wv7s"]
+radius = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wv7s"]
+friction = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jdpw"]
+albedo_color = Color(1, 0.53, 0.53, 1)
+metallic = 0.51
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_7wv7s"]
+material = SubResource("StandardMaterial3D_5jdpw")
+size = Vector3(8, 2, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amlxo"]
+size = Vector3(8, 2, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ph5w1"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1m2t"]
+albedo_color = Color(0.74299437, 0.96511227, 0.75348794, 1)
+metallic = 0.51
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_xdksd"]
+material = SubResource("StandardMaterial3D_k1m2t")
+size = Vector3(2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ph5w1"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswk3"]
+albedo_color = Color(0.7711013, 0.96216315, 0.9334401, 1)
+metallic = 0.51
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xypk"]
+material = SubResource("StandardMaterial3D_bswk3")
+size = Vector3(1, 8, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wv7s"]
+size = Vector3(1, 8, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vv1ie"]
+albedo_color = Color(0.7387931, 0.26483205, 0.643609, 1)
+metallic = 0.51
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_ee8c2"]
+material = SubResource("StandardMaterial3D_vv1ie")
+size = Vector3(1, 6, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3u38t"]
+size = Vector3(1, 6, 1.2)
+
+[node name="ikTestingWorld" type="Node3D" unique_id=187048241]
+
+[node name="env" type="Node3D" parent="." unique_id=410410846]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env" unique_id=759295454]
+environment = SubResource("Environment_amlxo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env" unique_id=1556667548]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="CSGBox3D" parent="env" unique_id=1845816061]
+calculate_tangents = false
+use_collision = true
+collision_layer = 3
+collision_mask = 15
+size = Vector3(1000, 1, 1000)
+material = SubResource("StandardMaterial3D_amlxo")
+
+[node name="spectator" parent="." unique_id=1764623012 instance=ExtResource("2_22wh1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.173878, 5.009712, -1.9073486e-06)
+projectileScene = ExtResource("3_ph5w1")
+
+[node name="floating target" type="RigidBody3D" parent="." unique_id=493336167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.961554, 9.02539)
+collision_layer = 5
+collision_mask = 14
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_5jdpw")
+gravity_scale = 0.0
+linear_damp = 5.0
+angular_damp = 15.0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floating target" unique_id=176920959]
+mesh = SubResource("SphereMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floating target" unique_id=743387040]
+shape = SubResource("SphereShape3D_7wv7s")
+
+[node name="robotArm" type="Node3D" parent="." unique_id=1563920874 node_paths=PackedStringArray("hingeOwner", "startingHinge", "endPointMarker", "target")]
+script = ExtResource("3_22wh1")
+hingeOwner = NodePath("baseOfArm")
+startingHinge = NodePath("baseOfArm/newHinge")
+endPointMarker = NodePath("thirdSegment/Marker3D")
+target = NodePath("../floating target")
+
+[node name="baseOfArm" type="RigidBody3D" parent="robotArm" unique_id=1440466146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 5
+collision_mask = 10
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_7wv7s")
+script = ExtResource("4_3u38t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/baseOfArm" unique_id=1855286291]
+mesh = SubResource("BoxMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/baseOfArm" unique_id=2119725501]
+shape = SubResource("BoxShape3D_amlxo")
+
+[node name="newHinge" parent="robotArm/baseOfArm" unique_id=1618069539 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("4_ph5w1")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../firstSegment")
+
+[node name="firstSegment" type="RigidBody3D" parent="robotArm" unique_id=199678219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+collision_layer = 5
+collision_mask = 10
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ph5w1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/firstSegment" unique_id=1904210690]
+mesh = SubResource("BoxMesh_xdksd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/firstSegment" unique_id=1148563408]
+shape = SubResource("BoxShape3D_ph5w1")
+
+[node name="newHinge" parent="robotArm/firstSegment" unique_id=1436546955 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("4_ph5w1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../secondSegment")
+
+[node name="secondSegment" type="RigidBody3D" parent="robotArm" unique_id=323371924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+collision_layer = 5
+collision_mask = 10
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_ph5w1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/secondSegment" unique_id=593281991]
+mesh = SubResource("BoxMesh_2xypk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/secondSegment" unique_id=1902579555]
+shape = SubResource("BoxShape3D_7wv7s")
+
+[node name="newHinge" parent="robotArm/secondSegment" unique_id=1898540605 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("4_ph5w1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../thirdSegment")
+
+[node name="thirdSegment" type="RigidBody3D" parent="robotArm" unique_id=1826504024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+collision_layer = 5
+collision_mask = 10
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_ph5w1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/thirdSegment" unique_id=1983389704]
+mesh = SubResource("BoxMesh_ee8c2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/thirdSegment" unique_id=1855200449]
+shape = SubResource("BoxShape3D_3u38t")
+
+[node name="Marker3D" type="Marker3D" parent="robotArm/thirdSegment" unique_id=879340568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

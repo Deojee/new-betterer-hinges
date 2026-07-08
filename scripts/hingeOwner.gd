@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name HingeOwner
+
 var allHinges = []
 var needsToRecountHinges = true
 
@@ -50,24 +52,24 @@ func _physics_process(delta: float) -> void:
 			while j < allNodes.size():
 				allNodes[completed].add_collision_exception_with(allNodes[j])
 				allNodes[j].add_collision_exception_with(allNodes[completed])
-				prints(allNodes[completed].name + " | "+ str(allNodes[completed].get_collision_exceptions().size()) + " | " + allNodes[j].name)
+				#prints(allNodes[completed].name + " | "+ str(allNodes[completed].get_collision_exceptions().size()) + " | " + allNodes[j].name)
 				j += 1
-			print()
+			#print()
 			
 			
 			completed += 1
 		
-		print()
-		for hinge in allHinges:
-			print(hinge.nodeA.get_collision_exceptions().size())
-			print(hinge.nodeB.get_collision_exceptions().size())
-		
+		#print()
+		#for hinge in allHinges:
+			#print(hinge.nodeA.get_collision_exceptions().size())
+			#print(hinge.nodeB.get_collision_exceptions().size())
+		#
 	
 	
 	var shuffledHinges = allHinges.duplicate()
 	
-	var iterations = 5
-	var inv = 1.0 # 1.0/iterations * 0.001
+	var iterations = 10
+	var inv = 0.97 # 1.0/iterations * 0.001
 	
 	#print(shuffledHinges.size())
 	for i in iterations:

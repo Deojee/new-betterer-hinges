@@ -122,6 +122,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
+	return
 	for i in 5:
 		update(1.0)
 		pass
@@ -163,7 +164,7 @@ func update(del):
 		motorSpeed = deg_to_rad(value)
 var motorSpeed = PI
 
-@export var targetAngleDegrees : float:
+@export var targetAngleDegrees : float = 0:
 	get:
 		return rad_to_deg(targetAngle)
 	set(value):
@@ -171,7 +172,7 @@ var motorSpeed = PI
 var targetAngle = 0 #-PI/4.0
 
 
-@export var maxMotorSpeedDegrees : float:
+@export var maxMotorSpeedDegrees : float = rad_to_deg(PI):
 	get:
 		return rad_to_deg(maxMotorSpeed)
 	set(value):
@@ -187,6 +188,7 @@ func adjustTargetSpeed():
 	var PI2 = PI * 2
 	
 	var difference = angle_difference(currentAngle,targetAngle)
+	
 	motorSpeed = abs(difference) * difference * TPS
 	
 	motorSpeed = clamp(motorSpeed,-maxMotorSpeed,maxMotorSpeed)
