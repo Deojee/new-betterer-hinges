@@ -10,23 +10,26 @@ extends Node3D
 var lastHinge = null
 func _physics_process(delta: float) -> void:
 	
-	var chain = [startingHinge]
+	var chain = []
 	
-	var current = null #startingHinge
+	var current = startingHinge
 	while current:
 		chain.append(current)
 		current = current.getNextInChain()
 	
 	for hinge in chain:
 		hinge = hinge as HingePlus
-		var hingeToEndpoint = hinge.global_transform.affine_inverse() * endPointMarker.global_transform
-		var hingeToTarget = hinge.global_transform.affine_inverse() * target.global_transform
+		#var hingeToEndpoint = hinge.global_transform.affine_inverse() * endPointMarker.global_transform
+		#var hingeToTarget = hinge.global_transform.affine_inverse() * target.global_transform
+		
+		var hingeToEndpoint = endPointMarker.global_position - hinge.global_position
+		var hingeToTarget = target.global_position - hinge.global_position
 		
 		lastHinge = hinge
 		var angle = angleDifferenceAroundAxis(
 					hinge.rotAxis,
-					hingeToTarget.origin,
-					hingeToEndpoint.origin
+					hingeToTarget,
+					hingeToEndpoint
 					)
 		
 		hinge.targetAngle = (
@@ -52,14 +55,14 @@ returns the angle from A to B, positive meaning clockwise from the perspecive of
 """
 func angleDifferenceAroundAxis(axis : Vector3,vecA : Vector3,vecB : Vector3):
 	
-	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.GREEN)
-	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.RED)
+	#Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.GREEN)
+	#Mathy.draw_debug_sphere(get_tree(),vecB + lastHinge.global_position,1.0,Color.RED)
 	
 	
 	vecA -= vecA.dot(axis) * axis
 	vecB -= vecB.dot(axis) * axis
 	
-	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.REBECCA_PURPLE)
+	#Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.REBECCA_PURPLE)
 	
 	if is_zero_approx(vecA.length()) or is_zero_approx(vecB.length()):
 		return 0
@@ -69,6 +72,6 @@ func angleDifferenceAroundAxis(axis : Vector3,vecA : Vector3,vecB : Vector3):
 	var thirdVec = vecA.cross(axis)
 	var sign = sign(thirdVec.dot(vecB))
 	
-	return angle * sign
+	return -angle * sign
 	
 	pass

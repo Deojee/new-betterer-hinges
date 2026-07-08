@@ -100,7 +100,7 @@ static func draw_line_between(tree : SceneTree, location,loc2, size, color := Co
 	
 	
 	var killTween = tree.create_tween().bind_node(node)
-	killTween.tween_property(node,"scale",Vector3.ONE * 0.8,0.03)
+	killTween.tween_property(node,"scale",Vector3.ONE * 0.8,0.1)
 	killTween.tween_callback(node.queue_free)
 	#node.queue_free()
 	
