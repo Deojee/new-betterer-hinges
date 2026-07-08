@@ -103,6 +103,8 @@ func setup():
 		#print(bonesToRigidBodies)
 		bone.set_collision_mask_value(1, false)
 		bone.set_collision_layer_value(1, false)
+		bone.set_collision_mask_value(2, false)
+		bone.set_collision_layer_value(2, false)
 		
 		rigidBody.set_collision_layer_value(1, true)
 		rigidBody.set_collision_layer_value(2, false)

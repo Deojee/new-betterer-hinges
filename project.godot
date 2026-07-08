@@ -100,6 +100,10 @@ t={
 3d_physics/layer_3="bodies"
 3d_physics/layer_4="weapons"
 
+[network]
+
+limits/debugger/max_chars_per_second=536870912
+
 [physics]
 
 common/max_physics_steps_per_frame=1

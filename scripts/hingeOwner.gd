@@ -32,16 +32,25 @@ func _physics_process(delta: float) -> void:
 			
 			count += 1
 		
+		
+		#list of all the physics bodies that need exceptions with eachother
+		var allNodes = [] 
+		for hinge in allHinges:
+			if !allNodes.has(hinge.nodeA):
+				allNodes.append(hinge.nodeA)
+			if !allNodes.has(hinge.nodeB):
+				allNodes.append(hinge.nodeB)
+		
+		
 		var completed = 0
 		var j = 0
 		
-		var nodesThatShouldBeCompleted = []
-		
-		while completed < allHinges.size():
+		while completed < allNodes.size():
 			j = completed + 1 #only need to add exceptions with unprocessed hinges
-			while j < allHinges.size():
-				allHinges[completed].nodeA.add_collision_exception_with(allHinges[j].nodeA)
-				print(allHinges[completed].name + str(allHinges[completed].nodeA.get_collision_exceptions().size()) + " " + allHinges[j].name)
+			while j < allNodes.size():
+				allNodes[completed].add_collision_exception_with(allNodes[j])
+				allNodes[j].add_collision_exception_with(allNodes[completed])
+				prints(allNodes[completed].name + " | "+ str(allNodes[completed].get_collision_exceptions().size()) + " | " + allNodes[j].name)
 				j += 1
 			print()
 			
