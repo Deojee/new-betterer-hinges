@@ -6,10 +6,13 @@ extends Node3D
 
 @export var target : Node3D
 
+
+var lastHinge = null
 func _physics_process(delta: float) -> void:
 	
-	var chain = []
-	var current = startingHinge
+	var chain = [startingHinge]
+	
+	var current = null #startingHinge
 	while current:
 		chain.append(current)
 		current = current.getNextInChain()
@@ -19,19 +22,23 @@ func _physics_process(delta: float) -> void:
 		var hingeToEndpoint = hinge.global_transform.affine_inverse() * endPointMarker.global_transform
 		var hingeToTarget = hinge.global_transform.affine_inverse() * target.global_transform
 		
-		var rotAx = hinge.rotAxis
+		lastHinge = hinge
+		var angle = angleDifferenceAroundAxis(
+					hinge.rotAxis,
+					hingeToTarget.origin,
+					hingeToEndpoint.origin
+					)
 		
-		hingeToEndpoint.origin -= hingeToEndpoint.origin.dot(rotAx) * rotAx
-		hingeToTarget.origin -= hingeToTarget.origin.dot(rotAx) * rotAx
-		
-		hinge.targetAngle = (hinge.targetAngle + 
-			angleDifferenceAroundAxis(
-				rotAx,
-				hingeToEndpoint.origin,
-				hingeToTarget.origin)
+		hinge.targetAngle = (
+			fmod(
+				hinge.getAngle() + 
+				angle
+				,
+				TAU
+				)
 			)
 		
-		prints(hinge,rad_to_deg(hinge.targetAngle))
+		#prints(hinge,rad_to_deg(hinge.targetAngle),rad_to_deg(angle))
 		
 		pass
 	
@@ -45,8 +52,14 @@ returns the angle from A to B, positive meaning clockwise from the perspecive of
 """
 func angleDifferenceAroundAxis(axis : Vector3,vecA : Vector3,vecB : Vector3):
 	
+	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.GREEN)
+	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.RED)
+	
+	
 	vecA -= vecA.dot(axis) * axis
 	vecB -= vecB.dot(axis) * axis
+	
+	Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.REBECCA_PURPLE)
 	
 	if is_zero_approx(vecA.length()) or is_zero_approx(vecB.length()):
 		return 0
