@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="3_ph5w1"]
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_3u38t"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="4_ph5w1"]
-[ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scenes/marker_placer.gd" id="6_3u38t"]
+[ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scripts/marker_placer.gd" id="6_3u38t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -108,6 +108,15 @@ size = Vector3(1, 6, 1.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3u38t"]
 size = Vector3(1, 6, 1.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u38t"]
+albedo_color = Color(0.11428534, 0.33322582, 0.116175376, 1)
+metallic = 0.51
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_amlxo"]
+material = SubResource("StandardMaterial3D_3u38t")
+size = Vector3(1, 6, 1.2)
+
 [sub_resource type="PrismMesh" id="PrismMesh_jbk7a"]
 
 [node name="ikTestingWorld" type="Node3D" unique_id=187048241]
@@ -154,7 +163,7 @@ shape = SubResource("SphereShape3D_7wv7s")
 script = ExtResource("3_22wh1")
 hingeOwner = NodePath("baseOfArm")
 startingHinge = NodePath("baseOfArm/newHinge")
-endPointMarker = NodePath("thirdSegment/Marker3D")
+endPointMarker = NodePath("forthSegment/Marker3D")
 target = NodePath("../floating target")
 
 [node name="baseOfArm" type="RigidBody3D" parent="robotArm" unique_id=1440466146]
@@ -229,7 +238,27 @@ mesh = SubResource("BoxMesh_ee8c2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/thirdSegment" unique_id=1855200449]
 shape = SubResource("BoxShape3D_3u38t")
 
-[node name="Marker3D" type="Marker3D" parent="robotArm/thirdSegment" unique_id=879340568]
+[node name="newHinge" parent="robotArm/thirdSegment" unique_id=187829274 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("4_ph5w1")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 3, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../forthSegment")
+targetAngleDegrees = 15.0
+maxMotorSpeedDegrees = 40.0
+
+[node name="forthSegment" type="RigidBody3D" parent="robotArm" unique_id=2124565539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
+collision_layer = 5
+collision_mask = 10
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_ph5w1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/forthSegment" unique_id=216818460]
+mesh = SubResource("BoxMesh_amlxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/forthSegment" unique_id=1584691564]
+shape = SubResource("BoxShape3D_3u38t")
+
+[node name="Marker3D" type="Marker3D" parent="robotArm/forthSegment" unique_id=256512714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="testingGuy" type="MeshInstance3D" parent="robotArm" unique_id=1029394753]
