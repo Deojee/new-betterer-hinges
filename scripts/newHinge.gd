@@ -184,10 +184,7 @@ func adjustTargetSpeed():
 	if !aimForTarget:
 		return
 	
-	var currentAngle = getAngle()
-	var PI2 = PI * 2
-	
-	var difference = angle_difference(currentAngle,targetAngle)
+	var difference = getAngleToTargetAngle()
 	
 	motorSpeed = abs(difference) * difference * TPS
 	
@@ -195,6 +192,11 @@ func adjustTargetSpeed():
 	#print(motorSpeed)
 	
 	pass
+
+func getAngleToTargetAngle():
+	var currentAngle = getAngle()
+	var difference = angle_difference(currentAngle,targetAngle)
+	return difference
 
 func handleMotor(del):
 	

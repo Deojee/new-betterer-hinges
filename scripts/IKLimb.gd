@@ -10,17 +10,25 @@ extends Node3D
 var lastHinge = null
 func _physics_process(delta: float) -> void:
 	
-	var chain = []
+	var chain : Array[HingePlus] = []
 	
 	var current = startingHinge
 	while current:
 		chain.append(current)
 		current = current.getNextInChain()
 	
-	for hinge in chain:
+	var i = 0
+	while i < chain.size():
+		
+		var hinge : HingePlus = chain[i]
+		
+		var realTransform = hinge.global_transform
+		
+		
+		
 		hinge = hinge as HingePlus
-		#var hingeToEndpoint = hinge.global_transform.affine_inverse() * endPointMarker.global_transform
-		#var hingeToTarget = hinge.global_transform.affine_inverse() * target.global_transform
+		
+		
 		
 		var hingeToEndpoint = endPointMarker.global_position - hinge.global_position
 		var hingeToTarget = target.global_position - hinge.global_position
@@ -43,7 +51,19 @@ func _physics_process(delta: float) -> void:
 		
 		#prints(hinge,rad_to_deg(hinge.targetAngle),rad_to_deg(angle))
 		
-		pass
+		i += 1
+	
+	forwardKinematics(chain)
+	
+	pass
+
+func forwardKinematics(chain : Array[HingePlus]):
+	
+	var currentNode : HingePlus = chain[0]
+	var currentTrans : Transform3D = chain[0].global_transform
+	
+	var targetPoses = []
+	
 	
 	pass
 
@@ -57,14 +77,14 @@ func angleDifferenceAroundAxis(axis : Vector3,vecA : Vector3,vecB : Vector3):
 	
 	#Mathy.draw_debug_sphere(get_tree(),vecA + lastHinge.global_position,1.0,Color.GREEN)
 	#Mathy.draw_debug_sphere(get_tree(),vecB + lastHinge.global_position,1.0,Color.RED)
-	MP.mark(vecA + lastHinge.global_position,2.0,Color.GREEN)
-	MP.mark(vecB + lastHinge.global_position,1.0,Color.RED)
+	#MP.mark(vecA + lastHinge.global_position,2.0,Color.GREEN)
+	#MP.mark(vecB + lastHinge.global_position,1.0,Color.RED)
 	
 	vecA -= vecA.dot(axis) * axis
 	vecB -= vecB.dot(axis) * axis
 	
-	MP.mark(vecA + lastHinge.global_position,1.0,Color.REBECCA_PURPLE)
-	MP.mark(vecB + lastHinge.global_position,1.0,Color.MEDIUM_PURPLE)
+	#MP.mark(vecA + lastHinge.global_position,1.0,Color.REBECCA_PURPLE)
+	#MP.mark(vecB + lastHinge.global_position,1.0,Color.MEDIUM_PURPLE)
 	
 	
 	if is_zero_approx(vecA.length()) or is_zero_approx(vecB.length()):
