@@ -11,8 +11,8 @@ var offsetA : Transform3D
 var offsetB : Transform3D
 
 #same as before but offset by 1 along the rotation axis
-var axisOffsetA : Transform3D
-var axisOffsetB : Transform3D
+#var axisOffsetA : Transform3D
+#var axisOffsetB : Transform3D
 
 
 static var numHinges = 0
@@ -52,9 +52,10 @@ func setup():
 	#axisOffsetA = global_transform.affine_inverse() * Transform3D(nodeA.global_transform.basis,nodeA.global_transform.origin + rotAxis)
 	#axisOffsetB = global_transform.affine_inverse() * Transform3D(nodeB.global_transform.basis,nodeB.global_transform.origin + rotAxis)
 	
-	var offsetTrans = Transform3D(global_transform.basis,global_transform.origin + rotAxis)
-	axisOffsetA = offsetTrans.affine_inverse() * nodeA.global_transform
-	axisOffsetB = offsetTrans.affine_inverse() * nodeB.global_transform
+	#var offsetTransA = Transform3D(global_transform.basis,global_transform.origin + rotAxis)
+	
+	#axisOffsetA = offsetTrans.affine_inverse() * nodeA.global_transform
+	#axisOffsetB = offsetTrans.affine_inverse() * nodeB.global_transform
 	
 	nodeA.add_collision_exception_with(nodeB)
 	nodeB.add_collision_exception_with(nodeA)
@@ -76,8 +77,6 @@ func setup():
 		if !bodiesDict[nodeB].has(self):
 			bodiesDict[nodeB].append(self)
 	
-	pass
-
 
 
 #returns the next hinge in the chain or null
@@ -109,8 +108,8 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
-	
-	
+	MP.mark(objectAPoint.origin,0.5,Color.RED)
+	MP.mark(objectBPoint.origin,0.5,Color.GREEN)
 	
 	
 	for i in 5:
@@ -134,33 +133,39 @@ func update(del):
 
 func alignToAxis(del):
 	
+	#point where object A wants the pinjoint to be
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
 	
-	var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()
-	var objectAxisBPoint = nodeB.global_transform * axisOffsetB.affine_inverse()
 	
-	#Mathy.draw_debug_sphere(get_tree(),objectAxisAPoint.origin,0.5)
-	#Mathy.draw_debug_sphere(get_tree(),objectAxisBPoint.origin,0.5)
+	#var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()
+	#var objectAxisBPoint = nodeB.global_transform * axisOffsetB.affine_inverse()
+	
 	
 	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
 	
-	var objAAxis = -(objectAPoint.origin - objectAxisAPoint.origin)
-	var objectAAngleOffAxis = objAAxis.angle_to(middle.basis.z)
+	var objAToMiddle = middle.origin - nodeA.global_position
+	var objAToPoint = objectAPoint.origin - nodeA.global_position
+	
+	var objBToMiddle = middle.origin - nodeB.global_position
+	var objBToPoint = objectBPoint.origin - nodeB.global_position
+	
+	#var objAAxis = -(objectAPoint.origin - objectAxisAPoint.origin)
+	var objectAAngleOffAxis = objAToMiddle.angle_to(objAToPoint)
 	var objectAAxis
 	if objectAAngleOffAxis > 0: # and !nodeA.freeze:
-		objectAAxis = (objAAxis.cross(middle.basis.z)).normalized()
+		objectAAxis = (objAToMiddle.cross(objAToPoint)).normalized()
 		
 		#nodeA.angular_velocity -= nodeA.angular_velocity.dot(objectAAxis) * objectAAxis * 0.5
 		var dif = (objectAAxis * objectAAngleOffAxis * TPS ) - nodeA.angular_velocity
 		nodeA.angular_velocity += dif * getAPortion(del)
 		nodeB.angular_velocity -= dif * getBPortion(del)
 	
-	var objBAxis = -(objectBPoint.origin - objectAxisBPoint.origin)
-	var objectBAngleOffAxis = objBAxis.angle_to(middle.basis.z)
+	#var objBAxis = -(objectBPoint.origin - objectAxisBPoint.origin)
+	var objectBAngleOffAxis = objBToMiddle.angle_to(objBToPoint)
 	var objectBAxis
 	if objectBAngleOffAxis > 0: # and !nodeB.freeze:
-		objectBAxis = (objBAxis.cross(middle.basis.z)).normalized()
+		objectBAxis = (objBToMiddle.cross(objBToPoint)).normalized()
 		
 		var dif = (objectBAxis * objectBAngleOffAxis * TPS ) - nodeB.angular_velocity
 		

@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://b81o2wecfhqcs" path="res://scripts/world.gd" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bf77xa50rbjkw" path="res://scenes/spectator.tscn" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scripts/marker_placer.gd" id="4_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="5_036b0"]
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://dh3oceafugaku" path="res://scenes/newPinJoint.tscn" id="7_i7141"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -73,8 +75,11 @@ collision_mask = 13
 size = Vector3(1000, 1, 1000)
 material = SubResource("StandardMaterial3D_gv5m4")
 
+[node name="markerPlacer" type="Node3D" parent="env" unique_id=513749082]
+script = ExtResource("4_4mrxx")
+
 [node name="spectator" parent="." unique_id=1764623012 instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 4.3554573, 9.261028)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9073486e-06, 4.3554573, 9.261028)
 projectileScene = ExtResource("2_aqk2v")
 
 [node name="chain" type="Node3D" parent="." unique_id=1588322184]
@@ -484,6 +489,11 @@ material = SubResource("StandardMaterial3D_7wv7s")
 
 [node name="box" parent="otherBoxes" unique_id=1023913780 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7443676, 30.752987)
+
+[node name="newPinJoint" parent="otherBoxes/box" unique_id=24786623 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("7_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.446312, 0, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../box2")
 
 [node name="box2" parent="otherBoxes" unique_id=483130042 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0751724, 2.7443676, 30.752987)

@@ -122,7 +122,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	return
+	
 	for i in 5:
 		update(1.0)
 		pass
