@@ -26,14 +26,16 @@ func _physics_process(delta: float) -> void:
 		
 		var realTransform = hinge.global_transform
 		
+		var futureTransform = forwardKinematics(chain,endPointMarker)
 		
 		
 		hinge = hinge as HingePlus
 		
+		var hingePos = futureTransform[i]
+		var futureEndPointPos = futureTransform.back()
 		
-		
-		var hingeToEndpoint = endPointMarker.global_position - hinge.global_position
-		var hingeToTarget = target.global_position - hinge.global_position
+		var hingeToEndpoint = endPointMarker.global_position - hingePos
+		var hingeToTarget = target.global_position - hingePos
 		
 		lastHinge = hinge
 		var angle = angleDifferenceAroundAxis(
@@ -65,6 +67,7 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D):
 	var currentTrans : Transform3D = chain[0].global_transform
 	
 	var targetPoses : Array[Vector3] = []
+	targetPoses.resize(chain.size() + 1)
 	
 	#keeps track of the differences between each hinge. local space
 	var hingeToNextTransforms : Array[Transform3D] = []
@@ -89,19 +92,18 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D):
 		
 		hingeToNextTransforms[i] = hingeToNextTransforms[i].rotated(
 			Vector3.FORWARD,
-			#chain[i].rotAxis,
 			chain[i].getAngleToTargetAngle()
-			#-PI/2.0
 			)
 		
-		print(rad_to_deg(chain[i].getAngleToTargetAngle()))
+		#print(rad_to_deg(chain[i].getAngleToTargetAngle()))
 		
 		i += 1
-	print()
+	#print()
 	
 	i = 0
 	while i < chain.size() + 1:
 		
+		targetPoses[i] = currentTrans.origin
 		MP.mark(
 			currentTrans.origin,
 			3.0,
@@ -116,6 +118,8 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D):
 			currentTrans = currentTrans * hingeToNextTransforms[i]
 		
 		i += 1
+	
+	return targetPoses
 	
 	pass
 
