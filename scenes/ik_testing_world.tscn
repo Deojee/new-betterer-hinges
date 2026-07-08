@@ -175,7 +175,7 @@ shape = SubResource("BoxShape3D_amlxo")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../firstSegment")
-maxMotorSpeedDegrees = 10.0
+maxMotorSpeedDegrees = 40.0
 
 [node name="firstSegment" type="RigidBody3D" parent="robotArm" unique_id=199678219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
