@@ -117,8 +117,6 @@ roughness = 0.31
 material = SubResource("StandardMaterial3D_3u38t")
 size = Vector3(1, 6, 1.2)
 
-[sub_resource type="PrismMesh" id="PrismMesh_jbk7a"]
-
 [node name="ikTestingWorld" type="Node3D" unique_id=187048241]
 
 [node name="env" type="Node3D" parent="." unique_id=410410846]
@@ -260,10 +258,6 @@ shape = SubResource("BoxShape3D_3u38t")
 
 [node name="Marker3D" type="Marker3D" parent="robotArm/forthSegment" unique_id=256512714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="testingGuy" type="MeshInstance3D" parent="robotArm" unique_id=1029394753]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.632055, 11.395968, -15.85706)
-mesh = SubResource("PrismMesh_jbk7a")
 
 [node name="markerPlacer" type="Node3D" parent="." unique_id=1057294396]
 script = ExtResource("6_3u38t")

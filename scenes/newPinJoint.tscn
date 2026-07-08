@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dh3oceafugaku"]
+
+[ext_resource type="Script" uid="uid://16rw3fmq4ogc" path="res://scripts/PinJointPlus.gd" id="1_mrynv"]
+
+[sub_resource type="Gradient" id="Gradient_tc6vo"]
+offsets = PackedFloat32Array(0, 0.49354005, 1)
+colors = PackedColorArray(0.36536494, 0.6023483, 0.92593914, 1, 0.799909, 0.7964369, 0.77747023, 1, 1, 0.14999998, 0.14999998, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5jdpw"]
+gradient = SubResource("Gradient_tc6vo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wv7s"]
+albedo_texture = SubResource("GradientTexture2D_5jdpw")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7wv7s"]
+top_radius = 0.02
+bottom_radius = 0.15
+height = 0.4
+radial_segments = 8
+
+[node name="newPinJoint" type="Node3D" unique_id=1618069539]
+script = ExtResource("1_mrynv")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=946568184]
+radius = 0.3
+material = SubResource("StandardMaterial3D_7wv7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1754911421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23381504, 0)
+mesh = SubResource("CylinderMesh_7wv7s")

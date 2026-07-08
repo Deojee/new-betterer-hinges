@@ -48,6 +48,11 @@ points = PackedVector3Array(0.3, 0.15, 0.15, 0.3, 0.15, -0.15, -0.3, 0.15, 0.15,
 [sub_resource type="BoxMesh" id="BoxMesh_i7141"]
 size = Vector3(1.2, 0.3, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wv7s"]
+albedo_color = Color(0.19286564, 0.4416039, 0.24578106, 1)
+metallic = 0.61
+roughness = 0.11
+
 [node name="world" type="Node3D" unique_id=184105334]
 script = ExtResource("1_tlwt5")
 boxScene = ExtResource("2_aqk2v")
@@ -466,3 +471,19 @@ shape = SubResource("ConvexPolygonShape3D_qfnet")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 nodeA = NodePath("../../segment2")
 nodeB = NodePath("..")
+
+[node name="otherBoxes" type="Node3D" parent="." unique_id=1744024566]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="otherBoxes" unique_id=597624424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7785206, 36.777615)
+use_collision = true
+collision_layer = 3
+collision_mask = 15
+size = Vector3(40, 1.2, 40)
+material = SubResource("StandardMaterial3D_7wv7s")
+
+[node name="box" parent="otherBoxes" unique_id=1023913780 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7443676, 30.752987)
+
+[node name="box2" parent="otherBoxes" unique_id=483130042 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0751724, 2.7443676, 30.752987)
