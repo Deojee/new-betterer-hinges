@@ -44,6 +44,7 @@ func _mark(location : Vector3,size := 1.0,color := Color.RED):
 	
 	if unusedPool.size() > 0:
 		usedPool.append(unusedPool.pop_back())
+		usedPool.back().visible = true
 	else:
 		var newSphere = MeshInstance3D.new()
 		newSphere.mesh = SphereMesh.new()
