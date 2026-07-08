@@ -104,6 +104,7 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D) -> Array[Tran
 	while i < chain.size() + 1:
 		
 		targetPoses[i] = currentTrans
+		
 		MP.mark(
 			currentTrans.origin,
 			3.0,

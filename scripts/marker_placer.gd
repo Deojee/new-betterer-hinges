@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	prints(usedPool.size(),unusedPool.size(),get_children().size(),materialDict.keys().size())
+	
 	#unload all the spheres that are old
 	var frame = Engine.get_physics_frames()
 	for sphere in usedPool:
@@ -75,3 +77,5 @@ func unload(sphere : Node3D):
 		sphereToPlaceTime.erase(sphere)
 	sphere.visible = false
 	sphere.global_position = global_position
+	unusedPool.append(sphere)
+	usedPool.erase(sphere)
