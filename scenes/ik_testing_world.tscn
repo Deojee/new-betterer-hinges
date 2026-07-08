@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jxlrlgjngm" path="res://scenes/box.tscn" id="3_ph5w1"]
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_3u38t"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="4_ph5w1"]
+[ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scenes/marker_placer.gd" id="6_3u38t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -148,6 +149,7 @@ mesh = SubResource("SphereMesh_7wv7s")
 shape = SubResource("SphereShape3D_7wv7s")
 
 [node name="robotArm" type="Node3D" parent="." unique_id=1563920874 node_paths=PackedStringArray("hingeOwner", "startingHinge", "endPointMarker", "target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.253992, 0)
 script = ExtResource("3_22wh1")
 hingeOwner = NodePath("baseOfArm")
 startingHinge = NodePath("baseOfArm/newHinge")
@@ -172,7 +174,7 @@ shape = SubResource("BoxShape3D_amlxo")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../firstSegment")
-maxMotorSpeedDegrees = 50.0
+maxMotorSpeedDegrees = 10.0
 
 [node name="firstSegment" type="RigidBody3D" parent="robotArm" unique_id=199678219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
@@ -191,7 +193,7 @@ shape = SubResource("BoxShape3D_ph5w1")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../secondSegment")
-maxMotorSpeedDegrees = 50.0
+maxMotorSpeedDegrees = 10.0
 
 [node name="secondSegment" type="RigidBody3D" parent="robotArm" unique_id=323371924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -211,7 +213,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4
 nodeA = NodePath("..")
 nodeB = NodePath("../../thirdSegment")
 targetAngleDegrees = 15.0
-maxMotorSpeedDegrees = 50.0
+maxMotorSpeedDegrees = 10.0
 
 [node name="thirdSegment" type="RigidBody3D" parent="robotArm" unique_id=1826504024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
@@ -228,3 +230,6 @@ shape = SubResource("BoxShape3D_3u38t")
 
 [node name="Marker3D" type="Marker3D" parent="robotArm/thirdSegment" unique_id=879340568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="markerPlacer" type="Node3D" parent="." unique_id=1057294396]
+script = ExtResource("6_3u38t")
