@@ -10,6 +10,8 @@ extends Node3D
 var lastHinge = null
 func _physics_process(delta: float) -> void:
 	
+	#$testingGuy.global_transform = $testingGuy.global_transform.rotated_local(Vector3.FORWARD,0.02)
+	
 	var chain : Array[HingePlus] = []
 	
 	var current = startingHinge
@@ -86,7 +88,8 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D):
 			#)
 		
 		hingeToNextTransforms[i] = hingeToNextTransforms[i].rotated(
-			chain[i].rotAxis,
+			Vector3.FORWARD,
+			#chain[i].rotAxis,
 			chain[i].getAngleToTargetAngle()
 			#-PI/2.0
 			)
