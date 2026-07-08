@@ -63,6 +63,8 @@ shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="env" unique_id=416108373]
 use_collision = true
+collision_layer = 3
+collision_mask = 13
 size = Vector3(1000, 1, 1000)
 material = SubResource("StandardMaterial3D_gv5m4")
 

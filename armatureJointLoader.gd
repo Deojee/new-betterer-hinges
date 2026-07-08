@@ -7,9 +7,7 @@ const hingePlus = preload("res://scenes/new_hinge.tscn")
 @export var rbp : Node3D
 
 # int id : PhysicalBone3D 
-var idsToBones : Dictionary = {-1 : null}
 
-var bonesToRigidBodies : Dictionary
 
 var hingeOwnerScript = preload("res://scripts/hingeOwner.gd")
 
@@ -23,12 +21,32 @@ var legPattern = [
 	jointType.UP
 	]
 
+var idsToBones : Dictionary = {-1 : null}
+var bonesToRigidBodies : Dictionary
 var boneJointTypes = {}
 var bonesToParents = {}
 
 func _ready() -> void:
+	
+	if Engine.is_editor_hint():
+		return
+	
+	bonesToRigidBodies.clear()
+	for bone in pbs.get_children():
+		bonesToRigidBodies[bone] = getChildWithName(rbp,bone.name + RB_NAME_SUFFIX)
+		
+		
+	
 	pass
 	
+
+func getChildWithName(node,searchName):
+	
+	for child in node.get_children():
+		if child.name == searchName:
+			return child
+	
+	return null
 
 @export var setupNow = false:
 	get:
@@ -38,15 +56,20 @@ func _ready() -> void:
 		setup()
 		print("setup done!")
 
+const RB_NAME_SUFFIX = " rb"
+
 func setup():
 	$PhysicalBoneSimulator3D.is_simulating_physics()
 	
 	for child in rbp.get_children():
 		child.queue_free()
-	bonesToRigidBodies.clear()
+	
 	idsToBones.clear()
-	bonesToParents.clear()
+	idsToBones = {-1 : null}
+	bonesToRigidBodies.clear()
 	boneJointTypes.clear()
+	bonesToParents.clear()
+	
 	
 	
 	var num = 0
@@ -60,7 +83,7 @@ func setup():
 		var rigidBody = RigidBody3D.new()
 		
 		#rbp.add_child(rigidBody)
-		editorAddChild(rigidBody,rbp,bone.name + " rb")
+		editorAddChild(rigidBody,rbp,bone.name + RB_NAME_SUFFIX)
 		
 		rigidBody.global_transform = bone.global_transform
 		
@@ -73,9 +96,20 @@ func setup():
 			#child.queue_free()
 		
 		bonesToRigidBodies[bone] = rigidBody
+		#print(bonesToRigidBodies)
 		bone.set_collision_mask_value(1, false)
 		bone.set_collision_layer_value(1, false)
-		rigidBody.set_collision_layer_value(1, false)
+		
+		rigidBody.set_collision_layer_value(1, true)
+		rigidBody.set_collision_layer_value(2, false)
+		rigidBody.set_collision_layer_value(3, true)
+		rigidBody.set_collision_layer_value(4, false)
+		
+		rigidBody.set_collision_mask_value(1, false)
+		rigidBody.set_collision_mask_value(2, true)
+		rigidBody.set_collision_mask_value(3, false)
+		rigidBody.set_collision_mask_value(4, true)
+		
 	
 	#print(idsToBones)
 	
@@ -170,6 +204,9 @@ func editorAddChild(childNode : Node,newParent : Node,newName : StringName):
 
 func _physics_process(delta: float) -> void:
 	
+	if Engine.is_editor_hint():
+		return
+	
 	if !pbs.is_simulating_physics():
 		pbs.physical_bones_start_simulation()
 	
@@ -180,7 +217,9 @@ func _physics_process(delta: float) -> void:
 		b.angular_velocity = rb.angular_velocity
 		b.linear_velocity = rb.linear_velocity
 		b.global_transform = rb.global_transform
-		print(key.name)
-	print()
+		
+	
+	
+	
 	pass
 	

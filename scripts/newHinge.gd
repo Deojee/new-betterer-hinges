@@ -15,6 +15,7 @@ var axisOffsetA : Transform3D
 var axisOffsetB : Transform3D
 
 
+static var numHinges = 0
 
 static var bodiesDict : Dictionary = {}
 
@@ -58,15 +59,20 @@ func setup():
 	nodeA.add_collision_exception_with(nodeB)
 	nodeB.add_collision_exception_with(nodeA)
 	
+	name = str(numHinges) + "th hinge "
+	numHinges += 1
+	
 	if !bodiesDict.has(nodeA):
 		bodiesDict[nodeA] = [self]
 	else:
-		bodiesDict[nodeA].append(self)
+		if !bodiesDict[nodeA].has(self):
+			bodiesDict[nodeA].append(self)
 	
 	if !bodiesDict.has(nodeB):
 		bodiesDict[nodeB] = [self]
 	else:
-		bodiesDict[nodeB].append(self)
+		if !bodiesDict[nodeB].has(self):
+			bodiesDict[nodeB].append(self)
 	
 	pass
 
@@ -79,6 +85,13 @@ func getNextInChain():
 		if body != self:
 			return body
 	return null
+
+func getAllNextInChain() -> Array:
+	var arr = []
+	for body in bodiesDict[nodeB]:
+		if body != self:
+			arr.append( body)
+	return arr
 
 var TPS:
 	get:
@@ -106,9 +119,9 @@ func _physics_process(delta: float) -> void:
 			targetAngleDegrees += 180
 	
 	
-	return
-	for i in 30:
-		#update(del)
+	
+	for i in 5:
+		update(1.0)
 		pass
 	
 	return
