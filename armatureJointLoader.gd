@@ -58,7 +58,11 @@ func getChildWithName(node,searchName):
 
 const RB_NAME_SUFFIX = " rb"
 
+
 func setup():
+	
+	
+	
 	$PhysicalBoneSimulator3D.is_simulating_physics()
 	
 	for child in rbp.get_children():

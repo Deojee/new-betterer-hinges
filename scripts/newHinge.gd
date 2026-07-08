@@ -62,6 +62,8 @@ func setup():
 	name = str(numHinges) + "th hinge "
 	numHinges += 1
 	
+	
+	
 	if !bodiesDict.has(nodeA):
 		bodiesDict[nodeA] = [self]
 	else:

@@ -41,10 +41,9 @@ func _physics_process(delta: float) -> void:
 			j = completed + 1 #only need to add exceptions with unprocessed hinges
 			while j < allHinges.size():
 				allHinges[completed].nodeA.add_collision_exception_with(allHinges[j].nodeA)
-				allHinges[j].nodeA.add_collision_exception_with(allHinges[completed].nodeA)
-				print(allHinges[completed].name + str(allHinges[completed].nodeA.get_collision_exceptions().size()) + allHinges[j].name)
+				print(allHinges[completed].name + str(allHinges[completed].nodeA.get_collision_exceptions().size()) + " " + allHinges[j].name)
 				j += 1
-			
+			print()
 			
 			
 			completed += 1
