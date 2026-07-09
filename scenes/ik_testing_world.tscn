@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_3u38t"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="4_ph5w1"]
 [ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scripts/marker_placer.gd" id="6_3u38t"]
-[ext_resource type="PackedScene" uid="uid://dh3oceafugaku" path="res://scenes/newPinJoint.tscn" id="6_amlxo"]
-[ext_resource type="Script" uid="uid://bdr0dwuepv8gb" path="res://scenes/staticPin.gd" id="6_k1m2t"]
+[ext_resource type="Script" uid="uid://bdr0dwuepv8gb" path="res://scripts/staticPin.gd" id="6_k1m2t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -174,7 +173,7 @@ target = NodePath("../floating target")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.558178, 0)
 collision_layer = 5
 collision_mask = 10
-mass = 100.0
+mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_7wv7s")
 script = ExtResource("4_3u38t")
 
@@ -266,8 +265,9 @@ shape = SubResource("BoxShape3D_3u38t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="static pin" type="RigidBody3D" parent="robotArm" unique_id=930436945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.49807, -9.338955)
-mass = 0.001
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29465485, 42.279644, -0.27218628)
+collision_layer = 5
+collision_mask = 10
 script = ExtResource("6_k1m2t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/static pin" unique_id=132644117]
@@ -276,9 +276,10 @@ mesh = SubResource("CapsuleMesh_7wv7s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/static pin" unique_id=706954651]
 shape = SubResource("SphereShape3D_5jdpw")
 
-[node name="newPinJoint" parent="robotArm/static pin" unique_id=24012218 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("6_amlxo")]
-nodeA = NodePath("..")
-nodeB = NodePath("..")
+[node name="PinJoint3D" type="PinJoint3D" parent="robotArm/static pin" unique_id=1373641752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6502037, 0.276937)
+node_a = NodePath("..")
+node_b = NodePath("../../forthSegment")
 
 [node name="markerPlacer" type="Node3D" parent="." unique_id=1057294396]
 script = ExtResource("6_3u38t")
