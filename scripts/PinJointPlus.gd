@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	MP.mark(objectBPoint.origin,0.5,Color.GREEN)
 	
 	
-	for i in 5:
+	for i in 1:
 		update(1.0)
 		pass
 	

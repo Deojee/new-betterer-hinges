@@ -487,6 +487,14 @@ collision_mask = 15
 size = Vector3(40, 1.2, 40)
 material = SubResource("StandardMaterial3D_7wv7s")
 
+[node name="box3" parent="otherBoxes" unique_id=1410038683 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3943214, 5.4535885, 30.752987)
+
+[node name="newPinJoint" parent="otherBoxes/box3" unique_id=1286638579 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("7_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.446312, 0, 0)
+nodeA = NodePath("..")
+nodeB = NodePath("../../box")
+
 [node name="box" parent="otherBoxes" unique_id=1023913780 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7443676, 30.752987)
 

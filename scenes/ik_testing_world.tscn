@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_3u38t"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="4_ph5w1"]
 [ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scripts/marker_placer.gd" id="6_3u38t"]
+[ext_resource type="PackedScene" uid="uid://dh3oceafugaku" path="res://scenes/newPinJoint.tscn" id="6_amlxo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -117,6 +118,10 @@ roughness = 0.31
 material = SubResource("StandardMaterial3D_3u38t")
 size = Vector3(1, 6, 1.2)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7wv7s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5jdpw"]
+
 [node name="ikTestingWorld" type="Node3D" unique_id=187048241]
 
 [node name="env" type="Node3D" parent="." unique_id=410410846]
@@ -165,7 +170,7 @@ endPointMarker = NodePath("forthSegment/Marker3D")
 target = NodePath("../floating target")
 
 [node name="baseOfArm" type="RigidBody3D" parent="robotArm" unique_id=1440466146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.558178, 0)
 collision_layer = 5
 collision_mask = 10
 mass = 10.0
@@ -182,10 +187,10 @@ shape = SubResource("BoxShape3D_amlxo")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../firstSegment")
-maxMotorSpeedDegrees = 40.0
+maxMotorSpeedDegrees = 400.0
 
 [node name="firstSegment" type="RigidBody3D" parent="robotArm" unique_id=199678219]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.058178, 0)
 collision_layer = 5
 collision_mask = 10
 mass = 5.0
@@ -201,10 +206,10 @@ shape = SubResource("BoxShape3D_ph5w1")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../secondSegment")
-maxMotorSpeedDegrees = 40.0
+maxMotorSpeedDegrees = 400.0
 
 [node name="secondSegment" type="RigidBody3D" parent="robotArm" unique_id=323371924]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.558178, 0)
 collision_layer = 5
 collision_mask = 10
 mass = 5.0
@@ -221,10 +226,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4
 nodeA = NodePath("..")
 nodeB = NodePath("../../thirdSegment")
 targetAngleDegrees = 15.0
-maxMotorSpeedDegrees = 40.0
+maxMotorSpeedDegrees = 400.0
 
 [node name="thirdSegment" type="RigidBody3D" parent="robotArm" unique_id=1826504024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.558178, 0)
 collision_layer = 5
 collision_mask = 10
 mass = 3.0
@@ -241,10 +246,10 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 3, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../forthSegment")
 targetAngleDegrees = 15.0
-maxMotorSpeedDegrees = 40.0
+maxMotorSpeedDegrees = 400.0
 
 [node name="forthSegment" type="RigidBody3D" parent="robotArm" unique_id=2124565539]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.558178, 0)
 collision_layer = 5
 collision_mask = 10
 mass = 3.0
@@ -258,6 +263,22 @@ shape = SubResource("BoxShape3D_3u38t")
 
 [node name="Marker3D" type="Marker3D" parent="robotArm/forthSegment" unique_id=256512714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="robotArm" unique_id=930436945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.37168, -5.9104195)
+mass = 10000.0
+gravity_scale = 0.0
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/RigidBody3D" unique_id=132644117]
+mesh = SubResource("CapsuleMesh_7wv7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/RigidBody3D" unique_id=706954651]
+shape = SubResource("SphereShape3D_5jdpw")
+
+[node name="newPinJoint" parent="robotArm/RigidBody3D" unique_id=24012218 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("6_amlxo")]
+nodeA = NodePath("..")
+nodeB = NodePath("../../baseOfArm")
 
 [node name="markerPlacer" type="Node3D" parent="." unique_id=1057294396]
 script = ExtResource("6_3u38t")
