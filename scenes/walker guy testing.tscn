@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://chalyxj3xy648" path="res://scripts/IKLimb.gd" id="3_acxvm"]
 [ext_resource type="Script" uid="uid://8ovbe6kevt55" path="res://scripts/hingeOwner.gd" id="4_x4m6e"]
 [ext_resource type="PackedScene" uid="uid://wrjrmgfm7enc" path="res://scenes/new_hinge.tscn" id="5_0cjp6"]
-[ext_resource type="PackedScene" uid="uid://dh3oceafugaku" path="res://scenes/newPinJoint.tscn" id="7_0i8tw"]
 [ext_resource type="Script" uid="uid://d3tirm6t7greb" path="res://scripts/marker_placer.gd" id="7_5wqtp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u38t"]
@@ -79,6 +78,14 @@ size = Vector3(1.2, 0.3, 0.2)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6t4r4"]
 points = PackedVector3Array(0.3, 0.15, 0.15, 0.3, 0.15, -0.15, -0.3, 0.15, 0.15, 0.3, -0.15, 0.15, 0.3, -0.15, -0.15, -0.3, 0.15, -0.15, -0.3, -0.15, 0.15, -0.3, -0.15, -0.15)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5jdpw"]
+radius = 0.1
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wv7s"]
+radius = 0.1
+height = 0.3
+
 [sub_resource type="BoxMesh" id="BoxMesh_5wqtp"]
 size = Vector3(1.2, 0.3, 0.2)
 
@@ -125,10 +132,9 @@ shape = SubResource("SphereShape3D_7wv7s")
 [node name="anchor" type="RigidBody3D" parent="." unique_id=1242591546]
 collision_layer = 0
 collision_mask = 0
-mass = 1000.0
+mass = 1000000.0
 physics_material_override = SubResource("PhysicsMaterial_5jdpw")
 gravity_scale = 0.0
-freeze = true
 linear_damp = 2.0
 angular_damp = 15.0
 metadata/_edit_group_ = true
@@ -230,10 +236,23 @@ nodeB = NodePath("..")
 [node name="Marker3D" type="Marker3D" parent="walkerGuy/legR/segment3" unique_id=1416339324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, 0, 0)
 
-[node name="pinName" parent="walkerGuy/legR/segment3" unique_id=186412566 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("7_0i8tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+[node name="newHinge2" parent="walkerGuy/legR/segment3" unique_id=1117356941 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("5_0cjp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6097379, 0, 0)
 nodeA = NodePath("..")
-nodeB = NodePath("../../../../anchor")
+nodeB = NodePath("../../pinJoint")
+aimForTarget = false
+enableMotor = false
+
+[node name="pinJoint" type="RigidBody3D" parent="walkerGuy/legR" unique_id=136330644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="walkerGuy/legR/pinJoint" unique_id=1008174203]
+mesh = SubResource("CapsuleMesh_5jdpw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walkerGuy/legR/pinJoint" unique_id=341831559]
+shape = SubResource("CapsuleShape3D_7wv7s")
 
 [node name="legR2" type="Node3D" parent="walkerGuy" unique_id=1913505578]
 transform = Transform3D(0.9002447, 0, -0.4353842, 0, 1, 0, 0.4353842, 0, 0.9002447, -1.2100782, 0, -0.8148918)
