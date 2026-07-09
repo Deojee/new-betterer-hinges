@@ -188,6 +188,8 @@ func getBPortion(del):
 
 var aVel : Vector3
 var bVel : Vector3
+var aAng : Vector3
+var bAng : Vector3
 
 func showMiddle(del):
 	
@@ -203,13 +205,33 @@ func showMiddle(del):
 	if Input.is_action_pressed("q"):
 		return
 	
-	
+	nodeA.linear_velocity -= aVel
+	nodeA.angular_velocity -= aAng
+	nodeB.linear_velocity -= bVel
+	nodeB.angular_velocity -= bAng
 	
 	var aTarget = -(objectAPoint.origin - middle.origin) * TPS
 	var bTarget = -(objectBPoint.origin - middle.origin) * TPS
 	
-	apply_force_from_pos(nodeA,objectAPoint.origin,aTarget * getAPortion(del))
-	apply_force_from_pos(nodeB,objectBPoint.origin,bTarget * getBPortion(del))
+	
+	#aVel = aTarget * getAPortion(del) - bTarget * getBPortion(del)
+	#bVel = -aTarget * getAPortion(del) + bTarget * getBPortion(del)
+	aVel = aTarget * getAPortion(del) 
+	bVel = bTarget * getBPortion(del)
+	
+	aAng = getTorqueFromPos(nodeA,objectAPoint.origin,aVel) * 0.25
+	aAng += getTorqueFromPos(nodeA,objectAPoint.origin,-bVel) * 0.25
+	
+	bAng = getTorqueFromPos(nodeB,objectAPoint.origin,bVel) * 0.25
+	bAng += getTorqueFromPos(nodeB,objectAPoint.origin,-aVel) * 0.25
+	
+	aVel -= bTarget * getBPortion(del) 
+	bVel -= aTarget * getAPortion(del)
+	
+	nodeA.linear_velocity += aVel
+	nodeA.angular_velocity += aAng
+	nodeB.linear_velocity += bVel
+	nodeB.angular_velocity += bAng
 	
 	#apply_force_from_pos(nodeB,objectAPoint.origin,-aTarget * getAPortion(del))
 	#apply_force_from_pos(nodeA,objectBPoint.origin,-bTarget * getBPortion(del))
@@ -245,3 +267,9 @@ func apply_force_from_pos(body : PhysicsBody3D, globForcePos,globForce):
 	if body is RigidBody3D:
 		bodyCenterOfMass = body.global_transform * body.center_of_mass
 	body.angular_velocity += (globForcePos - bodyCenterOfMass).cross(globForce);
+
+func getTorqueFromPos(body : PhysicsBody3D, globForcePos,globForce):
+	var bodyCenterOfMass = body.global_position
+	if body is RigidBody3D:
+		bodyCenterOfMass = body.global_transform * body.center_of_mass
+	return (globForcePos - bodyCenterOfMass).cross(globForce);
