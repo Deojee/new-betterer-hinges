@@ -168,7 +168,7 @@ target = NodePath("../floating target")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 5
 collision_mask = 10
-mass = 100.0
+mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_7wv7s")
 script = ExtResource("4_3u38t")
 
@@ -182,7 +182,7 @@ shape = SubResource("BoxShape3D_amlxo")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../firstSegment")
-maxMotorSpeedDegrees = 400.0
+maxMotorSpeedDegrees = 40.0
 
 [node name="firstSegment" type="RigidBody3D" parent="robotArm" unique_id=199678219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
@@ -201,7 +201,7 @@ shape = SubResource("BoxShape3D_ph5w1")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../secondSegment")
-maxMotorSpeedDegrees = 400.0
+maxMotorSpeedDegrees = 40.0
 
 [node name="secondSegment" type="RigidBody3D" parent="robotArm" unique_id=323371924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -221,7 +221,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4
 nodeA = NodePath("..")
 nodeB = NodePath("../../thirdSegment")
 targetAngleDegrees = 15.0
-maxMotorSpeedDegrees = 400.0
+maxMotorSpeedDegrees = 40.0
 
 [node name="thirdSegment" type="RigidBody3D" parent="robotArm" unique_id=1826504024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
@@ -241,7 +241,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 3, 0)
 nodeA = NodePath("..")
 nodeB = NodePath("../../forthSegment")
 targetAngleDegrees = 15.0
-maxMotorSpeedDegrees = 400.0
+maxMotorSpeedDegrees = 40.0
 
 [node name="forthSegment" type="RigidBody3D" parent="robotArm" unique_id=2124565539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)

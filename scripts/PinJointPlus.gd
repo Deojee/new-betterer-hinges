@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	MP.mark(objectBPoint.origin,0.5,Color.GREEN)
 	
 	
-	for i in 1:
+	for i in 5:
 		update(1.0)
 		pass
 	
@@ -120,8 +120,7 @@ func _physics_process(delta: float) -> void:
 	
 
 func update(del):
-	
-	#alignToAxis(del)
+	alignToAxis(del)
 	
 	showMiddle(del)
 	
@@ -175,7 +174,19 @@ func alignToAxis(del):
 		
 	
 
-
+func getAngle():
+	
+	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
+	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	
+	var angleY = objectAPoint.basis.y.angle_to(objectBPoint.basis.y)
+	var angleX = objectAPoint.basis.x.angle_to(objectBPoint.basis.y)
+	
+	if angleX > PI/2.0:
+		return 2.0 * PI - angleY
+	else:
+		return angleY
+	
 
 func getAPortion(del):
 	#if nodeA.freeze:
@@ -185,9 +196,6 @@ func getBPortion(del):
 	#if nodeB.freeze:
 	#	return 0.0
 	return (nodeA.mass / (nodeA.mass + nodeB.mass)) * del
-
-var aVel : Vector3
-var bVel : Vector3
 
 func showMiddle(del):
 	
@@ -207,20 +215,9 @@ func showMiddle(del):
 	
 	var aTarget = -(objectAPoint.origin - middle.origin) * TPS
 	var bTarget = -(objectBPoint.origin - middle.origin) * TPS
-	
-	apply_force_from_pos(nodeA,objectAPoint.origin,aTarget * getAPortion(del))
-	apply_force_from_pos(nodeB,objectBPoint.origin,bTarget * getBPortion(del))
-	
-	#apply_force_from_pos(nodeB,objectAPoint.origin,-aTarget * getAPortion(del))
-	#apply_force_from_pos(nodeA,objectBPoint.origin,-bTarget * getBPortion(del))
-	
-	return
 	var aTargetDir = aTarget.normalized()
 	var bTargetDir = bTarget.normalized()
 	
-	
-	nodeA.linear_velocity -= aVel
-	nodeB.linear_velocity -= bVel
 	
 	var aDif = aTarget - nodeA.linear_velocity
 	var bDif = bTarget - nodeB.linear_velocity
@@ -229,19 +226,12 @@ func showMiddle(del):
 	
 	var divisor = 2.0
 	
-	aVel = (aDif) * getAPortion(del) - (bDif) * getBPortion(del)
-	bVel = -(aDif) * getAPortion(del) + (bDif) * getBPortion(del)
+	nodeA.linear_velocity += (aDif) * getAPortion(del)
+	nodeB.linear_velocity -= (aDif) * getBPortion(del)
 	
-	nodeA.linear_velocity += aVel
-	nodeB.linear_velocity += bVel
-	
-	
+	nodeA.linear_velocity -= (bDif) * getAPortion(del)
+	nodeB.linear_velocity += (bDif) * getBPortion(del)
 	
 	
-
-func apply_force_from_pos(body : PhysicsBody3D, globForcePos,globForce):
-	body.linear_velocity += globForce
-	var bodyCenterOfMass = body.global_position
-	if body is RigidBody3D:
-		bodyCenterOfMass = body.global_transform * body.center_of_mass
-	body.angular_velocity += (globForcePos - bodyCenterOfMass).cross(globForce);
+	
+	
