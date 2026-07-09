@@ -520,19 +520,6 @@ nodeB = NodePath("../../box")
 [node name="box" parent="otherBoxes" unique_id=1023913780 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7912197, 2.7443676, 30.752987)
 
-[node name="double pin" type="Node3D" parent="otherBoxes" unique_id=1800463343]
-
-[node name="box5" parent="otherBoxes/double pin" unique_id=232950494 instance=ExtResource("2_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62390995, 2.7443676, 27.37781)
-
-[node name="newPinJoint" parent="otherBoxes/double pin/box5" unique_id=668528597 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("7_i7141")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4513226, 0, 0)
-nodeA = NodePath("..")
-nodeB = NodePath("../../box6")
-
-[node name="box6" parent="otherBoxes/double pin" unique_id=1030056606 instance=ExtResource("2_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7912197, 2.7443676, 27.37781)
-
 [node name="real pin boxes" type="Node3D" parent="otherBoxes" unique_id=700570119]
 
 [node name="box" parent="otherBoxes/real pin boxes" unique_id=1708299768 instance=ExtResource("2_aqk2v")]
