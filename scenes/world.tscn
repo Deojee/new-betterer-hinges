@@ -55,6 +55,12 @@ albedo_color = Color(0.19286564, 0.4416039, 0.24578106, 1)
 metallic = 0.61
 roughness = 0.11
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7wv7s"]
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 4
+
 [node name="world" type="Node3D" unique_id=184105334]
 script = ExtResource("1_tlwt5")
 boxScene = ExtResource("2_aqk2v")
@@ -497,8 +503,6 @@ nodeB = NodePath("../../box3")
 
 [node name="box3" parent="otherBoxes" unique_id=268916370 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2421622, 4.3782024, 30.752987)
-mass = 2000.0
-gravity_scale = 0.0
 
 [node name="newPinJoint" parent="otherBoxes/box3" unique_id=519761422 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("7_i7141")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.446312, 0, 0)
@@ -515,3 +519,21 @@ nodeB = NodePath("../../box")
 
 [node name="box" parent="otherBoxes" unique_id=1023913780 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7912197, 2.7443676, 30.752987)
+
+[node name="real pin boxes" type="Node3D" parent="otherBoxes" unique_id=700570119]
+
+[node name="box" parent="otherBoxes/real pin boxes" unique_id=1708299768 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5265465, 44.772293)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="otherBoxes/real pin boxes/box" unique_id=655985329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4573206, 0.7116661, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../box2")
+
+[node name="Marker3D" type="Marker3D" parent="otherBoxes/real pin boxes/box/PinJoint3D" unique_id=1320180631]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="otherBoxes/real pin boxes/box/PinJoint3D/Marker3D" unique_id=1427177019]
+mesh = SubResource("CapsuleMesh_7wv7s")
+
+[node name="box2" parent="otherBoxes/real pin boxes" unique_id=1773924363 instance=ExtResource("2_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4036894, 5.79478, 44.772293)

@@ -12,6 +12,9 @@ func _physics_process(delta: float) -> void:
 	
 	#$testingGuy.global_transform = $testingGuy.global_transform.rotated_local(Vector3.FORWARD,0.02)
 	
+	if Input.is_action_pressed("mouseLeft"):
+		return
+	
 	var chain : Array[HingePlus] = []
 	
 	var current = startingHinge
