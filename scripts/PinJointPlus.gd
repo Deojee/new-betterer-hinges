@@ -2,8 +2,8 @@ extends Node3D
 
 class_name PinJointPlus
 
-@export var nodeA : PhysicsBody3D
-@export var nodeB : PhysicsBody3D
+@export var nodeA : RigidBody3D
+@export var nodeB : RigidBody3D
 
 var lastFrameTransform : Transform3D
 
@@ -189,12 +189,16 @@ func getAngle():
 	
 
 func getAPortion(del):
-	#if nodeA.freeze:
-	#	return 0.0
+	if nodeA.freeze:
+		return 0.0
+	if nodeB.freeze:
+		return 1.0
 	return (nodeB.mass / (nodeA.mass + nodeB.mass)) * del
 func getBPortion(del):
-	#if nodeB.freeze:
-	#	return 0.0
+	if nodeB.freeze:
+		return 0.0
+	if nodeA.freeze:
+		return 1.0
 	return (nodeA.mass / (nodeA.mass + nodeB.mass)) * del
 
 func showMiddle(del):

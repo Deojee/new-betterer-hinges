@@ -264,21 +264,20 @@ shape = SubResource("BoxShape3D_3u38t")
 [node name="Marker3D" type="Marker3D" parent="robotArm/forthSegment" unique_id=256512714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="robotArm" unique_id=930436945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.37168, -5.9104195)
-mass = 10000.0
+[node name="static pin" type="RigidBody3D" parent="robotArm" unique_id=930436945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.956703, 0.07207775)
 gravity_scale = 0.0
 freeze = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/RigidBody3D" unique_id=132644117]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="robotArm/static pin" unique_id=132644117]
 mesh = SubResource("CapsuleMesh_7wv7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/RigidBody3D" unique_id=706954651]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="robotArm/static pin" unique_id=706954651]
 shape = SubResource("SphereShape3D_5jdpw")
 
-[node name="newPinJoint" parent="robotArm/RigidBody3D" unique_id=24012218 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("6_amlxo")]
+[node name="newPinJoint" parent="robotArm/static pin" unique_id=24012218 node_paths=PackedStringArray("nodeA", "nodeB") instance=ExtResource("6_amlxo")]
 nodeA = NodePath("..")
-nodeB = NodePath("../../baseOfArm")
+nodeB = NodePath("../../forthSegment")
 
 [node name="markerPlacer" type="Node3D" parent="." unique_id=1057294396]
 script = ExtResource("6_3u38t")
