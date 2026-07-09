@@ -90,21 +90,31 @@ func update(del):
 
 func showMiddle(del):
 	
-	var objectPoint = node.global_transform * offset.affine_inverse()
+	var objectPoint := node.global_transform * offset.affine_inverse()
 	
+	var nodeToPoint := node.global_position - objectPoint.origin
+	var nodeToTarget := node.global_position - pinPoint.global_position
+	
+	var axis = nodeToPoint.cross(nodeToTarget)
+	if axis != Vector3.ZERO:
+		node.rotate(axis.normalized(), nodeToPoint.angle_to(nodeToTarget) )
+	
+
 	
 	var target = pinPoint.global_position
 	
-	var targetVel = -(objectPoint.origin - target) * TPS
+	var targetVel = -(objectPoint.origin - target) #* TPS
 	
-	node.linear_velocity = targetVel 
 	
+	
+	node.global_position += targetVel
+	#apply_force_from_pos(node,objectPoint.origin,targetVel * 2)
 	
 	
 
 func apply_force_from_pos(body : PhysicsBody3D, globForcePos,globForce):
 	body.linear_velocity += globForce
-	var bodyCenterOfMass = body.global_position
+	var bodyCenterOfMass = body.global_transform
 	if body is RigidBody3D:
 		bodyCenterOfMass = body.global_transform * body.center_of_mass
 	body.angular_velocity += (globForcePos - bodyCenterOfMass).cross(globForce);

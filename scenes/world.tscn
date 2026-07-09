@@ -55,6 +55,30 @@ albedo_color = Color(0.19286564, 0.4416039, 0.24578106, 1)
 metallic = 0.61
 roughness = 0.11
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4mrxx"]
+bounce = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7r4gi"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22wh1"]
+resource_name = "vertex metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.07484112, 0.8285906, 0.5144333, 1)
+albedo_texture = SubResource("CompressedTexture2D_7r4gi")
+metallic = 0.83181816
+roughness = 0.20909092
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w7kh3"]
+material = SubResource("StandardMaterial3D_22wh1")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e3hyu"]
+radius = 1.0
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7wv7s"]
 radius = 0.1
 height = 0.2
@@ -501,13 +525,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62390995, 5.4366684, 27.377
 [node name="newPinJoint" parent="otherBoxes/double pin/box5" unique_id=668528597 node_paths=PackedStringArray("node", "pinPoint") instance=ExtResource("7_i7141")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4513226, 0, 0)
 node = NodePath("..")
-pinPoint = NodePath("../../Marker3D")
+pinPoint = NodePath("../../floating target")
 
 [node name="box6" parent="otherBoxes/double pin" unique_id=1030056606 instance=ExtResource("2_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7912197, 2.7443676, 27.37781)
 
-[node name="Marker3D" type="Marker3D" parent="otherBoxes/double pin" unique_id=182529559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9323502, 6.5563507, 27.196259)
+[node name="floating target" type="RigidBody3D" parent="otherBoxes/double pin" unique_id=918203747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6648293, 8.63747, 25.576881)
+collision_layer = 5
+collision_mask = 10
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_4mrxx")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 15.0
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="otherBoxes/double pin/floating target" unique_id=1459394040]
+mesh = SubResource("SphereMesh_w7kh3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="otherBoxes/double pin/floating target" unique_id=359894207]
+shape = SubResource("SphereShape3D_e3hyu")
 
 [node name="real pin boxes" type="Node3D" parent="otherBoxes" unique_id=700570119]
 
