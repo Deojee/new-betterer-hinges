@@ -2,8 +2,8 @@ extends Node3D
 
 class_name PinJointPlus
 
-@export var nodeA : PhysicsBody3D
-@export var nodeB : PhysicsBody3D
+@export var nodeA : RigidBody3D
+@export var nodeB : RigidBody3D
 
 var lastFrameTransform : Transform3D
 
@@ -104,12 +104,14 @@ func _physics_process(delta: float) -> void:
 	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
 	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
+	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
 	
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
-	MP.mark(objectAPoint.origin,0.5,Color.RED)
+	MP.mark(objectAPoint.origin,0.6,Color.RED)
 	MP.mark(objectBPoint.origin,0.5,Color.GREEN)
+	MP.mark(middle.origin,0.4,Color.PURPLE)
 	
 	
 	for i in 1:
@@ -127,55 +129,6 @@ func update(del):
 	
 	
 	lastFrameTransform = global_transform
-
-
-
-
-
-func alignToAxis(del):
-	
-	#point where object A wants the pinjoint to be
-	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
-	var objectBPoint = nodeB.global_transform * offsetB.affine_inverse()
-	
-	
-	#var objectAxisAPoint = nodeA.global_transform * axisOffsetA.affine_inverse()
-	#var objectAxisBPoint = nodeB.global_transform * axisOffsetB.affine_inverse()
-	
-	
-	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
-	
-	var objAToMiddle = middle.origin - nodeA.global_position
-	var objAToPoint = objectAPoint.origin - nodeA.global_position
-	
-	var objBToMiddle = middle.origin - nodeB.global_position
-	var objBToPoint = objectBPoint.origin - nodeB.global_position
-	
-	#var objAAxis = -(objectAPoint.origin - objectAxisAPoint.origin)
-	var objectAAngleOffAxis = objAToMiddle.angle_to(objAToPoint)
-	var objectAAxis
-	if objectAAngleOffAxis > 0: # and !nodeA.freeze:
-		objectAAxis = (objAToMiddle.cross(objAToPoint)).normalized()
-		
-		#nodeA.angular_velocity -= nodeA.angular_velocity.dot(objectAAxis) * objectAAxis * 0.5
-		var dif = (objectAAxis * objectAAngleOffAxis * TPS ) - nodeA.angular_velocity
-		nodeA.angular_velocity += dif * getAPortion(del)
-		nodeB.angular_velocity -= dif * getBPortion(del)
-	
-	#var objBAxis = -(objectBPoint.origin - objectAxisBPoint.origin)
-	var objectBAngleOffAxis = objBToMiddle.angle_to(objBToPoint)
-	var objectBAxis
-	if objectBAngleOffAxis > 0: # and !nodeB.freeze:
-		objectBAxis = (objBToMiddle.cross(objBToPoint)).normalized()
-		
-		var dif = (objectBAxis * objectBAngleOffAxis * TPS ) - nodeB.angular_velocity
-		
-		nodeA.angular_velocity -= dif * getAPortion(del)
-		nodeB.angular_velocity += dif * getBPortion(del)
-		
-	
-
-
 
 func getAPortion(del):
 	#if nodeA.freeze:
@@ -202,61 +155,17 @@ func showMiddle(del):
 	
 	var middle = objectAPoint.interpolate_with(objectBPoint,0.5)
 	
-	if Input.is_action_pressed("q"):
-		return
-	
-	nodeA.linear_velocity -= aVel
-	nodeA.angular_velocity -= aAng
-	nodeB.linear_velocity -= bVel
-	nodeB.angular_velocity -= bAng
-	
 	var aTarget = -(objectAPoint.origin - middle.origin) * TPS
 	var bTarget = -(objectBPoint.origin - middle.origin) * TPS
 	
+	nodeA.linear_velocity -= aVel * del
+	nodeB.linear_velocity -= bVel * del
 	
-	#aVel = aTarget * getAPortion(del) - bTarget * getBPortion(del)
-	#bVel = -aTarget * getAPortion(del) + bTarget * getBPortion(del)
-	aVel = aTarget * getAPortion(del) 
-	bVel = bTarget * getBPortion(del)
+	aVel = aTarget * 0.5 + bTarget * 0.5
+	bVel = bTarget * 0.5 + aTarget * 0.5
 	
-	aAng = getTorqueFromPos(nodeA,objectAPoint.origin,aVel) * 0.25
-	aAng += getTorqueFromPos(nodeA,objectAPoint.origin,-bVel) * 0.25
-	
-	bAng = getTorqueFromPos(nodeB,objectAPoint.origin,bVel) * 0.25
-	bAng += getTorqueFromPos(nodeB,objectAPoint.origin,-aVel) * 0.25
-	
-	aVel -= bTarget * getBPortion(del) 
-	bVel -= aTarget * getAPortion(del)
-	
-	nodeA.linear_velocity += aVel
-	nodeA.angular_velocity += aAng
-	nodeB.linear_velocity += bVel
-	nodeB.angular_velocity += bAng
-	
-	#apply_force_from_pos(nodeB,objectAPoint.origin,-aTarget * getAPortion(del))
-	#apply_force_from_pos(nodeA,objectBPoint.origin,-bTarget * getBPortion(del))
-	
-	return
-	var aTargetDir = aTarget.normalized()
-	var bTargetDir = bTarget.normalized()
-	
-	
-	nodeA.linear_velocity -= aVel
-	nodeB.linear_velocity -= bVel
-	
-	var aDif = aTarget - nodeA.linear_velocity
-	var bDif = bTarget - nodeB.linear_velocity
-	
-	var linearVel = (nodeA.linear_velocity + nodeB.linear_velocity)/20.0
-	
-	var divisor = 2.0
-	
-	aVel = (aDif) * getAPortion(del) - (bDif) * getBPortion(del)
-	bVel = -(aDif) * getAPortion(del) + (bDif) * getBPortion(del)
-	
-	nodeA.linear_velocity += aVel
-	nodeB.linear_velocity += bVel
-	
+	nodeA.linear_velocity += aVel * del
+	nodeB.linear_velocity += bVel * del
 	
 	
 	
