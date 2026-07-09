@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
 	
-	if true:
+	if false:
 		if Input.is_action_just_pressed("ui_right"):
 			targetAngleDegrees += 15
 		if Input.is_action_just_pressed("ui_left"):
@@ -121,7 +121,7 @@ func _physics_process(delta: float) -> void:
 			targetAngleDegrees += 180
 	
 	
-	
+	return
 	
 	for i in 5:
 		update(1.0)

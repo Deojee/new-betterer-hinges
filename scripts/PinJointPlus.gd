@@ -100,6 +100,8 @@ var TPS:
 	set(value):
 		print("Please set TPS in physics/common")
 
+var enabled = false
+
 func _physics_process(delta: float) -> void:
 	
 	var objectAPoint = nodeA.global_transform * offsetA.affine_inverse()
@@ -108,9 +110,11 @@ func _physics_process(delta: float) -> void:
 	#Mathy.draw_line_between(get_tree(),objectAPoint.origin,nodeA.global_position,0.3,Color.RED)
 	#Mathy.draw_line_between(get_tree(),objectBPoint.origin,nodeB.global_position,0.3,Color.BLUE)
 	
-	MP.mark(objectAPoint.origin,0.5,Color.RED)
-	MP.mark(objectBPoint.origin,0.5,Color.GREEN)
+	#MP.mark(objectAPoint.origin,0.5,Color.RED)
+	#MP.mark(objectBPoint.origin,0.5,Color.GREEN)
 	
+	if !enabled:
+		return
 	
 	for i in 1:
 		update(1.0)

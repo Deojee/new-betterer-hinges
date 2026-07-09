@@ -105,15 +105,15 @@ func forwardKinematics(chain : Array[HingePlus],endPoint : Node3D) -> Array[Tran
 		
 		targetPoses[i] = currentTrans
 		
-		MP.mark(
-			currentTrans.origin,
-			3.0,
-			Color.GREEN.lerp(
-				Color.RED,
-				float(i)/float(chain.size()
-				)
-			)
-		)
+		#MP.mark(
+			#currentTrans.origin,
+			#0.1,
+			#Color.GREEN.lerp(
+				#Color.RED,
+				#float(i)/float(chain.size()
+				#)
+			#)
+		#)
 		
 		if i < chain.size():
 			currentTrans = currentTrans * hingeToNextTransforms[i]
